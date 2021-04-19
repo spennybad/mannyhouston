@@ -1,0 +1,39 @@
+.blog_list_item {
+
+    height: 6rem;
+
+    margin: 1rem;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 1rem;
+
+    color: var(--color-black);
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-light);
+
+    &__title {
+        
+        font-size: var(--font-size-h4);
+        margin-right: auto;
+        text-transform: uppercase;
+
+    }
+
+    &__button {
+
+        padding: 1rem;
+        background-color: orangered;
+        box-shadow: var(--shadow-light);
+        
+        font-size: var(--font-size-nav);
+
+        a {
+            color: var(--color-white);
+        }
+
+    }
+
+}

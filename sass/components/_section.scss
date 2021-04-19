@@ -1,0 +1,11 @@
+section {
+    display: grid;
+    justify-items: center;
+    row-gap: 3rem;
+    padding: 6rem;
+
+    &--primary {
+        background-color: var(--color-dark-grey-1)
+    }
+
+}

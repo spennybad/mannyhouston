@@ -1,0 +1,37 @@
+.navigation {
+    
+    background-color: var(--color-dark-grey-1);
+    color: var(--color-black);
+
+    padding: 2rem;
+
+    display: flex;
+
+    text-transform: uppercase;
+
+    &__links {
+        list-style: none;
+        display: flex;
+    }
+
+    &__link {
+        display: grid;
+        justify-items: center;
+
+        width: 12rem;
+
+        margin-right: 1rem;
+        padding: 1rem;
+
+        font-size: var(--font-size-nav);
+
+        background-color: var(--color-white);
+
+        a {
+            color: var(--color-black);
+        }
+
+    }
+
+}
+
