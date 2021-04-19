@@ -1,8 +1,11 @@
 import { createClient } from 'contentful'
+
 import Image from 'next/image';
+import Skeleton from '../../../components/Skeleton';
+
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
-import styles from './blog.module.scss';
+import styles from '../blog.module.scss';
 
 const client = createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
@@ -16,6 +19,7 @@ export const getStaticPaths = async () => {
     })
 
     const paths = res.items.map(item => {
+        console.log(`Build Page ${ item.fields.slug }`);
         return {
             params: { slug: item.fields.slug }
         }
@@ -53,7 +57,9 @@ export const getStaticProps = async ({ params }) => {
 
 const BlogPost = ({ post }) => {
 
-    const { blogEntryTitle, blogPostContent, blogPostMedia, slug } = post.fields;
+    if (!post) return <Skeleton />
+
+    const { blogEntryTitle, blogPostContent, blogPostMedia } = post.fields;
 
     return (
         <section className={styles.blog_post}>
