@@ -1,4 +1,6 @@
-import { createClient } from 'contentful'
+import { createClient } from 'contentful';
+import ShowList from '../components/shows/ShowList';
+import styles from './home.module.scss';
 
 export const getStaticProps = async () => {
 
@@ -12,7 +14,7 @@ export const getStaticProps = async () => {
 
     return {
         props: {
-            shows: res_shows
+            shows: res_shows.items
         },
         revalidate: 1
     }
@@ -21,8 +23,9 @@ export const getStaticProps = async () => {
 const Home = ({ shows }) => {
     
     return (
-        <section className="home">
-            <h1>Home</h1>
+        <section className={ styles.home }>
+            <h1 className={ styles.home__heading }>Manny Houston</h1>
+            <ShowList shows={ shows } />
         </section>
     );
 }
