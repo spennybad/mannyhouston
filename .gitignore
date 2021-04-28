@@ -32,3 +32,13 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# babel
+.babelrc
+
+# VS Code Config
+.vscode
+
+
+# Markup
+DEVNOTES.md

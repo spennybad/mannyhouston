@@ -1,15 +1,21 @@
-## Notes for Manny
-- Contentful walkthrough / Content consumption demo.
-- Github walkthrough.
-- Stack walkthrogh.
-    - Explain front end and backend and the difference between them.
-    - Show how content will be consumed by Contentful.
+# Development Notes:
 
-## Dev Notes
+## Sections:
+    
+- Homepage
+- Thoughts
+- Manny's World
+- Future Sections
+    - Merch
+    - Special Releases
 
-#### Branches:
-- Main => Main Repo
-- Dev => Feautures in Development
+## To Do: 
 
-#### Comands:
-- ...
+- [ ] Change About photo to new one in email. 
+- [ ] Create seperate repo that only contains homepage to be deployed as the first stage in the release cycle. 
+- [ ] Add About text.
+- [ ] Change "Blog" to "Thoughts".
+- [ ] Change "Videos" to "Manny's World"
+- [ ] Figure out approach for hosting special content.
+    - Probably use Youtube for hosting.
+---
