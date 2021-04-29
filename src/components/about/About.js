@@ -108,7 +108,7 @@ const About = () => {
             </AboutContent>
             <AboutImageWrapper>
                 <Image
-                    src="/imgs/photoshop/about_cut_out.png"
+                    src="/imgs/about_cut_out.png"
                     alt="Manny sitting on brick wall."
                     layout="fill"
                 />
