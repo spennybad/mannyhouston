@@ -1,6 +1,9 @@
 import Image from 'next/image';
 import styled from 'styled-components';
+
 import H2 from '../comps/h2';
+import Section from '../comps/section';
+
 
 const AboutContent = styled.div`
     display: grid;
@@ -54,7 +57,7 @@ const temp_text = "    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
 
 const About = () => {
     return (
-        <section>
+        <Section>
             <AboutContent>
                 <div>
                     <H2>About Manny Houston</H2>
@@ -71,7 +74,7 @@ const About = () => {
                     </AboutImageWrapper>
                 </div>
             </AboutContent>
-        </section>
+        </Section>
     );
 }
  

@@ -6,12 +6,16 @@ const StyledH2 = styled.h2`
     color: ${(props) => props.theme.colors.yellow};
 
     ${({styling}) =>
-        styling &&
-        css`
+        (styling==="shows" && css`
             justify-self: center;
-            grid-area: 1 / 2 / 2 / 6;
             margin-bottom: 6rem;
-        `
+        `)
+        || 
+        (styling==="contact" && css`
+            color: ${(props) => props.theme.colors.white};
+            text-shadow: ${(props) => props.theme.textShadows.textShadowLight};
+            z-index: 1;
+        `)
     }
 
 `

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import LandingPage from '../components/home/LandingPage';
 import ShowList from '../components/shows/ShowList';
 import About from '../components/about/About';
+import Contact from '../components/contact/Contact';
 
 
 const Wrapper = styled.div `
@@ -32,6 +33,7 @@ const Home = ({ shows }) => {
             <LandingPage />
             <About />
             <ShowList shows= { shows }/>
+            <Contact />
         </Wrapper>
     );
 }

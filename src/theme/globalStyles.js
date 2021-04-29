@@ -25,8 +25,6 @@ const GlobalStyle = createGlobalStyle`
         height: 100vh;
 
         display: grid;
-        justify-content: center;
-
     }
 
     p {
@@ -38,6 +36,10 @@ const GlobalStyle = createGlobalStyle`
     a:visited {
         text-decoration: none;
         color: #000;
+    }
+    
+    input:focus, textarea:focus, select:focus{
+        outline: none;
     }
 
 

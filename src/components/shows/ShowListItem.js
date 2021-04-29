@@ -2,10 +2,8 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 const ShowItem = styled.div`
-
-    width: 120rem;
-
     display: grid;
+    
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
     align-items: center;

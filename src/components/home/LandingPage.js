@@ -6,6 +6,7 @@ import Image from 'next/image';
 const Title = styled.h1`
 
     align-self: center;
+    justify-self: center;
 
     transform: translateY(1rem);
 

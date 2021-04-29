@@ -13,8 +13,14 @@ export default {
         h2: '7rem',
         h3: '4rem',
         h4: '3.5rem',
+        nav:'3.5rem',
         p: '3rem',
-        nav:'3.5rem'
+        form_p: '2.7rem'
+    },
+
+    fontFamily: {
+        p: "Reem Kufi",
+        h: "'Staatliches', cursive"
     },
 
     textShadows: {
