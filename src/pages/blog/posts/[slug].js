@@ -60,7 +60,7 @@ const BlogPost = ({ post }) => {
     const { blogEntryTitle, blogPostContent, blogPostMedia } = post.fields;
 
     return (
-        temp    
+        <div>temp</div>    
     );
 
 }
