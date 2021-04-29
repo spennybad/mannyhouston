@@ -5,6 +5,7 @@ import LandingPage from '../components/home/LandingPage';
 import ShowList from '../components/shows/ShowList';
 import About from '../components/about/About';
 import Contact from '../components/contact/Contact';
+import Credit from '../components/credit/Credit';
 
 
 const Wrapper = styled.div `
@@ -32,8 +33,9 @@ const Home = ({ shows }) => {
         <Wrapper>
             <LandingPage />
             <About />
-            <ShowList shows= { shows }/>
+            {/* <ShowList shows= { shows }/> */}
             <Contact />
+            <Credit />
         </Wrapper>
     );
 }

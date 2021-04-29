@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 
+import media from '../MediaQueries';
+
 
 // Styles
 const Title = styled.h1`
@@ -11,7 +13,8 @@ const Title = styled.h1`
     transform: translateY(1rem);
 
     color: ${(props) => props.theme.colors.white};
-    font-size: ${(props) => props.theme.fontSize.h1};
+    font-size: 12vw;
+
 
     text-shadow: ${(props) => props.theme.textShadows.textShadowHeavy};
 
@@ -23,6 +26,14 @@ const Title = styled.h1`
     // Temporary fix for Google Chrome blurry font defect.
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+
+    ${media.width_400`
+
+        font-size: 10vw;
+
+    `}
+
+
 `
 
 const BackgroundImageContainer = styled.div`
@@ -34,6 +45,7 @@ const BackgroundImageContainer = styled.div`
     overflow: hidden;
     
     z-index: -1;
+
 `
 
 const BackgroundImage = styled(Image)`

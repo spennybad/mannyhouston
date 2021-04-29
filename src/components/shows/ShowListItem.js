@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
+import media from '../MediaQueries';
+
 const ShowItem = styled.div`
     display: grid;
     
@@ -13,12 +15,14 @@ const ShowItem = styled.div`
     background-color: ${(props) => props.theme.colors.white};
     box-shadow: ${(props) => props.theme.boxShadows.boxShadowLight};
 
+    white-space: nowrap;
+
     & > h4 {
-        font-size: ${(props) => props.theme.fontSize.h4};
+        font-size: ${(props) => props.theme.fontSize_default.h4};
     }
 
     & > p {
-        font-size: ${(props) => props.theme.fontSize.p};
+        font-size: ${(props) => props.theme.fontSize_default.p};    
     }
 
 `

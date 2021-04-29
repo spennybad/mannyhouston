@@ -8,14 +8,31 @@ export default {
         pink: '#e86f68'
     },
 
-    fontSize: {
+    fontSize_default: {
+        
+        // Default
         h1: '28rem',
         h2: '7rem',
         h3: '4rem',
         h4: '3.5rem',
         nav:'3.5rem',
-        p: '3rem',
-        form_p: '2.7rem'
+        p: '2.5rem',
+        form_p: '2.5rem',
+    },
+
+    fontSize_br_1200: {
+        h2: '6rem',
+        p: '2.2rem'
+    },
+
+    fontSize_br_1000: {
+        h2: '5rem',
+        p: '2rem'
+    },
+
+    fontSize_br_800: {
+        h2: '4rem',
+        p: '1.8rem'
     },
 
     fontFamily: {

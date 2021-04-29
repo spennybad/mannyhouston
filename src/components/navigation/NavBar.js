@@ -13,7 +13,7 @@ const Nav = styled.nav`
     display: grid;
     justify-content: center;
 
-    font-size: ${(props) => props.theme.fontSize.nav};
+    font-size: ${(props) => props.theme.fontSize_default.nav};
 
 `
 

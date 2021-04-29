@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
     html {
         font-size: 62.5%; /* == 1 rem == 10px */
         font-family: 'Staatliches', cursive;
+        font-style: normal;
     }
 
 

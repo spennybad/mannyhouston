@@ -27,8 +27,6 @@ const ShowsContent = styled.div`
     grid-template-rows: min-content 1fr;
     grid-template-columns: 1fr;
 
-    padding: 6rem 30rem;
-
     background-color: ${(props) => props.theme.colors.black};
 
     & > :nth-child(2) {

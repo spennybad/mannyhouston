@@ -7,6 +7,8 @@ import Image from 'next/image';
 import Section from '../comps/section';
 import H2 from '../comps/h2';
 
+import media from '../MediaQueries';
+
 
 // Styling
 const ContactWrapper = styled.div`
@@ -14,7 +16,6 @@ const ContactWrapper = styled.div`
     grid-template-rows: min-content 1fr;
 
     justify-items: center;
-    padding: 6rem 30rem;
 
 `
 
@@ -28,33 +29,49 @@ const ContactForm = styled.form`
 
     z-index: 1;
 
+    font-size: ${(props) => props.theme.fontSize_default.form_p};
+
     & > * {
         background-color: rgba(0, 0, 0, 0.75);
         color: ${(props) => props.theme.colors.white};
         border: none;
 
         font-family: ${(props) => props.theme.fontFamily.p};
+        font-size: inherit;
 
         padding: 1rem;
 
         &::placeholder {
             color: ${(props) => props.theme.colors.white};
         }
+
     }
+
+    ${media.width_1200`
+        font-size: ${(props) => props.theme.fontSize_br_1200.p};
+    `}
+
+    ${media.width_1000`
+        font-size: ${(props) => props.theme.fontSize_br_1000.p};
+    `}
+
+    ${media.width_800`
+        font-size: ${(props) => props.theme.fontSize_br_800.p};
+    `}
+
+
 `
 
 const FormInput = styled.input`
-    font-size: ${(props) => props.theme.fontSize.form_p};
     padding: 1rem;
 `
 
 const TextArea = styled.textarea`
-    font-size: ${(props) => props.theme.fontSize.form_p};
+    resize: none;
 `
 
 const Button = styled.button`
-    width: 10%;
-    height: 100%;
+    padding: 1rem 4rem;
     justify-self: center;
 
 `
@@ -113,7 +130,7 @@ const Contact = () => {
     return (
         <Section>
             <ContactWrapper>
-                <H2 styling="contact">Contact Me</H2>
+                <H2 styling="contact">Contact Manny</H2>
                 <ContactForm onSubmit={handleMailSubmit}>
                     <FormInput type="text" name="user_name" ref={nameRef} placeholder="Name" required />
                     <FormInput type="email" name="user_email" ref={emailRef} placeholder="Email Address" required />
