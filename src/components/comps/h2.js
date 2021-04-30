@@ -40,8 +40,8 @@ const StyledH2 = styled.h2`
         font-size: ${(props) => props.theme.fontSize_br_500.h2};
     `}
 
-    ${media.width_400`
-        font-size: ${(props) => props.theme.fontSize_br_400.h2};
+    ${media.width_450`
+        font-size: ${(props) => props.theme.fontSize_br_450.h2};
         letter-spacing: 0;
     `}
 

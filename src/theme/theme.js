@@ -50,8 +50,12 @@ export default {
         p: '1.5rem'
     },
 
-    fontSize_br_400: {
+    fontSize_br_450: {
         h2: '3rem',
+    },
+
+    fontSize_br_400: {
+        h2: '2.9rem',
     },
 
     fontSize_br_350: {

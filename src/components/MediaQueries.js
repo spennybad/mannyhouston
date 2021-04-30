@@ -8,6 +8,7 @@ const sizes = {
     width_800: 800,
     width_600: 600,
     width_500: 500,
+    width_450: 450,
     width_400: 400,
     width_350: 350,
     width_300: 300
