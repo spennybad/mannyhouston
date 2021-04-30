@@ -21,13 +21,6 @@ const GlobalStyle = createGlobalStyle`
         /* border: 1px solid #f00 !important; */
     }
 
-    section {
-        width: 100%;
-        height: 100vh;
-
-        display: grid;
-    }
-
     p {
         font-family: 'Reem Kufi';
     }

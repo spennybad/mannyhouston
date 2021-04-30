@@ -30,6 +30,8 @@ const StyledSpan = styled.span`
 
     transition: all .2s;
 
+    white-space: nowrap;
+
     &:hover {
         transform: scale(1.3) rotate(3deg);
     }

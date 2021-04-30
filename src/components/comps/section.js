@@ -3,6 +3,12 @@ import media from "../MediaQueries";
 
 
 const StyledSection = styled.section`    
+
+    width: 100%;
+    height: 100vh;
+
+    display: grid;
+    
     position: relative;
     background-color: ${(props) => props.theme.colors.black};
     padding: 8rem;

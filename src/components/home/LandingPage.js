@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 
+import Section from '../comps/section';
+
 import media from '../MediaQueries';
 
 
@@ -23,6 +25,8 @@ const Title = styled.h1`
 
     white-space: nowrap;
 
+    z-index: 1;
+
     // Temporary fix for Google Chrome blurry font defect.
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -44,7 +48,7 @@ const BackgroundImageContainer = styled.div`
 
     overflow: hidden;
     
-    z-index: -1;
+    z-index: 0;
 
 `
 
@@ -55,7 +59,7 @@ const BackgroundImage = styled(Image)`
 
 const LandingPage = () => {
     return (
-        <section>
+        <Section>
             <Title>Manny Houston</Title>
             <BackgroundImageContainer>
                 <BackgroundImage 
@@ -64,7 +68,7 @@ const LandingPage = () => {
                     alt="Manny Houston on roof top."
                 />
             </BackgroundImageContainer>
-        </section>
+        </Section>
     );
 }
 
