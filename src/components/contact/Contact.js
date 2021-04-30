@@ -135,7 +135,7 @@ const Contact = () => {
                     <FormInput type="text" name="user_name" ref={nameRef} placeholder="Name" required />
                     <FormInput type="email" name="user_email" ref={emailRef} placeholder="Email Address" required />
                     <TextArea name="message" ref={messageRef} required />
-                    <Button type="submit" value="submit">Submit</Button>
+                    <Button type="submit" value="submit">Send &rarr;</Button>
                 </ContactForm>
             </ContactWrapper>
             <BackgroundImage

@@ -5,7 +5,6 @@ import Section from '../comps/section';
 
 import media from '../MediaQueries';
 
-
 // Styles
 const Title = styled.h1`
 
@@ -85,10 +84,42 @@ const BackgroundImage = styled(Image)`
     object-fit: cover;
 `
 
+const Socials = styled.ul`
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    padding: 3rem;
+
+    z-index: 1;
+
+    & > a * {
+        width: 5rem;
+        height: 5rem;
+        text-shadow: ${(props) => props.theme.textShadows.textShadowLight};
+        
+        transition: all .2s;
+
+        &:hover {
+            transform: scale(1.2);
+        }
+
+    }
+
+    & > :not(:last-child) {
+        margin-right: 1rem;
+    }
+
+`
+
 
 const LandingPage = () => {
     return (
         <Section>
+            <Socials>
+                <a href="https://twitter.com/themannyhouston"><img src="/imgs/svg/twitter-with-circle.svg"/></a>
+                <a href="https://instagram.com/themannyhouston"><img src="/imgs/svg/instagram-with-circle.svg"/></a>
+            </Socials>
             <Title>Manny <span>Houston</span></Title>
             <BackgroundImageContainer>
                 <BackgroundImage 

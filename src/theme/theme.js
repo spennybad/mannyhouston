@@ -8,6 +8,16 @@ export default {
         pink: '#e86f68'
     },
 
+    textShadows: {
+        textShadowLight: '0px 4px 4px rgba(0, 0, 0, 0.25);',
+        textShadowHeavy: '0px 4px 4px rgba(0, 0, 0, 0.50);'
+    },
+
+    boxShadows: {
+        boxShadowLight: '0px 4px 4px rgba(0, 0, 0, 0.25);',
+        boxShadowHeavy: '0px 6px 4px rgba(0, 0, 0, 0.50);'
+    },
+
     fontSize_default: {
         
         // Default
@@ -44,19 +54,13 @@ export default {
         h2: '3rem',
     },
 
+    fontSize_br_300: {
+        h2: '2.5rem',
+    },
+
     fontFamily: {
         p: "Reem Kufi",
         h: "'Staatliches', cursive"
-    },
-
-    textShadows: {
-        textShadowLight: '0px 4px 4px rgba(0, 0, 0, 0.25);',
-        textShadowHeavy: '0px 4px 4px rgba(0, 0, 0, 0.50);'
-    },
-
-    boxShadows: {
-        boxShadowLight: '0px 4px 4px rgba(0, 0, 0, 0.25);',
-        boxShadowHeavy: '0px 6px 4px rgba(0, 0, 0, 0.50);'
     }
 
 }

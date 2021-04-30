@@ -44,6 +44,11 @@ const StyledH2 = styled.h2`
         font-size: ${(props) => props.theme.fontSize_br_400.h2};
     `}
 
+    ${media.width_300`
+        font-size: ${(props) => props.theme.fontSize_br_300.h2};
+    `}
+
+
 `
 
 const H2 = ({ styling, children }) => {

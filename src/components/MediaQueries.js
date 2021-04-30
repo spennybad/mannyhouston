@@ -9,7 +9,8 @@ const sizes = {
     width_600: 600,
     width_500: 500,
     width_400: 400,
-    width_350: 350
+    width_350: 350,
+    width_300: 300
 }
 
 export default Object.keys(sizes).reduce((acc, label) => {
