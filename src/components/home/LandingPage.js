@@ -31,10 +31,33 @@ const Title = styled.h1`
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 
+    ${media.width_500`
+
+        color: ${(props) => props.theme.colors.white};
+
+        text-shadow: ${(props) => props.theme.textShadows.textShadowHeavy};
+
+        font-weight: 400;
+
+        position: absolute;
+
+        left: 0;
+
+        padding: 5rem;
+
+        & span {
+            display: block;
+        }
+        font-size: 7rem;
+        white-space: wrap;
+    `}
+
     ${media.width_400`
+        font-size: 6rem;
+    `}
 
-        font-size: 10vw;
-
+    ${media.width_350`
+        font-size: 5rem;
     `}
 
 
@@ -50,6 +73,12 @@ const BackgroundImageContainer = styled.div`
     
     z-index: 0;
 
+    
+    ${media.width_500`
+        width: 200%;
+        right: -90%;
+    `}
+
 `
 
 const BackgroundImage = styled(Image)`
@@ -60,10 +89,10 @@ const BackgroundImage = styled(Image)`
 const LandingPage = () => {
     return (
         <Section>
-            <Title>Manny Houston</Title>
+            <Title>Manny <span>Houston</span></Title>
             <BackgroundImageContainer>
                 <BackgroundImage 
-                    src="/imgs/manny_4.png"
+                    src="/imgs/webp/manny_4.webp"
                     layout="fill"
                     alt="Manny Houston on roof top."
                 />

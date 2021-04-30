@@ -35,6 +35,15 @@ export default {
         p: '1.8rem'
     },
 
+    fontSize_br_500: {
+        h2: '4rem',
+        p: '1.5rem'
+    },
+
+    fontSize_br_400: {
+        h2: '3rem',
+    },
+
     fontFamily: {
         p: "Reem Kufi",
         h: "'Staatliches', cursive"
@@ -42,7 +51,7 @@ export default {
 
     textShadows: {
         textShadowLight: '0px 4px 4px rgba(0, 0, 0, 0.25);',
-        textShadowHeavy: '0px 6px 4px rgba(0, 0, 0, 0.50);'
+        textShadowHeavy: '0px 4px 4px rgba(0, 0, 0, 0.50);'
     },
 
     boxShadows: {

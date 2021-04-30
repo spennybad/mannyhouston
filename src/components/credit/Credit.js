@@ -19,13 +19,17 @@ const StyledDiv = styled.div`
         font-size: calc(${(props) => props.theme.fontSize_br_800.p} - .5rem);
     `}
 
+    ${media.width_500`
+        font-size: calc(${(props) => props.theme.fontSize_br_500.p} - .5rem);
+    `}
+
 `
 
 const StyledSpan = styled.span`
 
     display: inline-block;
 
-    color: ${(props) => props.theme.colors.blue};
+    color: ${(props) => props.theme.colors.green};
     background-color: ${(props) => props.theme.colors.black};
 
     transition: all .2s;
@@ -40,7 +44,7 @@ const StyledSpan = styled.span`
 const Credit = () => {
     return (
         <StyledDiv>
-            <p>Site Designed and Developed by <a href="https://www.linkedin.com/in/spencer-venable-31494a187/"><StyledSpan>Spencer Venable</StyledSpan></a></p>
+            <p>Designed and Developed by <a href="https://www.linkedin.com/in/spencer-venable-31494a187/"><StyledSpan>Spencer Venable</StyledSpan></a></p>
         </StyledDiv>
     );
 }

@@ -84,14 +84,20 @@ const AboutImageWrapper = styled.div`
     `}
 
     ${media.width_900`
-        width: 60rem;
-        height: 60rem;
-    `}
-
-    ${media.width_800`
         width: 50rem;
         height: 50rem;
     `}
+
+    ${media.width_800`
+        width: 45rem;
+        height: 45rem;
+    `}
+
+    ${media.width_500`
+        width: 30rem;
+        height: 30rem;
+    `}
+
 
 `
 
@@ -108,7 +114,7 @@ const About = () => {
             </AboutContent>
             <AboutImageWrapper>
                 <Image
-                    src="/imgs/about_cut_out.png"
+                    src="/imgs/webp/about_cut_out.webp"
                     alt="Manny sitting on brick wall."
                     layout="fill"
                 />

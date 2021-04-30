@@ -139,7 +139,7 @@ const Contact = () => {
                 </ContactForm>
             </ContactWrapper>
             <BackgroundImage
-                src="/imgs/manny_3.jpg"
+                src="/imgs/webp/manny_3.webp"
                 layout="fill"
                 alt="Contact Me Background - Manny Houston sitting on a brick wall."
             />

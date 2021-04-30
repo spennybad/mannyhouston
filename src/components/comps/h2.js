@@ -4,7 +4,11 @@ import media from "../MediaQueries";
 
 const StyledH2 = styled.h2`
     font-size: 7rem;
-    color: ${(props) => props.theme.colors.yellow};
+    color: ${(props) => props.theme.colors.green};
+
+    letter-spacing: .2rem;
+
+    white-space: nowrap;
 
     ${({ styling }) =>
         (styling === "shows" && css`
@@ -30,6 +34,14 @@ const StyledH2 = styled.h2`
 
     ${media.width_800`
         font-size: ${(props) => props.theme.fontSize_br_800.h2};
+    `}
+
+    ${media.width_500`
+        font-size: ${(props) => props.theme.fontSize_br_500.h2};
+    `}
+
+    ${media.width_400`
+        font-size: ${(props) => props.theme.fontSize_br_400.h2};
     `}
 
 `
