@@ -11,6 +11,8 @@ const AboutContent = styled.div`
     display: grid;
     grid-template-columns: 2fr 1fr;
 
+    align-self: start;
+
     background-color: ${(props) => props.theme.colors.black};
 
     overflow-x: hidden;
@@ -19,7 +21,7 @@ const AboutContent = styled.div`
         display: grid;
         grid-template-rows: repeat(2, min-content);
 
-        grid-gap: 6rem;
+        grid-gap: 4rem;
 
         justify-items: center;
         align-items: center;

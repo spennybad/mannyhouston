@@ -51,7 +51,7 @@ export default {
     },
 
     fontSize_br_450: {
-        h2: '3rem',
+        h2: '3.5rem',
     },
 
     fontSize_br_400: {

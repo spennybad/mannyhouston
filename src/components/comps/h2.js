@@ -20,7 +20,7 @@ const StyledH2 = styled.h2`
             color: ${(props) => props.theme.colors.white};
             text-shadow: ${(props) => props.theme.textShadows.textShadowLight};
             z-index: 1;
-            margin-top: 6rem;
+            margin-bottom: 2rem;
         `)
     }
 

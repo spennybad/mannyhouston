@@ -16,16 +16,18 @@ const StyledSection = styled.section`
     padding: 8rem;
     overflow: hidden;
 
+    padding: 7rem 7rem;
+
     ${media.width_800`
         padding: 6rem;
     `}
 
     ${media.width_600`
-        padding: 3rem;
+        padding: 6rem 3rem;
     `}
 
     ${media.width_400`
-        padding: 1rem;
+        padding: 6rem 1rem;
     `}
 
 
