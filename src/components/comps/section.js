@@ -7,6 +7,8 @@ const StyledSection = styled.section`
     width: 100%;
     height: 100vh;
 
+    min-height: 600px;
+
     display: grid;
     
     position: relative;
