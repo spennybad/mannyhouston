@@ -94,8 +94,8 @@ const Socials = styled.ul`
     z-index: 1;
 
     & > a * {
-        width: 5rem;
-        height: 5rem;
+        width: 7rem;
+        height: 7rem;
         text-shadow: ${(props) => props.theme.textShadows.textShadowLight};
         
         transition: all .2s;
@@ -103,6 +103,16 @@ const Socials = styled.ul`
         &:hover {
             transform: scale(1.2);
         }
+
+        ${media.width_800`
+            width: 6rem;
+            height: 6rem;
+        `}
+
+        ${media.width_500`
+            width: 5rem;
+            height: 5rem;
+        `}
 
     }
 
