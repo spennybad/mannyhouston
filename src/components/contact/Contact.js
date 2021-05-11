@@ -105,7 +105,6 @@ const Contact = () => {
 
     const handleMailSubmit = (e) => {
         e.preventDefault();
-        console.log("HERE");
 
         const templateParams = {
             from_name: nameRef.current.value,
