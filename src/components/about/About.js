@@ -21,12 +21,20 @@ const AboutContent = styled.div`
         display: grid;
         grid-template-rows: repeat(2, min-content);
 
-        grid-gap: 4rem;
+        grid-gap: 2rem;
 
         justify-items: center;
         align-items: center;
 
         align-self: center;
+
+        ${media.width_500`
+            grid-gap: 1rem;
+        `}
+
+        ${media.width_350`
+            grid-gap: .5rem;
+        `}
     }
 
     & > :nth-child(2) {
@@ -47,6 +55,8 @@ const AboutContent = styled.div`
 
 const AboutP = styled.p`
 
+    min-width: min-content;
+
     font-size: ${(props) => props.theme.fontSize_default.p};
     color: ${(props) => props.theme.colors.white};
 
@@ -56,6 +66,10 @@ const AboutP = styled.p`
 
     background-color: rgba(0, 0, 0, .75);
 
+    ${media.width_1500`
+        font-size: ${(props) => props.theme.fontSize_br_1500.p};
+    `}
+
     ${media.width_1200`
         font-size: ${(props) => props.theme.fontSize_br_1200.p};
     `}
@@ -64,16 +78,36 @@ const AboutP = styled.p`
         font-size: ${(props) => props.theme.fontSize_br_1000.p};
     `}
 
+    ${media.width_900`
+        font-size: ${(props) => props.theme.fontSize_br_900.p};
+    `}
+
     ${media.width_800`
         font-size: ${(props) => props.theme.fontSize_br_800.p};
+    `}
+
+    ${media.width_600`
+        font-size: ${(props) => props.theme.fontSize_br_600.p};
+    `}
+
+    ${media.width_500`
+        font-size: ${(props) => props.theme.fontSize_br_500.p};
+    `}
+
+    ${media.width_450`
+        font-size: ${(props) => props.theme.fontSize_br_450.p};
+    `}
+
+    ${media.width_350`
+        font-size: ${(props) => props.theme.fontSize_br_350.p};
     `}
 
 `
 
 const AboutImageWrapper = styled.div`
 
-    width: 85rem;
-    height: 85rem;
+    width: 80rem;
+    height: 80rem;
     
     position: absolute;
 
