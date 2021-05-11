@@ -2,10 +2,13 @@ export default {
     colors: {
         white: '#fff',
         black: '#000',
+        grey: '#2D2A2E',
         yellow: '#f1d04a',
         blue: '#35938D',
         green: '#83b799',
-        pink: '#e86f68'
+        pink: '#e86f68',
+        
+        transBlack_75: 'rgba(0, 0, 0, 0.75)'
     },
 
     textShadows: {
@@ -15,7 +18,8 @@ export default {
 
     boxShadows: {
         boxShadowLight: '0px 4px 4px rgba(0, 0, 0, 0.25);',
-        boxShadowHeavy: '0px 6px 4px rgba(0, 0, 0, 0.50);'
+        boxShadowHeavy: '0px 6px 4px rgba(0, 0, 0, 0.50);',
+        boxShadowInsetTop: 'inset 0 7px 9px -7px rgba(0, 0, 0, 0.50)'
     },
 
     fontSize_default: {

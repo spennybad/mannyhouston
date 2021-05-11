@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import media from '../MediaQueries';
 
-const ShowItem = styled.div`
+const ScheduleItem = styled.div`
     display: grid;
     
     grid-template-columns: repeat(3, 1fr);
@@ -12,7 +12,9 @@ const ShowItem = styled.div`
 
     padding: 1rem;
 
-    background-color: ${(props) => props.theme.colors.white};
+    color: ${(props) => props.theme.colors.white};
+
+    background-color: ${(props) => props.theme.colors.transBlack_75};
     box-shadow: ${(props) => props.theme.boxShadows.boxShadowLight};
 
     white-space: nowrap;
@@ -27,17 +29,17 @@ const ShowItem = styled.div`
 
 `
 
-const ShowListItem = ({ show }) => {
+const ScheduleListItem = ({ schedule }) => {
 
-    const { showVenuName, showDate, showStartTime } = show.fields;
+    const { title, startDate, startTime } = schedule.fields;
 
     return (
-        <ShowItem>
-            <h4>{showVenuName}</h4>
-            <p>{showDate}</p>
-            <p>{showStartTime}</p>
-        </ShowItem>
+        <ScheduleItem>
+            <h4>{title}</h4>
+            <p>{startDate}</p>
+            <p>{startTime}</p>
+        </ScheduleItem>
     );
 }
 
-export default ShowListItem;
+export default ScheduleListItem;

@@ -10,17 +10,26 @@ const StyledH2 = styled.h2`
 
     white-space: nowrap;
 
+    padding: 1rem 4rem;
+
+    box-shadow: ${(props) => props.theme.boxShadows.boxShadowLight};
+
     ${({ styling }) =>
-        (styling === "shows" && css`
+        (styling === "schedule" && css`
             justify-self: center;
             margin-bottom: 6rem;
+            background-color: ${(props) => props.theme.colors.transBlack_75};
+            color: ${(props) => props.theme.colors.white};
         `)
         ||
         (styling === "contact" && css`
-            color: ${(props) => props.theme.colors.white};
-            text-shadow: ${(props) => props.theme.textShadows.textShadowLight};
-            z-index: 1;
             margin-bottom: 2rem;
+           
+            
+            color: ${(props) => props.theme.colors.green};
+            text-shadow: ${(props) => props.theme.textShadows.textShadowLight};
+            background-color: ${(props) => props.theme.colors.transBlack_75};
+            z-index: 1;
         `)
     }
 

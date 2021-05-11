@@ -2,15 +2,10 @@ import { createClient } from 'contentful';
 import styled from 'styled-components';
 
 import LandingPage from '../components/home/LandingPage';
-import ShowList from '../components/shows/ShowList';
+import Schedule from '../components/schedule/Schedule';
 import About from '../components/about/About';
 import Contact from '../components/contact/Contact';
 import Credit from '../components/credit/Credit';
-
-
-const Wrapper = styled.div `
-    width: 100%;
-`
 
 export const getStaticProps = async () => {
 
@@ -19,24 +14,25 @@ export const getStaticProps = async () => {
         accessToken: process.env.CONTENTFUL_ACCESS_KEY
     });
 
-    const res_shows = await client.getEntries({ content_type: 'show' });
+    const res_schedule = await client.getEntries({ content_type: 'schedule' });
 
     return {
         props: {
-            shows: res_shows.items
+            schedule: res_schedule.items
         }
     }
 }
 
-const Home = ({ shows }) => {
+const Home = ({ schedule }) => {
+
     return (
-        <Wrapper>
+        <div>
             <LandingPage />
             <About />
-            {/* <ShowList shows= { shows }/> */}
+            <Schedule schedule= { schedule }/>
             <Contact />
             <Credit />
-        </Wrapper>
+        </div>
     );
 }
 

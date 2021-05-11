@@ -133,7 +133,7 @@ const LandingPage = () => {
             <Title>Manny <span>Houston</span></Title>
             <BackgroundImageContainer>
                 <BackgroundImage 
-                    src="/imgs/webp/manny_4.webp"
+                    src="https://res.cloudinary.com/spencercv7-dev/image/upload/v1620053588/manny_4_qqbi0a.webp"
                     layout="fill"
                     alt="Manny Houston on roof top."
                 />

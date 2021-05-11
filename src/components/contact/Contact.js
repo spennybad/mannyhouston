@@ -32,7 +32,7 @@ const ContactForm = styled.form`
     font-size: ${(props) => props.theme.fontSize_default.form_p};
 
     & > * {
-        background-color: rgba(0, 0, 0, 0.75);
+        background-color: ${(props) => props.theme.colors.transBlack_75};
         color: ${(props) => props.theme.colors.white};
         border: none;
 
@@ -73,6 +73,19 @@ const TextArea = styled.textarea`
 const Button = styled.button`
     padding: 1rem 4rem;
     justify-self: center;
+    transition: all .2s;
+
+    &:hover {
+        transform: scale(1.1);
+        background-color: ${(props) => props.theme.colors.green};
+        color: ${(props) => props.theme.colors.black};
+        border-radius: 1rem;
+
+        & span{
+            display: inline-block;
+            transform: translateX(1rem);
+        }
+    }
 
 `
 
@@ -135,11 +148,11 @@ const Contact = () => {
                     <FormInput type="text" name="user_name" ref={nameRef} placeholder="Name" required />
                     <FormInput type="email" name="user_email" ref={emailRef} placeholder="Email Address" required />
                     <TextArea name="message" ref={messageRef} required />
-                    <Button type="submit" value="submit">Send &rarr;</Button>
+                    <Button type="submit" value="submit">Send <span>&rarr;</span></Button>
                 </ContactForm>
             </ContactWrapper>
             <BackgroundImage
-                src="/imgs/webp/manny_3.webp"
+                src="https://res.cloudinary.com/spencercv7-dev/image/upload/v1620053588/manny_2_ty71kl.webp"
                 layout="fill"
                 alt="Contact Me Background - Manny Houston sitting on a brick wall."
             />
