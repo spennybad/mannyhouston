@@ -94,8 +94,8 @@ const Socials = styled.ul`
     z-index: 1;
 
     & > a * {
-        width: 7rem;
-        height: 7rem;
+        width: 5rem;
+        height: 5rem;
         text-shadow: ${(props) => props.theme.textShadows.textShadowLight};
         
         transition: all .2s;
@@ -105,13 +105,13 @@ const Socials = styled.ul`
         }
 
         ${media.width_800`
-            width: 6rem;
-            height: 6rem;
+            width: 4rem;
+            height: 4rem;
         `}
 
         ${media.width_500`
-            width: 5rem;
-            height: 5rem;
+            width: 3.5rem;
+            height: 3.5rem;
         `}
 
     }

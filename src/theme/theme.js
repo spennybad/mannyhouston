@@ -30,7 +30,7 @@ export default {
         h3: '4rem',
         h4: '3.5rem',
         nav:'3.5rem',
-        p: 'clamp(1.2rem, 1.6vw, 2.4rem)',
+        p: 'clamp(1.4rem, 1.5vw, 2.4rem)',
         mini: 'clamp(1rem, 1vw, 2rem)'
     },
 
