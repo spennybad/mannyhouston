@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import media from '../MediaQueries';
-
 const ScheduleItem = styled.div`
     display: grid;
     

@@ -8,10 +8,10 @@ export default class MyDocument extends Document {
         return (
             <Html lang="en">
                 <Head>
-                    <link rel="preload" href="/fonts/ReemKufi-Regular.woff" as="font" crossOrigin="" />
-                    <link rel="preload" href="/fonts/ReemKufi-Regular.woff2" as="font" crossOrigin="" />
-                    <link rel="preload" href="/fonts/Staatliches-Regular.woff" as="font" crossOrigin="" />
-                    <link rel="preload" href="/fonts/Staatliches-Regular.woff2" as="font" crossOrigin="" />
+                    <link rel="preload" href="/fonts/ReemKufi-Regular.woff" as="font" crossOrigin="anonymous" />
+                    <link rel="preload" href="/fonts/ReemKufi-Regular.woff2" as="font" crossOrigin="anonymous" />
+                    <link rel="preload" href="/fonts/Staatliches-Regular.woff" as="font" crossOrigin="anonymous" />
+                    <link rel="preload" href="/fonts/Staatliches-Regular.woff2" as="font" crossOrigin="anonymous" />
                 </Head>
                 <body>
                     <Main />

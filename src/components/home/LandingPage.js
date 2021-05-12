@@ -71,17 +71,12 @@ const BackgroundImageContainer = styled.div`
     overflow: hidden;
     
     z-index: 0;
-
     
     ${media.width_500`
         width: 200%;
         right: -90%;
     `}
 
-`
-
-const BackgroundImage = styled(Image)`
-    object-fit: cover;
 `
 
 const Socials = styled.ul`
@@ -109,17 +104,20 @@ const Socials = styled.ul`
             height: 4rem;
         `}
 
-        ${media.width_500`
-            width: 3.5rem;
-            height: 3.5rem;
-        `}
-
     }
 
     & > :not(:last-child) {
         margin-right: 1rem;
     }
 
+`
+
+const StyledImage = styled.img`
+    object-fit: cover;
+    object-position: center;
+
+    width: 100%;
+    height: 100%;
 `
 
 
@@ -132,11 +130,11 @@ const LandingPage = () => {
             </Socials>
             <Title>Manny <span>Houston</span></Title>
             <BackgroundImageContainer>
-                <BackgroundImage 
+               <StyledImage
                     src="https://res.cloudinary.com/spencercv7-dev/image/upload/v1620053588/manny_4_qqbi0a.webp"
+                    alt="Picture of Manny Houston on a roof top."
                     layout="fill"
-                    alt="Manny Houston on roof top."
-                />
+               />
             </BackgroundImageContainer>
         </Section>
     );
