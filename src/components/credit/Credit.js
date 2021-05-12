@@ -9,19 +9,11 @@ const StyledDiv = styled.div`
 
     color: ${(props) => props.theme.colors.white};
 
-    font-size: calc(${(props) => props.theme.fontSize_default.p} - 1rem);
+    font-size: ${(props) => props.theme.fontSize_default.mini};
 
     padding: 2rem;
 
     background-color: ${(props) => props.theme.colors.black};    
-
-    ${media.width_900`
-        font-size: calc(${(props) => props.theme.fontSize_br_800.p} - .5rem);
-    `}
-
-    ${media.width_500`
-        font-size: calc(${(props) => props.theme.fontSize_br_500.p} - .5rem);
-    `}
 
 `
 

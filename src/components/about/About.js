@@ -66,42 +66,6 @@ const AboutP = styled.p`
 
     background-color: rgba(0, 0, 0, .75);
 
-    ${media.width_1500`
-        font-size: ${(props) => props.theme.fontSize_br_1500.p};
-    `}
-
-    ${media.width_1200`
-        font-size: ${(props) => props.theme.fontSize_br_1200.p};
-    `}
-
-    ${media.width_1000`
-        font-size: ${(props) => props.theme.fontSize_br_1000.p};
-    `}
-
-    ${media.width_900`
-        font-size: ${(props) => props.theme.fontSize_br_900.p};
-    `}
-
-    ${media.width_800`
-        font-size: ${(props) => props.theme.fontSize_br_800.p};
-    `}
-
-    ${media.width_600`
-        font-size: ${(props) => props.theme.fontSize_br_600.p};
-    `}
-
-    ${media.width_500`
-        font-size: ${(props) => props.theme.fontSize_br_500.p};
-    `}
-
-    ${media.width_450`
-        font-size: ${(props) => props.theme.fontSize_br_450.p};
-    `}
-
-    ${media.width_350`
-        font-size: ${(props) => props.theme.fontSize_br_350.p};
-    `}
-
 `
 
 const AboutImageWrapper = styled.div`

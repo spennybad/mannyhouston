@@ -29,7 +29,7 @@ const ContactForm = styled.form`
 
     z-index: 1;
 
-    font-size: ${(props) => props.theme.fontSize_default.form_p};
+    font-size: ${(props) => props.theme.fontSize_default.p};
 
     & > * {
         background-color: ${(props) => props.theme.colors.transBlack_75};
@@ -46,19 +46,6 @@ const ContactForm = styled.form`
         }
 
     }
-
-    ${media.width_1200`
-        font-size: ${(props) => props.theme.fontSize_br_1200.p};
-    `}
-
-    ${media.width_1000`
-        font-size: ${(props) => props.theme.fontSize_br_1000.p};
-    `}
-
-    ${media.width_800`
-        font-size: ${(props) => props.theme.fontSize_br_800.p};
-    `}
-
 
 `
 

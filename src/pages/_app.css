@@ -1,1 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi&family=Staatliches&display=swap');
+@font-face {
+    font-family: Reem Kufi;
+    src: url('/fonts/ReemKufi-Regular.woff2') format('woff2'),
+             url('/fonts/ReemKufi-Regular.woff') format('woff');
+}
+@font-face {
+    font-family: Staatliches;
+    src: url('/fonts/Staatliches-Regular.woff2') format('woff2'),
+             url('/fonts/Staatliches-Regular.woff') format('woff');
+}
