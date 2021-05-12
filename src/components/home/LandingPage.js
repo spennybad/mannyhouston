@@ -127,6 +127,7 @@ const LandingPage = () => {
             <Socials>
                 <a href="https://twitter.com/themannyhouston"><img src="/imgs/svg/twitter-with-circle.svg"/></a>
                 <a href="https://instagram.com/themannyhouston"><img src="/imgs/svg/instagram-with-circle.svg"/></a>
+                <a href="https://open.spotify.com/artist/6pyEuZWUVowkiKDeWkhrrJ?si=dw0sqttXRBeHIz14CEhwyg"><img src="/imgs/svg/spotify.svg"/></a>
             </Socials>
             <Title>Manny <span>Houston</span></Title>
             <BackgroundImageContainer>
