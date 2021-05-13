@@ -31,6 +31,16 @@ const StyledH2 = styled.h2`
         `)
     }
 
+    /* ----------- iPad 3, 4 and Pro 9.7" ----------- */
+    @media only screen 
+        and (min-device-width: 768px) 
+        and (max-device-width: 1024px) 
+        and (orientation: portrait) 
+        and (-webkit-min-device-pixel-ratio: 2) {
+            font-size: 5vw;
+    }
+
+
 `
 
 const H2 = ({ styling, children }) => {

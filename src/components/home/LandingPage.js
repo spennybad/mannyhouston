@@ -89,8 +89,8 @@ const Socials = styled.ul`
     z-index: 1;
 
     & > a * {
-        width: 5rem;
-        height: 5rem;
+        width: 7rem;
+        height: 7rem;
         text-shadow: ${(props) => props.theme.textShadows.textShadowLight};
         
         transition: all .2s;
@@ -98,6 +98,11 @@ const Socials = styled.ul`
         &:hover {
             transform: scale(1.2);
         }
+
+        ${media.width_1500`
+            width: 5.5rem;
+            height: 5.5rem;
+        `}
 
         ${media.width_800`
             width: 4rem;
@@ -125,9 +130,9 @@ const LandingPage = () => {
     return (
         <Section>
             <Socials>
-                <a href="https://twitter.com/themannyhouston"><img src="/imgs/svg/twitter-with-circle.svg"/></a>
-                <a href="https://instagram.com/themannyhouston"><img src="/imgs/svg/instagram-with-circle.svg"/></a>
-                <a href="https://open.spotify.com/artist/6pyEuZWUVowkiKDeWkhrrJ?si=dw0sqttXRBeHIz14CEhwyg"><img src="/imgs/svg/spotify.svg"/></a>
+                <a href="https://twitter.com/themannyhouston" target="_blank"><img src="/imgs/svg/twitter-with-circle.svg"/></a>
+                <a href="https://instagram.com/themannyhouston" target="_blank"><img src="/imgs/svg/instagram-with-circle.svg"/></a>
+                <a href="https://open.spotify.com/artist/6pyEuZWUVowkiKDeWkhrrJ?si=dw0sqttXRBeHIz14CEhwyg" target="_blank"><img src="/imgs/svg/spotify.svg"/></a>
             </Socials>
             <Title>Manny <span>Houston</span></Title>
             <BackgroundImageContainer>

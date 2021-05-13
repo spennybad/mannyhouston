@@ -1,6 +1,7 @@
 import { css } from 'styled-components'
 
 const sizes = {
+    width_2000: 2000,
     width_1500: 1500,
     width_1200: 1200,
     width_1000: 1000,

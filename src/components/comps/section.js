@@ -14,10 +14,10 @@ const StyledSection = styled.section`
     
     position: relative;
     background-color: ${(props) => props.theme.colors.black};
-    padding: 8rem;
+
     overflow: hidden;
 
-    padding: 7rem 7rem;
+    padding: 14rem 7rem;
     
     // Prop Based Styling
     ${({ boxShadow }) =>

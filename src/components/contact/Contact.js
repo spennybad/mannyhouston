@@ -25,7 +25,9 @@ const ContactForm = styled.form`
     grid-gap: 2rem;
 
     margin-top: 3rem;
+    
     width: 100%;
+    max-width: 150rem;
 
     z-index: 1;
 
