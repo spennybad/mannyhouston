@@ -130,17 +130,29 @@ const LandingPage = () => {
     return (
         <Section>
             <Socials>
-                <a href="https://twitter.com/themannyhouston" target="_blank"><img src="/imgs/svg/twitter-with-circle.svg"/></a>
-                <a href="https://instagram.com/themannyhouston" target="_blank"><img src="/imgs/svg/instagram-with-circle.svg"/></a>
-                <a href="https://open.spotify.com/artist/6pyEuZWUVowkiKDeWkhrrJ?si=dw0sqttXRBeHIz14CEhwyg" target="_blank"><img src="/imgs/svg/spotify.svg"/></a>
+                <li>
+                    <a href="https://twitter.com/themannyhouston" target="_blank">
+                        <img src="/imgs/svg/twitter-with-circle.svg" alt="Twitter Logo" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://instagram.com/themannyhouston" target="_blank">
+                        <img src="/imgs/svg/instagram-with-circle.svg" alt="Instagram Logo" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://open.spotify.com/artist/6pyEuZWUVowkiKDeWkhrrJ?si=dw0sqttXRBeHIz14CEhwyg" target="_blank">
+                        <img src="/imgs/svg/spotify.svg" alt="Spotify Logo" />
+                    </a>
+                </li>
             </Socials>
             <Title>Manny <span>Houston</span></Title>
             <BackgroundImageContainer>
-               <StyledImage
+                <StyledImage
                     src="https://res.cloudinary.com/spencercv7-dev/image/upload/v1620053588/manny_4_qqbi0a.webp"
                     alt="Picture of Manny Houston on a roof top."
                     layout="fill"
-               />
+                />
             </BackgroundImageContainer>
         </Section>
     );

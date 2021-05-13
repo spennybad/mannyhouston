@@ -7,9 +7,6 @@ import Image from 'next/image';
 import Section from '../comps/section';
 import H2 from '../comps/h2';
 
-import media from '../MediaQueries';
-
-
 // Styling
 const ContactWrapper = styled.div`
     display: grid;
@@ -48,7 +45,17 @@ const ContactForm = styled.form`
         }
 
     }
+`
 
+const StyledLabel = styled.label`
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 `
 
 const FormInput = styled.input`
@@ -133,16 +140,24 @@ const Contact = () => {
             <ContactWrapper>
                 <H2 styling="contact">Contact Manny</H2>
                 <ContactForm onSubmit={handleMailSubmit}>
+
+                    <StyledLabel for="user_name">Full Name</StyledLabel>
                     <FormInput type="text" name="user_name" ref={nameRef} placeholder="Name" required />
+
+                    <StyledLabel for="user_email">Email</StyledLabel>
                     <FormInput type="email" name="user_email" ref={emailRef} placeholder="Email Address" required />
+
+                    <StyledLabel for="message">Message</StyledLabel>
                     <TextArea name="message" ref={messageRef} required />
+
                     <Button type="submit" value="submit">Send <span>&rarr;</span></Button>
+
                 </ContactForm>
             </ContactWrapper>
             <BackgroundImage
                 src="https://res.cloudinary.com/spencercv7-dev/image/upload/v1620053588/manny_2_ty71kl.webp"
                 layout="fill"
-                alt="Contact Me Background - Manny Houston sitting on a brick wall."
+                alt="Contact Me Background - Manny Houston eating a bag of chips."
             />
         </Section>
     );
