@@ -60,22 +60,25 @@ const StyledLabel = styled.label`
 
 const FormInput = styled.input`
     padding: 1rem;
+    box-shadow: ${(props) => props.theme.boxShadows.boxShadowLight};
 `
 
 const TextArea = styled.textarea`
     resize: none;
+    box-shadow: ${(props) => props.theme.boxShadows.boxShadowLight};
 `
 
 const Button = styled.button`
     padding: 1rem 4rem;
     justify-self: center;
     transition: all .2s;
+    box-shadow: ${(props) => props.theme.boxShadows.boxShadowLight};
 
     &:hover {
         transform: scale(1.1);
         background-color: ${(props) => props.theme.colors.green};
         color: ${(props) => props.theme.colors.black};
-        border-radius: 1rem;
+        box-shadow: ${(props) => props.theme.boxShadows.boxShadowHeavy};
 
         & span{
             display: inline-block;

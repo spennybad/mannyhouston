@@ -95,7 +95,6 @@ const Socials = styled.ul`
     & > li a * {
         width: 7rem;
         height: 7rem;
-        text-shadow: ${(props) => props.theme.textShadows.textShadowLight};
         
         transition: all .2s;
 

@@ -25,7 +25,6 @@ const StyledH2 = styled.h2`
            
             
             color: ${(props) => props.theme.colors.green};
-            text-shadow: ${(props) => props.theme.textShadows.textShadowLight};
             background-color: ${(props) => props.theme.colors.transBlack_75};
             z-index: 1;
         `)
