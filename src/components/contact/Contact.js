@@ -87,12 +87,24 @@ const Button = styled.button`
     }
 
 `
-
-const BackgroundImage = styled(Image)`
+const StyledImage = styled.img`
     object-fit: cover;
-    z-index: 0;
+    object-position: center;
+    filter: blur(.25rem);
 
-    filter: blur(.3rem);
+    width: 100%;
+    height: 100%;
+`
+
+const BackgroundImageContainer = styled.div`
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+
+    overflow: hidden;
+    
+    z-index: 0;
 `
 
 
@@ -144,13 +156,13 @@ const Contact = () => {
                 <H2 styling="contact">Contact Manny</H2>
                 <ContactForm onSubmit={handleMailSubmit}>
 
-                   
+
                     <FormInput id="user_name" type="text" name="user_name" ref={nameRef} placeholder="Name" required />
                     <StyledLabel htmlFor="user_name">Full Name</StyledLabel>
-                    
+
                     <FormInput id="user_email" type="email" name="user_email" ref={emailRef} placeholder="Email Address" required />
                     <StyledLabel htmlFor="user_email">Email</StyledLabel>
-                    
+
                     <TextArea id="message" name="message" ref={messageRef} required />
                     <StyledLabel htmlFor="message">Message</StyledLabel>
 
@@ -158,11 +170,17 @@ const Contact = () => {
 
                 </ContactForm>
             </ContactWrapper>
-            <BackgroundImage
-                src="https://res.cloudinary.com/spencercv7-dev/image/upload/v1620053588/manny_2_ty71kl.webp"
-                layout="fill"
-                alt="Contact Me Background - Manny Houston eating a bag of chips."
-            />
+            <BackgroundImageContainer>
+                <StyledImage
+                    srcSet="https://res.cloudinary.com/spencercv7-dev/image/upload/c_scale,w_768/v1620053588/manny_2_ty71kl.webp 768w,
+                        https://res.cloudinary.com/spencercv7-dev/image/upload/c_scale,w_1024/v1620053588/manny_2_ty71kl.webp 1024w,
+                        https://res.cloudinary.com/spencercv7-dev/image/upload/c_scale,w_1920/v1620053588/manny_2_ty71kl.webp 1920w,
+                        https://res.cloudinary.com/spencercv7-dev/image/upload/v1620053588/manny_2_ty71kl.webp"
+                    sizes="100%"
+                    layout="fill"
+                    alt="Contact Me Background - Manny Houston eating a bag of chips."
+                />
+            </BackgroundImageContainer>
         </Section>
     );
 }
