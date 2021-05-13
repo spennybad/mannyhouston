@@ -135,17 +135,17 @@ const LandingPage = () => {
         <Section>
             <Socials>
                 <li>
-                    <a href="https://twitter.com/themannyhouston" target="_blank">
+                    <a href="https://twitter.com/themannyhouston" target="_blank" rel="noopener">
                         <img src="/imgs/svg/twitter-with-circle.svg" alt="Twitter Logo" />
                     </a>
                 </li>
                 <li>
-                    <a href="https://instagram.com/themannyhouston" target="_blank">
+                    <a href="https://instagram.com/themannyhouston" target="_blank" rel="noopener">
                         <img src="/imgs/svg/instagram-with-circle.svg" alt="Instagram Logo" />
                     </a>
                 </li>
                 <li>
-                    <a href="https://open.spotify.com/artist/6pyEuZWUVowkiKDeWkhrrJ?si=dw0sqttXRBeHIz14CEhwyg" target="_blank">
+                    <a href="https://open.spotify.com/artist/6pyEuZWUVowkiKDeWkhrrJ?si=dw0sqttXRBeHIz14CEhwyg" target="_blank" rel="noopener">
                         <img src="/imgs/svg/spotify.svg" alt="Spotify Logo" />
                     </a>
                 </li>

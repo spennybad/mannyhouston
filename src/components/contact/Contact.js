@@ -141,14 +141,15 @@ const Contact = () => {
                 <H2 styling="contact">Contact Manny</H2>
                 <ContactForm onSubmit={handleMailSubmit}>
 
-                    <StyledLabel for="user_name">Full Name</StyledLabel>
+                   
                     <FormInput type="text" name="user_name" ref={nameRef} placeholder="Name" required />
-
-                    <StyledLabel for="user_email">Email</StyledLabel>
+                    <StyledLabel for="user_name">Full Name</StyledLabel>
+                    
                     <FormInput type="email" name="user_email" ref={emailRef} placeholder="Email Address" required />
-
-                    <StyledLabel for="message">Message</StyledLabel>
+                    <StyledLabel for="user_email">Email</StyledLabel>
+                    
                     <TextArea name="message" ref={messageRef} required />
+                    <StyledLabel for="message">Message</StyledLabel>
 
                     <Button type="submit" value="submit">Send <span>&rarr;</span></Button>
 
