@@ -9,14 +9,19 @@ import theme from '../theme/theme';
 import GlobalStyles from '../theme/globalStyles';
 
 function MyApp({ Component, pageProps }) {
-  return (
-    <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        <Layout>
-            <Component {...pageProps} />
-        </Layout>
-    </ThemeProvider>
-  )
+    return (
+        <>
+            <head>
+                <title>Manny Houston's website, your place for all things Manny Houston.</title>
+            </head>
+            <ThemeProvider theme={theme}>
+                <GlobalStyles />
+                <Layout>
+                    <Component {...pageProps} />
+                </Layout>
+            </ThemeProvider>
+        </>
+    )
 }
 
 export default MyApp

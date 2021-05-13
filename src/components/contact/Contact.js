@@ -143,13 +143,13 @@ const Contact = () => {
 
                    
                     <FormInput id="user_name" type="text" name="user_name" ref={nameRef} placeholder="Name" required />
-                    <StyledLabel for="user_name">Full Name</StyledLabel>
+                    <StyledLabel htmlFor="user_name">Full Name</StyledLabel>
                     
                     <FormInput id="user_email" type="email" name="user_email" ref={emailRef} placeholder="Email Address" required />
-                    <StyledLabel for="user_email">Email</StyledLabel>
+                    <StyledLabel htmlFor="user_email">Email</StyledLabel>
                     
                     <TextArea id="message" name="message" ref={messageRef} required />
-                    <StyledLabel for="message">Message</StyledLabel>
+                    <StyledLabel htmlFor="message">Message</StyledLabel>
 
                     <Button type="submit" value="submit">Send <span>&rarr;</span></Button>
 

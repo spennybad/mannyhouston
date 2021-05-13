@@ -17,7 +17,7 @@ const StyledSection = styled.section`
 
     overflow: hidden;
 
-    padding: 14rem 7rem;
+    padding: 10rem 7rem;
     
     // Prop Based Styling
     ${({ boxShadow }) =>

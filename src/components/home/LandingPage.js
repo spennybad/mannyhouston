@@ -153,7 +153,12 @@ const LandingPage = () => {
             <Title>Manny <span>Houston</span></Title>
             <BackgroundImageContainer>
                 <StyledImage
-                    src="https://res.cloudinary.com/spencercv7-dev/image/upload/v1620053588/manny_4_qqbi0a.webp"
+                    srcSet="https://res.cloudinary.com/spencercv7-dev/image/upload/c_scale,w_768/v1620053588/manny_4_qqbi0a.webp 768w,
+                            https://res.cloudinary.com/spencercv7-dev/image/upload/c_scale,w_1024/v1620053588/manny_4_qqbi0a.webp 1024w,
+                            https://res.cloudinary.com/spencercv7-dev/image/upload/c_scale,w_1920/v1620053588/manny_4_qqbi0a.webp 1920w,
+                            https://res.cloudinary.com/spencercv7-dev/image/upload/v1620053588/manny_4_qqbi0a.webp
+                            "
+                    sizes="100%"
                     alt="Picture of Manny Houston on a roof top."
                     layout="fill"
                 />
