@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
     return (
         <>
             <head>
-                <title>Manny Houston's website, your place for all things Manny Houston.</title>
+                <title>Manny Houston</title>
             </head>
             <ThemeProvider theme={theme}>
                 <GlobalStyles />
