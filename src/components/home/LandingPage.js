@@ -80,6 +80,8 @@ const BackgroundImageContainer = styled.div`
 `
 
 const Socials = styled.ul`
+    display: flex;
+    
     position: absolute;
     top: 0;
     left: 0;
@@ -88,7 +90,9 @@ const Socials = styled.ul`
 
     z-index: 1;
 
-    & > a * {
+    list-style: none;
+
+    & > li a * {
         width: 7rem;
         height: 7rem;
         text-shadow: ${(props) => props.theme.textShadows.textShadowLight};
