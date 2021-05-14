@@ -1,53 +1,100 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
+const NavButton = styled.div`
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    
+    width: 7rem;
+    height: 7rem;
+    background-color: ${(props) => props.theme.colors.blue};
+
+    & > * {
+        height: 5rem;
+        width: 5rem;
+        filter: invert();
+    }
+`
 
 const Nav = styled.nav`
 
-    position: absolute;
+    position: fixed;
+
+    margin-top: 3rem;
+
+    height: 7rem;
 
     right: 0;
-    left: 0;
     top: 0;
 
-    display: grid;
+    display: flex;
     justify-content: center;
 
     font-size: ${(props) => props.theme.fontSize_default.nav};
+    box-shadow: ${(props) => props.theme.boxShadows.boxShadowLight};
 
+    z-index: 100;
+
+    transform: translateX(calc(100% - 7rem));
+
+    transition: .4s all;
+
+    &:hover, &:active, &:focus {
+        transform: translateX(0);
+    }
 `
 
 const NavList = styled.ul`
     
     display: flex;
+    
+    align-items: center;
+
     list-style: none;
 
-    padding: 1rem;
-
     background-color: ${(props) => props.theme.colors.white};
-    box-shadow: 0 1rem ${(props) => props.theme.colors.blue};
 
-    & > :not(:last-child) {
-        border-right: solid ${(props => props.theme.colors.blue)};
+    & > :not(:last-child) :not(:first-child) {
+        border-right: .2rem solid ${(props) => props.theme.colors.blue};
     }
 
 `
 
 const NavListItem = styled.li`
-    padding: 0.5rem 2rem;
-`
+    transition: all .2s;
 
+    height: 100%;
+
+    display: grid;
+    
+    align-content: center;
+    padding: 2rem;
+
+    & > * {
+        transition: border-bottom .2s;
+    }
+
+    &:hover {
+        & > * {
+            border-bottom: .5rem solid ${(props) => props.theme.colors.blue};
+        }
+    }
+`
 
 const Navbar = () => {
     return (
         <Nav>
             <NavList>
+                <NavButton>
+                    <img src="/imgs/svg/menu.svg"></img>
+                </NavButton>
                 <NavListItem><Link href="/"><a>Home</a></Link></NavListItem>
-                <NavListItem><Link href="/blog"><a>Blog Posts</a></Link></NavListItem>
-                <NavListItem><Link href="/videos"><a>Videos</a></Link></NavListItem>
+                <NavListItem><Link href="/blog"><a>Thoughts</a></Link></NavListItem>
+                <NavListItem><Link href="/videos"><a>Manny's World</a></Link></NavListItem>
             </NavList>
-        </Nav>    
+        </Nav>
     );
 }
- 
+
 export default Navbar;

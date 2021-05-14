@@ -22,9 +22,6 @@ const StyledH2 = styled.h2`
         ||
         (styling === "contact" && css`
             margin-bottom: 2rem;
-           
-            
-            color: ${(props) => props.theme.colors.green};
             background-color: ${(props) => props.theme.colors.transBlack_75};
             z-index: 1;
         `)
