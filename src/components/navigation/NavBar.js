@@ -9,6 +9,8 @@ const NavButton = styled.div`
     width: 7rem;
     height: 7rem;
     background-color: ${(props) => props.theme.colors.blue};
+    
+    box-shadow: ${(props) => props.theme.boxShadows.boxShadowLight};
 
     & > * {
         height: 5rem;
@@ -38,7 +40,7 @@ const Nav = styled.nav`
 
     transform: translateX(calc(100% - 7rem));
 
-    transition: .4s all;
+    transition: .4s all ease-in-out;
 
     &:hover, &:active, &:focus {
         transform: translateX(0);
