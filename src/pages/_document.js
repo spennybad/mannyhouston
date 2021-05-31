@@ -16,7 +16,6 @@ export default class MyDocument extends Document {
                     <link rel="preload" href="/fonts/ReemKufi-Regular.woff2" as="font" crossOrigin="anonymous" />
                     <link rel="preload" href="/fonts/Staatliches-Regular.woff" as="font" crossOrigin="anonymous" />
                     <link rel="preload" href="/fonts/Staatliches-Regular.woff2" as="font" crossOrigin="anonymous" />
-                    <title>Manny Houston</title>
                 </Head>
                 <body>
                     <Main />

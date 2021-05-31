@@ -110,7 +110,7 @@ const PostTitle = styled(motion.h3)`
     font-size: ${(props) => props.theme.fontSize_default.h3};
 `
 
-const PostContent = styled.p`
+const PostContent = styled.div`
     font-size: ${(props) => props.theme.fontSize_default.p};
 `
 

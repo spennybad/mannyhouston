@@ -14,6 +14,7 @@ function MyApp({ Component, pageProps, router}) {
     return (
         <ThemeProvider theme={theme}>
             <GlobalStyles />
+            <header><title>Manny Houston</title></header>
             <AnimateSharedLayout>
                 <Layout>
                     <Component {...pageProps} key={router.route}/>
