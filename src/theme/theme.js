@@ -1,6 +1,7 @@
 export default {
     colors: {
         white: '#fff',
+        off_white: '#E9E9E9',
         black: '#000',
         grey: '#2D2A2E',
         yellow: '#f1d04a',
@@ -27,7 +28,7 @@ export default {
         // Default
         h1: '28rem',
         h2: 'clamp(2.5rem, 4vw, 7rem)',
-        h3: '4rem',
+        h3: 'clamp(1.8rem, 2vw, 5rem)',
         h4: '3.5rem',
         nav:'clamp(1.5rem, 2vw, 3.5rem)',
         p: 'clamp(1.3rem, 1.5vw, 2.4rem)',

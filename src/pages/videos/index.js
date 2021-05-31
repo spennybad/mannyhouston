@@ -31,7 +31,7 @@ const opts = {
 const Videos = ({ data }) => {
     
     return (
-        temp
+        <p>temp</p>
     );
 
 }

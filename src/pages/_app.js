@@ -7,20 +7,19 @@ import "./_app.css";
 
 import theme from '../theme/theme';
 import GlobalStyles from '../theme/globalStyles';
+import { AnimateSharedLayout } from 'framer-motion';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router}) {
+
     return (
-        <>
-            <head>
-                <title>Manny Houston's website, your place for all things Manny Houston.</title>
-            </head>
-            <ThemeProvider theme={theme}>
-                <GlobalStyles />
+        <ThemeProvider theme={theme}>
+            <GlobalStyles />
+            <AnimateSharedLayout>
                 <Layout>
-                    <Component {...pageProps} />
+                    <Component {...pageProps} key={router.route}/>
                 </Layout>
-            </ThemeProvider>
-        </>
+            </AnimateSharedLayout>
+        </ThemeProvider>
     )
 }
 

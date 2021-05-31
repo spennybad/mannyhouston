@@ -1,101 +1,140 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+
+import media from '../MediaQueries';
+
 import styled from 'styled-components';
 
-const NavButton = styled.div`
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    
-    width: 7rem;
-    height: 7rem;
-    background-color: ${(props) => props.theme.colors.blue};
-    
-    box-shadow: ${(props) => props.theme.boxShadows.boxShadowLight};
-
-    & > * {
-        height: 5rem;
-        width: 5rem;
-        filter: invert();
-    }
-`
-
-const Nav = styled.nav`
-
+// Styling
+const NavWrapper = styled(motion.div)`
     position: fixed;
+    top: 0;
+    right: 0;
+
+    padding: 1rem 0rem 1rem 1rem;
 
     margin-top: 3rem;
 
-    height: 7rem;
+    width: max-content;
+    height: max-content;
 
-    right: 0;
-    top: 0;
+    overflow: hidden;
 
-    display: flex;
-    justify-content: center;
-
-    font-size: ${(props) => props.theme.fontSize_default.nav};
-    box-shadow: ${(props) => props.theme.boxShadows.boxShadowLight};
-
-    z-index: 100;
-
-    transform: translateX(calc(100% - 7rem));
-
-    transition: .4s all ease-in-out;
-
-    &:hover, &:active, &:focus {
-        transform: translateX(0);
-    }
+    z-index: 1000;
 `
 
-const NavList = styled.ul`
-    
-    display: flex;
-    
-    align-items: center;
+const Nav = styled(motion.div)`
+    display: grid;
 
-    list-style: none;
+    grid-template-columns: 6rem 1fr;
+
+    box-shadow: ${(props) => props.theme.boxShadows.boxShadowLight};
+`
+
+const NavButton = styled.div`
+    height: 100%;
+    width: 100%;
 
     background-color: ${(props) => props.theme.colors.white};
 
-    & > :not(:last-child) :not(:first-child) {
-        border-right: .2rem solid ${(props) => props.theme.colors.blue};
+    cursor: pointer;
+
+    & > * {
+        width: 100%;
+        height: 100%;
+    }
+    
+`
+
+const NavList = styled.ul` 
+    list-style: none;
+    display: flex;
+    position: relative;
+
+    width: 100%;
+
+    justify-items: space-between;
+    align-items: center;
+
+    padding: 1rem;
+
+    background-color: ${(props) => props.theme.colors.white};
+
+    & * :not(:last-child) {
+        border-right: .5rem solid ${(props) => props.theme.colors.blue};
     }
 
 `
 
 const NavListItem = styled.li`
-    transition: all .2s;
-
-    height: 100%;
-
-    display: grid;
-    
-    align-content: center;
-    padding: 2rem;
+    font-size: ${(props) => props.theme.fontSize_default.nav};
+    padding: 0 3rem;
 
     & > * {
-        transition: border-bottom .2s;
-    }
-
-    &:hover {
-        & > * {
-            border-bottom: .5rem solid ${(props) => props.theme.colors.blue};
+        transition: all .2s;
+        display: inline-block;
+        
+        &:hover {
+            transform: scale(1.1);
+            color: ${(props) => props.theme.colors.blue};
         }
     }
+
 `
 
+// Animation Variants
+const navAnimation = {
+    open: {
+        x: 0,
+        transition: {
+            type: "linear",
+            ease: "easeInOut"
+        }
+    },
+    closed: {
+        x: "calc(100% - 6rem)"
+    }
+}
+
+// Event Handlers
+const handleNavShow = (navShown, setNavShown) => {
+    setNavShown(!navShown);
+}
+
+const handleNavAutoClose = (setNavShown) => {
+    setTimeout(() => {
+        setNavShown(false);
+    }, 250);
+}
+
+// Component Constructor
 const Navbar = () => {
+
+    const [navShown, setNavShown] = useState(false);
+    const router = useRouter();
+
     return (
-        <Nav>
-            <NavList>
-                <NavButton>
-                    <img src="/imgs/svg/menu.svg"></img>
-                </NavButton>
-                <NavListItem><Link href="/"><a>Home</a></Link></NavListItem>
-                <NavListItem><Link href="/blog"><a>Thoughts</a></Link></NavListItem>
-                <NavListItem><Link href="/videos"><a>Manny's World</a></Link></NavListItem>
-            </NavList>
-        </Nav>
+        <AnimatePresence> {
+                router.route !== "/blog/posts/[slug]" && <NavWrapper initial={{x: "100%"}} animate={{x: 0,  transition: {type: "linear"}}} exit={{x: "100%"}}>
+                    <Nav
+                        variants={ navAnimation }
+                        initial="closed"
+                        animate={navShown ? "open" : "closed"}
+                    >
+                        <NavButton onClick={() => handleNavShow(navShown, setNavShown)}>
+                            <img src="/imgs/svg/menu.svg"></img>
+                        </NavButton>
+                        <NavList>
+                            <NavListItem><Link href="/"><a onClick={() => handleNavAutoClose(setNavShown)}>Home</a></Link></NavListItem>
+                            <NavListItem><Link href="/blog"><a onClick={() => handleNavAutoClose(setNavShown)}>Thoughts</a></Link></NavListItem>
+                            <NavListItem><Link href="/videos"><a onClick={() => handleNavAutoClose(setNavShown)}>Manny's World</a></Link></NavListItem>
+                        </NavList>
+                    </Nav>
+                </NavWrapper>
+            }
+        </AnimatePresence>
     );
 }
 

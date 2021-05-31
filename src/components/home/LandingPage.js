@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Image from 'next/image';
 
 import Section from '../comps/section';
+import Socials from '../comps/socials';
 
 import media from '../MediaQueries';
 
@@ -79,47 +80,6 @@ const BackgroundImageContainer = styled.div`
 
 `
 
-const Socials = styled.ul`
-    display: flex;
-    
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    padding: 3rem;
-
-    z-index: 1;
-
-    list-style: none;
-
-    & > li a * {
-        width: 7rem;
-        height: 7rem;
-        
-        transition: all .2s;
-
-        &:hover {
-            transform: scale(1.2);
-        }
-
-        ${media.width_1500`
-            width: 5.5rem;
-            height: 5.5rem;
-        `}
-
-        ${media.width_800`
-            width: 4rem;
-            height: 4rem;
-        `}
-
-    }
-
-    & > :not(:last-child) {
-        margin-right: 1rem;
-    }
-
-`
-
 const StyledImage = styled.img`
     object-fit: cover;
     object-position: center;
@@ -132,23 +92,7 @@ const StyledImage = styled.img`
 const LandingPage = () => {
     return (
         <Section>
-            <Socials>
-                <li>
-                    <a href="https://twitter.com/themannyhouston" target="_blank" rel="noopener">
-                        <img src="/imgs/svg/twitter-with-circle.svg" alt="Twitter Logo" />
-                    </a>
-                </li>
-                <li>
-                    <a href="https://instagram.com/themannyhouston" target="_blank" rel="noopener">
-                        <img src="/imgs/svg/instagram-with-circle.svg" alt="Instagram Logo" />
-                    </a>
-                </li>
-                <li>
-                    <a href="https://open.spotify.com/artist/6pyEuZWUVowkiKDeWkhrrJ?si=dw0sqttXRBeHIz14CEhwyg" target="_blank" rel="noopener">
-                        <img src="/imgs/svg/spotify.svg" alt="Spotify Logo" />
-                    </a>
-                </li>
-            </Socials>
+            <Socials position="absolute" color="black" direction="horizontal" gap="1rem"/>
             <Title>Manny <span>Houston</span></Title>
             <BackgroundImageContainer>
                 <StyledImage

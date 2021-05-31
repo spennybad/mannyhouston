@@ -1,12 +1,17 @@
-import NavBar from './navigation/NavBar'
+import NavBar from './navigation/NavBar';
+import Credit from './credit/Credit';
+
+import { AnimatePresence } from "framer-motion";
 
 const Layout = ( {children} ) => {
     return (
-        <div className="content">
+        <>
             <NavBar />
-            { children }
-        </div>
+            <AnimatePresence exitBeforeEnter>
+                {children}
+            </AnimatePresence>
+        </>
     );
 }
- 
+
 export default Layout;

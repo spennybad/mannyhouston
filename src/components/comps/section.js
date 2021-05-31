@@ -1,6 +1,7 @@
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 import media from "../MediaQueries";
 
+import { motion } from 'framer-motion';
 
 const StyledSection = styled.section`   
 
@@ -15,9 +16,10 @@ const StyledSection = styled.section`
     position: relative;
     background-color: ${(props) => props.theme.colors.black};
 
-    overflow: hidden;
+    overflow-x: hidden;
 
     padding: 10rem 7rem;
+
     
     // Prop Based Styling
     ${({ boxShadow }) =>
@@ -26,19 +28,25 @@ const StyledSection = styled.section`
         `)
     }
 
-    ${({ backgroundColor }) => 
-            
+    ${({ backgroundColor }) =>
+
         (backgroundColor === "green-gradient" && css`
             background-image: linear-gradient(to bottom right, ${(props) => props.theme.colors.green}, ${(props) => props.theme.colors.blue});
         `)
     }
 
-    ${({ borderBottom }) => 
-            
+    ${({ borderBottom }) =>
+
         (borderBottom && css`
             border-bottom: 1rem solid ${(props) => props.theme.colors.pink};
         `)
+    }
 
+    ${({ padding }) =>
+
+        (padding === "none" && css`
+            padding: 0 !important;
+        `)
     }
 
     // Media Queries
@@ -56,12 +64,12 @@ const StyledSection = styled.section`
 
 `
 
-const Section = ({boxShadow, backgroundColor, borderBottom, children}) => {
+const Section = ({ boxShadow, backgroundColor, borderBottom, padding, children }) => {
     return (
-        <StyledSection boxShadow={ boxShadow } backgroundColor={ backgroundColor } borderBottom={ borderBottom }>
+        <StyledSection boxShadow={boxShadow} backgroundColor={backgroundColor} borderBottom={borderBottom} padding={padding}>
             {children}
         </StyledSection>
     );
 }
- 
+
 export default Section;

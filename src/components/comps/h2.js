@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { motion } from 'framer-motion';
 
 const StyledH2 = styled.h2`
     font-size: clamp(2.5rem, 4vw, 7rem);
@@ -24,6 +25,10 @@ const StyledH2 = styled.h2`
             margin-bottom: 2rem;
             background-color: ${(props) => props.theme.colors.transBlack_75};
             z-index: 1;
+        `)
+        ||
+        (styling === "blog" && css`
+            box-shadow: none;
         `)
     }
 
