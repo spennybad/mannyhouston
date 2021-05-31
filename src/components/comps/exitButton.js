@@ -1,10 +1,8 @@
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 
 import Link from 'next/link';
-import {useState} from 'react';
 
-const StyledExitButton = styled(motion.div)`
+const StyledExitButton = styled.div`
 
     position: absolute;
     top: 0;
@@ -35,7 +33,7 @@ const StyledExitButton = styled(motion.div)`
     }
 `
 
-const XLine = styled(motion.div)`
+const XLine = styled.div`
     position: absolute;
 
     top: 50%;
@@ -48,7 +46,6 @@ const XLine = styled(motion.div)`
 `
 
 const ExitButton = () => {
-    
     return (
         <Link href={"/blog"}>
             <a>

@@ -84,7 +84,7 @@ const SliderAnimation = {
     animate: {
         width: "100%", 
         transition: {
-            staggerChildren: .35,
+            staggerChildren: .1,
             duration: 0
         }
     }
