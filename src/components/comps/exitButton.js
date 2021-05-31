@@ -21,10 +21,14 @@ const StyledExitButton = styled.div`
     transition: all .2s;
 
     & * :first-child {
+        top: 50%;
+        left: 50%;
         transform: translate(-50%, -50%) rotate(45deg);
     }
 
     & * :nth-child(2) {
+        top: 50%;
+        left: 50%;
         transform: translate(-50%, -50%) rotate(-45deg);
     }
 
@@ -35,9 +39,6 @@ const StyledExitButton = styled.div`
 
 const XLine = styled.div`
     position: absolute;
-
-    top: 50%;
-    left: 50%;
 
     height: 60%;
     width: 8%;
