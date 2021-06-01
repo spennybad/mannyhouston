@@ -79,9 +79,14 @@ const SocialsWrapper = styled.div`
     width: 100%;
 `
 
-const Blog = ({ blogPosts }) => {
+const Blog = ({ handleChildLoaded, blogPosts }) => {
 
     const [isClicked, setIsClicked] = useState(false);
+
+    // Used to detect page load completion. Used in automatic closing of navigation for page transition.
+    useEffect(() => {
+        handleChildLoaded()
+    }, [])
 
     return (
         <Section padding="none" area="blog">

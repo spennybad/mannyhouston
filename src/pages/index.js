@@ -1,5 +1,6 @@
 import { createClient } from 'contentful';
 import styled from 'styled-components';
+import {useEffect} from 'react'
 
 import LandingPage from '../components/home/LandingPage';
 // import Schedule from '../components/schedule/Schedule';
@@ -23,7 +24,12 @@ import Credit from '../components/credit/Credit';
 //     }
 // }
 
-const Home = () => {
+const Home = ({handleChildLoaded}) => {
+
+    // Updates isChildLoaded state when the component has been loaded.
+    useEffect(() => {
+        handleChildLoaded()
+    }, [])
 
     return (
         <div>

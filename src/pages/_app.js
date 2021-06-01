@@ -8,16 +8,26 @@ import "./_app.css";
 import theme from '../theme/theme';
 import GlobalStyles from '../theme/globalStyles';
 import { AnimateSharedLayout } from 'framer-motion';
+import { useEffect, useState } from 'react'
 
 function MyApp({ Component, pageProps, router}) {
+
+    const [isChildLoaded, setIsChildLoaded] = useState(false);
+
+    // Function passed to all components in project. Allows UseEffect() in each component to have control over
+    // isChildLoaded state. Updates isChildLoaded to tell the Nav menu to close only once the new page is fully
+    // loaded.
+    const handleChildLoaded = () => {
+        setIsChildLoaded(true);
+    }
 
     return (
         <ThemeProvider theme={theme}>
             <GlobalStyles />
             <header><title>Manny Houston</title></header>
             <AnimateSharedLayout>
-                <Layout>
-                    <Component {...pageProps} key={router.route}/>
+                <Layout setIsChildLoaded={setIsChildLoaded} isChildLoaded={isChildLoaded}>
+                    <Component {...pageProps} key={router.route} handleChildLoaded={handleChildLoaded}/>
                 </Layout>
             </AnimateSharedLayout>
         </ThemeProvider>

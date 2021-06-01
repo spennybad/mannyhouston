@@ -29,7 +29,7 @@ const BlogItem = styled(motion.li)`
 
         padding: 3rem;
 
-        & > p {
+        & > div {
             font-size: calc(${(props) => props.theme.fontSize_default.p} - .5rem);
         }
     }
@@ -75,7 +75,7 @@ const BlogPostItem = ({ post, setIsClicked }) => {
                         <BlogItemTitle>
                             {blogEntryTitle}
                         </BlogItemTitle>
-                        <p>{documentToReactComponents(blogPostContent)}</p>
+                        <div>{documentToReactComponents(blogPostContent)}</div>
                     </a>
                 </Link>
             </article>
