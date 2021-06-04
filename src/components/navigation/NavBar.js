@@ -7,7 +7,7 @@ import media from '../MediaQueries';
 import styled from 'styled-components';
 import Section from '../../components/comps/section';
 
-const NavButton = styled(motion.div)`
+const NavButton = styled(motion.button)`
     position: fixed;
 
     top: 0;
@@ -19,7 +19,7 @@ const NavButton = styled(motion.div)`
     width: 8rem;
     margin: 3rem;
 
-    display: grid;
+    display: none;
     grid-gap: .7rem;
 
     grid-template-columns: 100%;
@@ -67,6 +67,7 @@ const NavList = styled(motion.nav)`
 
 const NavListItem = styled(motion.li)`
     font-size: ${(props) => props.theme.fontSize_default.nav};
+    
 `
 
 // Animations
@@ -107,11 +108,39 @@ const navListAnimation = {
     }
 }
 
+const navLine1Animation = {
+    animate: {
+        rotate: "-45deg",
+        y: "60%",
+        x: "-10%",
+        width: "40%"
+    }
+}
+
+const navLine2Animation = {
+    animate: {
+        opacity: 0,
+        transition: {
+            duration: .1
+        }
+    }
+}
+
+const navLine3Animation = {
+    animate: {
+        rotate: "45deg",
+        y: "-60%",
+        x: "-10%",
+        width: "40%"
+    }
+}
+
 
 // Component Constructor
 const Navbar = ({isChildLoaded}) => {
 
     const [isClicked, setIsClicked] = useState(false);
+    const [buttonHovered, setButtonHovered] = useState(false);
 
     const handleNavButtonClick = () => {
         setIsClicked(!isClicked);
@@ -128,13 +157,18 @@ const Navbar = ({isChildLoaded}) => {
         }
     }, [isChildLoaded]);
 
-
     return (
         <>
-            <NavButton variants={navButtonAnimation} whileHover="onHover" onClick={() => handleNavButtonClick()}>
-                <NavButtonLine />
-                <NavButtonLine />
-                <NavButtonLine />
+            <NavButton 
+                variants={navButtonAnimation} 
+                whileHover="onHover" 
+                onMouseEnter={() => setButtonHovered(true)}
+                onMouseLeave={() => setButtonHovered(false)} 
+                onClick={() => handleNavButtonClick()}
+                >
+                    <NavButtonLine variants={navLine1Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
+                    <NavButtonLine variants={navLine2Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
+                    <NavButtonLine variants={navLine3Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
             </NavButton>
            <NavPage variants={navPageAnimation} initial="hidden" animate={isClicked ? "visible" : ""} key="NavPage">
                 <NavList variants={navListAnimation}>

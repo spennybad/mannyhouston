@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { BLOCKS } from '@contentful/rich-text-types';
 import { motion } from 'framer-motion';
 
 import styled from 'styled-components';
@@ -7,12 +8,12 @@ import styled from 'styled-components';
 import {useState} from 'react';
 
 const BlogItem = styled(motion.li)`
-    list-style: none;
-    
     width: 100%;
-    height: max-content;
+    height: 100%;
 
-    background-color: ${(props) => props.theme.colors.white}; 
+    list-style: none;
+
+    background-color: ${(props) => props.theme.colors.off_white}; 
 
     box-shadow: ${(props) => props.theme.boxShadows.boxShadowLight};
 
@@ -35,8 +36,8 @@ const BlogItem = styled(motion.li)`
     }
 
     &:hover {
-        transform: scale(1.03);
-        background-color: ${(props) => props.theme.colors.off_white}; 
+        transform: scale(1.01);
+        background-color: ${(props) => props.theme.colors.white}; 
     }
 
 `
@@ -75,8 +76,7 @@ const BlogPostItem = ({ post, setIsClicked }) => {
                         <BlogItemTitle>
                             {blogEntryTitle}
                         </BlogItemTitle>
-                        <div>{documentToReactComponents(blogPostContent)}</div>
-                    </a>
+                    </a>    
                 </Link>
             </article>
         </BlogItem>

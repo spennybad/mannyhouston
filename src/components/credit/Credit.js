@@ -36,7 +36,11 @@ const StyledSpan = styled.span`
 const Credit = () => {
     return (
         <StyledDiv>
-            <p>Designed and Developed by <a href="https://www.linkedin.com/in/spencer-venable-31494a187/"><StyledSpan>Spencer Venable</StyledSpan></a></p>
+            <p>Designed and Developed by 
+                <a href="https://www.linkedin.com/in/spencer-venable-31494a187/">
+                    <StyledSpan>Spencer Venable</StyledSpan>
+                </a>
+            </p>
         </StyledDiv>
     );
 }

@@ -1,125 +1,60 @@
 // Dependencies
-import { createClient } from 'contentful';
 import styled from 'styled-components';
-import Image from 'next/image'
-import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import ContentfulApi from '../../api/ContentfulApi';
 
 // Components
-import BlogPostItem from '../../components/blog_post/BlogPostItem';
-import H2 from '../../components/comps/h2';
+import BlogPageContent from '../../components/blog_post/BlogPageContent';
 import Section from '../../components/comps/section';
 import Socials from '../../components/comps/socials';
-import Slider from '../../components/comps/slider';
+import media from '../../components/MediaQueries';
+import BlogBackground from '../../components/comps/blogBackground';
+import BlogItemContent from '../../components/blog_post/BlogPageContent';
 
-
-export const getStaticProps = async () => {
-
-    const client = createClient({
-        space: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_ACCESS_KEY
-    });
-
-    const res_blog_posts = await client.getEntries({ content_type: 'blogPost' });
-
-    return {
-        props: {
-            blogPosts: res_blog_posts.items
-        },
-        revalidate: 1
-    }
-}
-
-const BlogContent = styled.div`
-    justify-self: center;
-
-    display: grid;
-    grid-template-rows: 1fr 100%;
-    grid-template-columns: 100%;
-
-    justify-items: center;
+const SocialsWrapper = styled.div`
+    width: 100%;
+    height: 100%;
 
     position: relative;
 
-    z-index: 1;
-
-    width: 70%;
-    height: 100%;
-
-    padding-top: 7rem;
-
-    background-color: ${(props) => props.theme.colors.transBlack_75};
-
+    ${media.width_600`
+        display: none;
+    `}
 `
 
-const BlogList = styled.ul`
-    width: 100%;
-    height: max-content;
-    padding: 3rem;
+export const getStaticProps = async () => {
 
-    & > :not(:last-child) {
-        margin-bottom: 3rem;
+    const res = await ContentfulApi.getPagePosts(0);
+    const total = await ContentfulApi.getTotalPostsNumber();
+
+    return {
+        props: {
+            posts: res.posts || null,
+            totalPages: total
+        }
     }
-`
+}
 
-const StyledImage = styled.img`
-    position: fixed;
-
-    object-fit: cover;
-    object-position: center;
-
-    z-index: 0;
-
-    width: 100%;
-    height: 100%;
-`
-
-const SocialsWrapper = styled.div`
-    height: 100%;
-    width: 100%;
-`
-
-const Blog = ({ handleChildLoaded, blogPosts }) => {
-
-    const [isClicked, setIsClicked] = useState(false);
-
+const Blog = ({ handleChildLoaded, posts, totalPages}) => {
+    
     // Used to detect page load completion. Used in automatic closing of navigation for page transition.
     useEffect(() => {
         handleChildLoaded()
     }, [])
 
     return (
-        <Section padding="none" area="blog">
+        <Section padding="none" area="1by3">
             <SocialsWrapper>
                 <Socials 
                     color="white"
                     gap="1rem"
                     direction="vertical"
-                    position="fixed"
+                    media_query="blog"
                     layoutId="socials"
                 />
             </SocialsWrapper>
-            <BlogContent>
-                <H2 styling="blog">Thoughts</H2>
-                <BlogList>
-                    {
-                        blogPosts.map(post => (
-                            <BlogPostItem key={post.sys.id} post={post} setIsClicked={setIsClicked}/>
-                        ))
-                    }
-                </BlogList>
-               <Slider isClicked={isClicked} position="right" />
-            </BlogContent>
-            <StyledImage
-                srcSet="https://res.cloudinary.com/spencercv7-dev/image/upload/c_scale,w_768/v1620053588/manny_2_ty71kl.webp 768w,
-                        https://res.cloudinary.com/spencercv7-dev/image/upload/c_scale,w_1024/v1620053588/manny_2_ty71kl.webp 1024w,
-                        https://res.cloudinary.com/spencercv7-dev/image/upload/c_scale,w_1920/v1620053588/manny_2_ty71kl.webp 1920w,
-                        https://res.cloudinary.com/spencercv7-dev/image/upload/v1620053588/manny_2_ty71kl.webp"
-                sizes="100%"
-                layout="fill"
-                alt="Contact Me Background - Manny Houston eating a bag of chips."
-                layoutId="background-image"
-            />
+            <BlogPageContent posts={ posts } pageNum={ 0 } totalPages={ totalPages } />
+            <BlogBackground />
         </Section>
     );
 }

@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 
 const StyledH2 = styled.h2`
-    font-size: clamp(2.5rem, 4vw, 7rem);
+    font-size: clamp(3rem, 4vw, 7rem);
     color: ${(props) => props.theme.colors.green};
 
     letter-spacing: .2rem;
@@ -11,7 +11,7 @@ const StyledH2 = styled.h2`
 
     padding: 1rem 4rem;
 
-    box-shadow: ${(props) => props.theme.boxShadows.boxShadowLight};
+    text-shadow: ${(props) => props.theme.textShadows.textShadowLight};
 
     ${({ styling }) =>
         (styling === "schedule" && css`

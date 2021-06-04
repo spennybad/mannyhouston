@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import {useEffect} from 'react'
 
 import LandingPage from '../components/home/LandingPage';
-// import Schedule from '../components/schedule/Schedule';
 import About from '../components/about/About';
 import Contact from '../components/contact/Contact';
 import Credit from '../components/credit/Credit';

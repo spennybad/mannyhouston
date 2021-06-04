@@ -39,6 +39,28 @@ const StyledSocials = styled(motion.ul)`
         `)
     }
 
+    ${({ location }) => 
+        (location === "centered" && css`
+            top: 0;
+            left: 50%;
+            transform: translate(0, 50%);
+        `) 
+    }
+
+    ${({ media_query }) => 
+        (media_query === "blog" && css`
+            ${media.width_900`
+                filter: none;
+            `}
+
+            ${media.width_600`
+                display: none;
+            `}
+        `) 
+    }
+
+    
+
     & > li a * {
         width: 7rem;
         height: 7rem;
@@ -79,9 +101,9 @@ const socialsAnimation = {
     }
 }
 
-const Socials = ({ color, direction, position, gap, layoutId }) => {
+const Socials = ({ color, direction, position, gap, location, media_query, layoutId }) => {
     return (
-        <StyledSocials color={ color } direction={ direction } position={ position } gap={ gap }
+        <StyledSocials color={ color } direction={ direction } position={ position } gap={ gap } location={ location } media_query={ media_query }
             variants={ socialsAnimation }
             initial="hidden"
             animate="visible"

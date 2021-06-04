@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const StyledExitButton = styled.div`
 
@@ -54,15 +55,22 @@ const XLine_2 = styled.div`
 `
 
 const ExitButton = () => {
+    
+    const router = useRouter();
+
+    const handleExit = () => {
+        router.back();
+    }
+    
     return (
-        <Link href={"/blog"}>
-            <a>
+        // <button onClick={() => handleExit()}>
+            // <a>
                 <StyledExitButton>
                     <XLine_1 />
                     <XLine_2 />
                 </StyledExitButton>
-            </a>
-        </Link>
+            // </a>
+        // </button>
     );
 }
  

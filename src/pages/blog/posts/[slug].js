@@ -9,10 +9,11 @@ import { useRouter } from 'next/router';
 import Skeleton from '../../../components/Skeleton';
 import Section from '../../../components/comps/section';
 import ExitButton from '../../../components/comps/exitButton';
-import Slider from '../../../components/comps/slider';
+import BlogBackground from '../../../components/comps/blogBackground'
+import media from '../../../components/MediaQueries';
 
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Socials from '../../../components/comps/socials';
+import RichTextParser from '../../../utils/RichTextParser';
 
 const client = createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
@@ -61,19 +62,16 @@ export const getStaticProps = async ({ params }) => {
     }
 }
 
-const Post = styled(motion.div)`
-    justify-self: center;
+const Post = styled.div`
     
-    display: grid;
-
-    padding: 5rem 3rem;
-
     position: relative;
 
-    grid-template-rows: max-content 1fr max-content;
+    justify-self: center;
+
+    padding: 5rem 3rem;
     
-    height: 100vh;
-    width: 70%;
+    height: 100%;
+    width: 100%;
     
     background-color: ${(props) => props.theme.colors.white};
 
@@ -102,15 +100,29 @@ const OpenSlider = styled(motion.div)`
     z-index: 10000;
 `
 
+const SocialsWrapper = styled.div`
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+
+    ${media.width_600`
+        display: none;
+    `}
+`
+
 const Media = styled.div`
 
 `
 
 const PostTitle = styled(motion.h3)`
-    font-size: ${(props) => props.theme.fontSize_default.h3};
+    font-size: calc(${(props) => props.theme.fontSize_default.h2});
 `
 
-const PostContent = styled.div`
+const PostContentWrapper = styled.div`
+    width: 100%;
+    height: max-content;
+
     font-size: ${(props) => props.theme.fontSize_default.p};
 `
 
@@ -120,43 +132,37 @@ const BlogPost = ({ post }) => {
 
     const { blogEntryTitle, blogPostContent, blogPostMedia } = post.fields;
 
-    const [isClicked, setIsClicked] = useState(false);
+    RichTextParser.blogPostRenderer(blogPostContent);
 
     return (
-        <Section padding="none">
-            <Socials position="fixed" color="white" gap="1rem" layoutId="socials"/>
-                <Post>
-                    <OpenSlider animate={{width: 0}}/>
-                    <PostTitle>
-                        {blogEntryTitle}
-                    </PostTitle>
-                    <PostContent>{documentToReactComponents(blogPostContent)}</PostContent>
-                    <Media>
-                        {
-                            blogPostMedia && blogPostMedia.map(photo => (
-                                <div key={photo.sys.id}>
-                                    <Image
-                                        src={'https:' + photo.fields.file.url}
-                                        width={300}
-                                        height={400}
-                                    />
-                                </div>
-                            ))
-                        }
-                    </Media>
-                    <ExitButton setIsClicked={setIsClicked}/>
-                </Post>
-            <StyledImage
-                srcSet="https://res.cloudinary.com/spencercv7-dev/image/upload/c_scale,w_768/v1620053588/manny_2_ty71kl.webp 768w,
-                        https://res.cloudinary.com/spencercv7-dev/image/upload/c_scale,w_1024/v1620053588/manny_2_ty71kl.webp 1024w,
-                        https://res.cloudinary.com/spencercv7-dev/image/upload/c_scale,w_1920/v1620053588/manny_2_ty71kl.webp 1920w,
-                        https://res.cloudinary.com/spencercv7-dev/image/upload/v1620053588/manny_2_ty71kl.webp"
-                sizes="100%"
-                layout="fill"
-                alt="Contact Me Background - Manny Houston eating a bag of chips."
-                layoutId="background-image"
-            />
-
+        <Section padding="none" area="1by3" height="100%">
+            <SocialsWrapper>
+                <Socials color="white" gap="1rem" media_query="blog" layoutId="socials"/>
+            </SocialsWrapper>
+            <Post>
+                <OpenSlider animate={{width: 0}}/>
+                <PostTitle>
+                    {blogEntryTitle}
+                </PostTitle>
+                <PostContentWrapper>
+                    {RichTextParser.blogPostRenderer(blogPostContent)}
+                </PostContentWrapper>
+                <Media>
+                    {
+                        blogPostMedia && blogPostMedia.map(photo => (
+                            <div key={photo.sys.id}>
+                                <Image
+                                    src={'https:' + photo.fields.file.url}
+                                    width={300}
+                                    height={400}
+                                />
+                            </div>
+                        ))
+                    }
+                </Media>
+                <ExitButton/>
+            </Post>
+            <BlogBackground />
         </Section>
     );
 

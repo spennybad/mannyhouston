@@ -48,6 +48,17 @@ const StyledSection = styled.section`
             padding: 0 !important;
         `)
     }
+    
+    ${({ area }) =>
+        (area === "1by3") && css`
+            grid-template-columns: 10% 80% 10%;
+            height: 100%
+            min-height: 100vh;
+            ${media.width_600`
+                grid-template-columns: 100%;
+            `}
+        `
+    }
 
     // Media Queries
     ${media.width_800`
@@ -64,9 +75,9 @@ const StyledSection = styled.section`
 
 `
 
-const Section = ({ boxShadow, backgroundColor, borderBottom, padding, children }) => {
+const Section = ({ boxShadow, backgroundColor, borderBottom, padding, area, height, children }) => {
     return (
-        <StyledSection boxShadow={boxShadow} backgroundColor={backgroundColor} borderBottom={borderBottom} padding={padding}>
+        <StyledSection boxShadow={boxShadow} backgroundColor={backgroundColor} borderBottom={borderBottom} padding={padding} area={area}>
             {children}
         </StyledSection>
     );
