@@ -61,7 +61,7 @@ const Panel = ({position, color}) => {
 
 // Page Transition Slider
 const StyledSlider = styled(motion.div)`
-    position: absolute;
+    position: fixed;
 
     height: 100%;
 

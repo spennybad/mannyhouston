@@ -54,7 +54,7 @@ const StyledSection = styled.section`
             grid-template-columns: 10% 80% 10%;
             height: 100%
             min-height: 100vh;
-            ${media.width_600`
+            ${media.width_800`
                 grid-template-columns: 100%;
             `}
         `

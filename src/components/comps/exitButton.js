@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from '../MediaQueries';
 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -26,6 +27,12 @@ const StyledExitButton = styled.div`
     &:hover {
         transform: scale(1.1);
     }
+
+    ${media.width_400`
+        height: 5rem;
+        width: 5rem;
+        margin: 1.5rem;
+    `}
 `
 
 // Had to seperate into two seperate components due to glitch in Firefox and Google Chrome

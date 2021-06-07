@@ -49,13 +49,17 @@ const StyledSocials = styled(motion.ul)`
 
     ${({ media_query }) => 
         (media_query === "blog" && css`
-            ${media.width_900`
-                filter: none;
-            `}
 
-            ${media.width_600`
+            ${media.width_800`
                 display: none;
             `}
+                @media only screen 
+                and (min-device-width: 768px) 
+                and (max-device-width: 1024px) 
+                and (orientation: portrait) 
+                and (-webkit-min-device-pixel-ratio: 2) {
+                    filter: none;
+            }
         `) 
     }
 

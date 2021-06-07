@@ -6,21 +6,22 @@ import { useState, useEffect } from 'react';
 import media from '../MediaQueries';
 import styled from 'styled-components';
 import Section from '../../components/comps/section';
+import useWindowDimensions from '../../hooks/WindowDimensions';
 
 const NavButton = styled(motion.button)`
-    position: fixed;
+    position: absolute;
 
     top: 0;
     right: 0;
 
     z-index: 1001;
 
-    height: 8rem;
-    width: 8rem;
+    height: 7.5rem;
+    width: 7.5rem;
     margin: 3rem;
 
     display: grid;
-    grid-gap: .7rem;
+    grid-gap: .5rem;
 
     grid-template-columns: 100%;
     grid-template-rows: repeat(1fr, 3);
@@ -30,18 +31,61 @@ const NavButton = styled(motion.button)`
 
     background-color: ${(props) => props.theme.colors.white};
 
-    border-radius: 100%;
+    border: .2rem solid ${(props) => props.theme.colors.grey};
 
+    border-radius: 100%;
     box-shadow: ${(props) => props.theme.boxShadows.boxShadowLight};
 
     cursor: pointer;
+
+
+    ${media.width_1200`
+        height: 7rem;
+        width: 7rem;
+        grid-gap: .50rem;
+        margin: 3rem 1.5rem;
+    `}
+
+    ${media.width_1000`
+        height: 6.5rem;
+        width: 6.5rem;
+        grid-gap: .48rem;
+        margin: 3rem 1rem;
+    `}
+
+    ${media.width_800`
+        height: 7rem;
+        width: 7rem;
+        grid-gap: .45rem;
+        margin: 3rem;
+    `}
+
+    ${media.width_700`
+        margin: 2rem;
+    `}
+
+    ${media.width_500`
+        height: 6.5rem;
+        width: 6.5rem;
+        grid-gap: .45rem;
+        margin: 2rem;
+    `}
+
+    ${media.width_400`
+        height: 6rem;
+        width: 6rem;
+        grid-gap: .3rem;
+    `}
 
 `
 
 const NavButtonLine = styled(motion.div)`
     height: .5rem;
-    width: 60%;
+    width: 55%;
     background-color: ${(props) => props.theme.colors.black};
+
+    ${media.width_400`
+    `}
 `
 
 const NavPage = styled(motion.div)`
@@ -101,6 +145,9 @@ const navListAnimation = {
         x: "100%",
         opacity: 0
     },
+    animate: {
+        opacity: 1
+    },
     visible: {
         x: 0,
         opacity: 1,
@@ -143,6 +190,9 @@ const Navbar = ({isChildLoaded}) => {
 
     const [isClicked, setIsClicked] = useState(false);
     const [buttonHovered, setButtonHovered] = useState(false);
+    const {width, height} = useWindowDimensions();
+
+    const router = useRouter();
 
     const handleNavButtonClick = () => {
         setIsClicked(!isClicked);
@@ -160,18 +210,21 @@ const Navbar = ({isChildLoaded}) => {
     }, [isChildLoaded]);
 
     return (
-        <>
-            <NavButton 
+       <AnimatePresence>
+           {(router.route != "/blog/posts/[slug]" || width > 800) && <NavButton 
                 variants={navButtonAnimation} 
                 whileHover="onHover" 
-                onMouseEnter={() => setButtonHovered(true)}
-                onMouseLeave={() => setButtonHovered(false)} 
+                // onMouseEnter={() => setButtonHovered(true)}
+                // onMouseLeave={() => setButtonHovered(false)} 
                 onClick={() => handleNavButtonClick()}
+                initial="hidden"
+                animate="animate"
+                exit={{opacity: 0}}
                 >
                     <NavButtonLine variants={navLine1Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
                     <NavButtonLine variants={navLine2Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
                     <NavButtonLine variants={navLine3Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
-            </NavButton>
+            </NavButton>}
            <NavPage variants={navPageAnimation} initial="hidden" animate={isClicked ? "visible" : ""} key="NavPage">
                 <NavList variants={navListAnimation}>
                     <NavListItem><Link href="/"><a onClick={() => handleNavListItemClick()}>Home</a></Link></NavListItem>
@@ -179,8 +232,7 @@ const Navbar = ({isChildLoaded}) => {
                     <NavListItem><Link href="/videos"><a onClick={() => handleNavListItemClick()}>Manny's World</a></Link></NavListItem>
                 </NavList>
             </NavPage>
-        </>
-        
+        </AnimatePresence>
     );
 }
 
