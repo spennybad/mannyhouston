@@ -62,7 +62,7 @@ const Title = styled.h1`
 
 
 `
-
+        
 const BackgroundImageContainer = styled.div`
     width: 100%;
     height: 100%;
@@ -80,30 +80,18 @@ const BackgroundImageContainer = styled.div`
 
 `
 
-const StyledImage = styled.img`
-    object-fit: cover;
-    object-position: center;
-
-    width: 100%;
-    height: 100%;
-`
-
-
 const LandingPage = () => {
     return (
         <Section>
             <Socials position="absolute" color="black" direction="horizontal" gap="1rem"/>
             <Title>Manny <span>Houston</span></Title>
             <BackgroundImageContainer>
-                <StyledImage
-                    srcSet="https://res.cloudinary.com/spencercv7-dev/image/upload/c_scale,w_768/v1620053588/manny_4_qqbi0a.webp 768w,
-                            https://res.cloudinary.com/spencercv7-dev/image/upload/c_scale,w_1024/v1620053588/manny_4_qqbi0a.webp 1024w,
-                            https://res.cloudinary.com/spencercv7-dev/image/upload/c_scale,w_1920/v1620053588/manny_4_qqbi0a.webp 1920w,
-                            https://res.cloudinary.com/spencercv7-dev/image/upload/v1620053588/manny_4_qqbi0a.webp
-                            "
-                    sizes="100%"
+                <Image
+                    src="https://res.cloudinary.com/spencercv7-dev/image/upload/v1620053588/manny_4_qqbi0a.webp"
+                    priority={true}
                     alt="Picture of Manny Houston on a roof top."
                     layout="fill"
+                    objectFit="cover"
                 />
             </BackgroundImageContainer>
         </Section>

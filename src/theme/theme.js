@@ -14,7 +14,7 @@ export default {
     },
 
     textShadows: {
-        textShadowLight: '0px 4px 4px rgba(0, 0, 0, 0.25);',
+        textShadowLight: '0px 2px 4px rgba(0, 0, 0, 0.25);',
         textShadowHeavy: '0px 4px 4px rgba(0, 0, 0, 0.50);'
     },
 

@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps, router}) {
             <header><title>Manny Houston</title></header>
             <AnimateSharedLayout>
                 <Layout setIsChildLoaded={setIsChildLoaded} isChildLoaded={isChildLoaded}>
-                    <Component {...pageProps} key={router.route} handleChildLoaded={handleChildLoaded}/>
+                    <Component {...pageProps} key={router.route ? router.route : "home"} handleChildLoaded={handleChildLoaded}/>
                 </Layout>
             </AnimateSharedLayout>
         </ThemeProvider>

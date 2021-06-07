@@ -28,7 +28,9 @@ const StyledH2 = styled.h2`
         `)
         ||
         (styling === "blog" && css`
-            box-shadow: none;
+            font-size: clamp(5rem, 4vw, 7rem);
+            margin: 6rem 0;
+            color: ${(props) => props.theme.colors.green};
         `)
     }
 

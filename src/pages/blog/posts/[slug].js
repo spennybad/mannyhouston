@@ -1,5 +1,5 @@
 import { createClient } from 'contentful';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import Image from 'next/image';
@@ -62,6 +62,17 @@ export const getStaticProps = async ({ params }) => {
     }
 }
 
+const PostWrapper = styled.div`
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    background-color: ${(props) => props.theme.colors.white};
+
+    z-index: 1;
+    overflow-y: scroll;
+`
+
 const Post = styled.div`
     
     position: relative;
@@ -72,10 +83,6 @@ const Post = styled.div`
     
     height: 100%;
     width: 100%;
-    
-    background-color: ${(props) => props.theme.colors.white};
-
-    z-index: 1;
 `
 
 const StyledImage = styled.img`
@@ -112,11 +119,47 @@ const SocialsWrapper = styled.div`
 `
 
 const Media = styled.div`
+    display: grid;
+    grid-template-columns: repeat(3, minmax(6rem, 1fr));
+    grid-auto-rows: max-content;
+    grid-gap: 3rem;
+    grid-auto-flow: dense;
+
+    ${media.width_600`
+         grid-template-columns: repeat(2, minmax(6rem, 1fr));
+    `}
+
+    ${media.width_400`
+         grid-template-columns: repeat(1, minmax(6rem, 1fr));
+    `}
+`
+
+const BlogPostImage = styled(Image)`
 
 `
 
 const PostTitle = styled(motion.h3)`
     font-size: calc(${(props) => props.theme.fontSize_default.h2});
+`
+
+const MediaImageWrapper = styled.div`
+    box-shadow: ${(props) => props.theme.boxShadows.boxShadowLight};
+
+    max-height: 100%;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+
+    background-color: ${(props) => props.theme.colors.white};
+
+    ${({height, width}) => 
+        
+        (width > height) && css`
+            grid-column: span 2;
+        `
+    }
 `
 
 const PostContentWrapper = styled.div`
@@ -125,6 +168,11 @@ const PostContentWrapper = styled.div`
 
     font-size: ${(props) => props.theme.fontSize_default.p};
 `
+
+const MediaWrapperClass = ({_key, photo, children}) => (
+    <MediaImageWrapper key={ _key } width={ photo.fields.file.details.image.width } height={ photo.fields.file.details.image.height }>{children}</MediaImageWrapper>
+);
+
 
 const BlogPost = ({ post }) => {
 
@@ -139,29 +187,34 @@ const BlogPost = ({ post }) => {
             <SocialsWrapper>
                 <Socials color="white" gap="1rem" media_query="blog" layoutId="socials"/>
             </SocialsWrapper>
-            <Post>
-                <OpenSlider animate={{width: 0}}/>
-                <PostTitle>
-                    {blogEntryTitle}
-                </PostTitle>
-                <PostContentWrapper>
-                    {RichTextParser.blogPostRenderer(blogPostContent)}
-                </PostContentWrapper>
-                <Media>
-                    {
-                        blogPostMedia && blogPostMedia.map(photo => (
-                            <div key={photo.sys.id}>
-                                <Image
-                                    src={'https:' + photo.fields.file.url}
-                                    width={300}
-                                    height={400}
-                                />
-                            </div>
-                        ))
-                    }
-                </Media>
-                <ExitButton/>
-            </Post>
+            <PostWrapper>
+            <OpenSlider animate={{width: 0}}/>
+                <Post>
+                    <PostTitle>
+                        {blogEntryTitle}
+                    </PostTitle>
+                    <PostContentWrapper>
+                        {RichTextParser.blogPostRenderer(blogPostContent)}
+                    </PostContentWrapper>
+                    <Media>
+                        {
+                            blogPostMedia && blogPostMedia.map(photo => {
+                                return( 
+                                    <MediaWrapperClass _key={photo.sys.id} photo={ photo }>
+                                        <BlogPostImage
+                                            src={'https:' + photo.fields.file.url}
+                                            height={photo.fields.file.details.image.height}
+                                            width={photo.fields.file.details.image.width}
+                                            objectFit="cover"
+                                        />
+                                    </MediaWrapperClass>
+                                );
+                            })
+                        }
+                    </Media>
+                    <ExitButton/>
+                </Post>
+            </PostWrapper>
             <BlogBackground />
         </Section>
     );

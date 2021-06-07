@@ -1,7 +1,7 @@
 import styled from 'styled-components';
+import Image from 'next/image';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, INLINES } from '@contentful/rich-text-types';
-
 
 const _H4 = styled.h4`
     font-size: ${(props) => props.theme.fontSize_default.h3};
@@ -56,12 +56,26 @@ const _A = styled.a`
         display: inline-block;
         color: ${(props) => props.theme.colors.blue};
         transition: all .2s;
+        text-decoration: underline;
 
         &:hover {
             transform: scale(1.1) rotate(2deg);
         }
 
     }
+`
+
+const _IMAGE = styled(Image)`
+`
+
+const ImageWrapper = styled.div`
+    height: 30rem;
+    width: 30rem;
+    position: relative;
+`
+
+const ImageContainer = styled.div`
+    width: 100%;
 `
 
 const H4 = ({ children }) => <_H4>{ children }</_H4>
@@ -80,9 +94,25 @@ const OL = ({ children }) => <_OL>{ children }</_OL>
 
 const LI = ({ children }) => <_LI>{ children }</_LI>
 
-const HYPERLINK = ({node, children}) => {
+const HYPERLINK = ({ node, children }) => {
     return(
         <_A href={node.data.uri}>{ children }</_A>
+    );
+}
+
+const HYPERLINK_LIST = ({ node, children }) => {
+    return(
+        <span>{ children }</span>
+    );
+}
+
+const IMAGE = ({ node, children }) => {
+    return (
+        <ImageContainer>
+            <ImageWrapper>
+                <_IMAGE src={"https://" + node.data.target.fields.file.url} alt={node.data.target.fields.title} layout="fill" objectFit="contain"/>
+            </ImageWrapper>
+        </ImageContainer>
     );
 }
 
@@ -91,7 +121,32 @@ const replaceSpaces = (text) => {
     return text.replace(re, " ");
 }
 
-const options = {
+const options_post = {
+    renderText: text => replaceSpaces(text),
+    renderNode: {
+        [BLOCKS.HEADING_4]: (node, children) => <H4>{ children }</H4>,
+        [BLOCKS.HEADING_5]: (node, children) => <H5>{ children }</H5>,
+        [BLOCKS.HEADING_6]: (node, children) => <H6>{ children }</H6>,
+        [BLOCKS.PARAGRAPH]: (node, children) => <P>{ children }</P>,
+        [BLOCKS.UL_LIST]: (node, children) => <UL>{ children }</UL>,
+        [BLOCKS.OL_LIST]: (node, children) => <OL>{ children }</OL>,
+        [BLOCKS.LIST_ITEM]: (node, children) => <LI>{ children }</LI>,
+        [BLOCKS.HR]: () => <HR />,
+        [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
+            return (
+                <IMAGE node={ node }>{ children }</IMAGE>
+            );
+        },
+
+        [INLINES.HYPERLINK]: (node, children) => {
+            return(
+                <HYPERLINK node={ node }>{children}</HYPERLINK>
+            );
+        }
+    }
+}
+
+const options_list = {
     renderText: text => replaceSpaces(text),
     renderNode: {
         [BLOCKS.HEADING_4]: (node, children) => <H4>{ children }</H4>,
@@ -104,9 +159,8 @@ const options = {
         [BLOCKS.HR]: () => <HR />,
 
         [INLINES.HYPERLINK]: (node, children) => {
-            console.log(node);
             return(
-                <HYPERLINK node={ node }>{children}</HYPERLINK>
+                <HYPERLINK_LIST node={ node }>{children}</HYPERLINK_LIST>
             );
         }
     }
@@ -115,7 +169,10 @@ const options = {
 export default class RichTextParser {
 
     static blogPostRenderer(richText) {
-        console.log(richText);
-        return(documentToReactComponents(richText, options));
+        return(documentToReactComponents(richText, options_post));
+    }
+
+    static blogListRenderer(richText) {
+        return(documentToReactComponents(richText, options_list));
     }
 }

@@ -19,7 +19,7 @@ const NavButton = styled(motion.button)`
     width: 8rem;
     margin: 3rem;
 
-    display: none;
+    display: grid;
     grid-gap: .7rem;
 
     grid-template-columns: 100%;
@@ -33,6 +33,8 @@ const NavButton = styled(motion.button)`
     border-radius: 100%;
 
     box-shadow: ${(props) => props.theme.boxShadows.boxShadowLight};
+
+    cursor: pointer;
 
 `
 

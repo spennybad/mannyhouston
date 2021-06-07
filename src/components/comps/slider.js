@@ -65,6 +65,8 @@ const StyledSlider = styled(motion.div)`
 
     height: 100%;
 
+    z-index: 10000;
+
     ${({ position }) => 
         
         (position === "left") && css`

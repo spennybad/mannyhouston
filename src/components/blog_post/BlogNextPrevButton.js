@@ -1,35 +1,51 @@
 import styled, { css } from 'styled-components';
 import Link from 'next/link';
 
+import media from '../MediaQueries';
+
 import CalcNextPrevPage from '../../utils/CalcNextPrevPage';
 
 const Button = styled.button`
     position: absolute;
 
-    top: -8rem;
-
-    font-size: ${(props) => props.theme.fontSize_default.p};
-    font-family: ${(props) => props.theme.fontFamily.p};
-    text-transform: uppercase;
-    text-align: center;
-
-    padding: 0 1rem;
+    top: -6rem;
 
     z-index: 1;
 
+    background-color: transparent;
+
+    border: none;
+
     ${({ position }) => 
         (position === "right") && css`
-            right: 0
+            right: 0;
         `
         ||
         (position === "left") && css`
             left: 0;
         `
     }
+`
+
+const SVG = styled.img`
+    fill: red !important;
+    height: 5rem;
+
+    ${media.width_1500`
+        height: 4rem;
+    `}
+
+    transition: all .2s;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    cursor: pointer;
 
 `
 
-const BlogNextPrevButton = ({_next, _prev, pageNum, totalPages}) => {
+const BlogNextPrevButton = ({_next, _prev, pageNum, totalPages, setIsClicked}) => {
     let next = null; let prev = null;
 
     if (_next) {
@@ -48,7 +64,7 @@ const BlogNextPrevButton = ({_next, _prev, pageNum, totalPages}) => {
             (prev && <Link href={final_link}>
                 <a>
                     <Button position="left">
-                        back
+                        <SVG src="/imgs/svg/arrow-left.svg" alt="Arrow Left"/>
                     </Button>
                 </a>
             </Link>)
@@ -56,7 +72,7 @@ const BlogNextPrevButton = ({_next, _prev, pageNum, totalPages}) => {
             (next && <Link href={final_link}>
                 <a>
                     <Button position="right">
-                        next
+                        <SVG src="/imgs/svg/arrow-right.svg" alt="Arrow Right" />
                     </Button>
                 </a>
             </Link>)

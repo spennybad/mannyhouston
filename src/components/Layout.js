@@ -1,7 +1,7 @@
 import NavBar from './navigation/NavBar';
 import Credit from './credit/Credit';
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { AnimatePresence } from "framer-motion";
 
 const Layout = ( {children, setIsChildLoaded, isChildLoaded} ) => {

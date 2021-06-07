@@ -21,6 +21,8 @@ const StyledExitButton = styled.div`
 
     transition: all .2s;
 
+    cursor: pointer;
+
     &:hover {
         transform: scale(1.1);
     }
@@ -38,6 +40,8 @@ const XLine_1 = styled.div`
     width: 8%;
 
     background-color: ${(props) => props.theme.colors.white};
+    
+    cursor: pointer;
 `
 
 // Had to seperate into two seperate components due to glitch in Firefox and Google Chrome
@@ -52,6 +56,8 @@ const XLine_2 = styled.div`
     width: 8%;
 
     background-color: ${(props) => props.theme.colors.white};
+
+    cursor: pointer;
 `
 
 const ExitButton = () => {
@@ -59,18 +65,18 @@ const ExitButton = () => {
     const router = useRouter();
 
     const handleExit = () => {
-        router.back();
+        console.log(router.back());
     }
     
     return (
-        // <button onClick={() => handleExit()}>
-            // <a>
-                <StyledExitButton>
+         <StyledExitButton onClick={() => handleExit()}>
+            <button>
+                <a>
                     <XLine_1 />
                     <XLine_2 />
-                </StyledExitButton>
-            // </a>
-        // </button>
+                </a>
+            </button>
+        </StyledExitButton>
     );
 }
  
