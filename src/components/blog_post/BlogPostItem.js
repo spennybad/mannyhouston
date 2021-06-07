@@ -70,7 +70,7 @@ const BlogItemDesc= styled(motion.div)`
         height: 100%;
         width: 100%;
 
-        background-image: linear-gradient(to bottom, transparent 50%, ${(props) => props.theme.colors.white});
+        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 40%, ${(props) => props.theme.colors.white});
     }
 `
 
