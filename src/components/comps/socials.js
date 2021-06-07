@@ -50,7 +50,7 @@ const StyledSocials = styled(motion.ul)`
     ${({ media_query }) => 
         (media_query === "blog" && css`
 
-            ${media.width_800`
+            ${media.width_900`
                 display: none;
             `}
                 @media only screen 
