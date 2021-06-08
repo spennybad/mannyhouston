@@ -144,7 +144,7 @@ const About = () => {
             </AboutImageWrapper>
             <AboutContent>
                 <div>
-                    <H2>About <span>Manny Houston</span></H2>
+                    <H2>About Manny</H2>
                     <AboutP>{temp_text1}</AboutP>
                     <AboutP>{temp_text2}</AboutP>
                     <AboutP>{temp_text3}</AboutP>

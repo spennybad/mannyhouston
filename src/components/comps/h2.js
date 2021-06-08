@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 
 const StyledH2 = styled.h2`
     position: relative;
-    font-size: clamp(3rem, 4vw, 7rem);
+    font-size: ${(props) => props.theme.fontSize_default.h2};
     color: ${(props) => props.theme.colors.green};
 
-    letter-spacing: .2rem;
+    letter-spacing: .1rem;
 
     white-space: nowrap;
 
@@ -28,7 +28,6 @@ const StyledH2 = styled.h2`
         `)
         ||
         (styling === "blog" && css`
-            font-size: clamp(5rem, 5vw, 7rem);
             margin: 6rem 0;
             color: ${(props) => props.theme.colors.green};
         `)

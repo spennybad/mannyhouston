@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 
-import H2 from '../comps/h2';
+import H1 from '../comps/h1';
 import Slider from '../comps/slider';
 import BlogPostItem from './BlogPostItem';
 import BlogNextPrevButton from './BlogNextPrevButton';
@@ -51,7 +51,7 @@ const BlogItemContent = ({ posts, pageNum, totalPages }) => {
 
     return (
         <BlogContentWrapper>
-            <H2 styling="blog">Thoughts</H2>
+            <H1>Thoughts</H1>
             <BlogContent>
                 <BlogList>
                     {

@@ -125,7 +125,8 @@ const BlogPostImage = styled(Image)`
 `
 
 const PostTitle = styled(motion.h3)`
-    font-size: calc(${(props) => props.theme.fontSize_default.h2});
+    font-size: ${(props) => props.theme.fontSize_default.h1};
+    max-width: 90%;
 `
 
 const MediaImageWrapper = styled.div`

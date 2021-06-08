@@ -27,13 +27,12 @@ export default {
     fontSize_default: {
         
         // Default
-        h1: '28rem',
-        h2: 'clamp(3rem, 4vw, 7rem)',
-        h3: 'clamp(2.1rem, 2.5vw, 3.5rem)',
-        h4: 'clamp(1.8rem, 2.3vw, 3.5rem)',
-        h5: 'clamp(1.6rem, 2vw, 3rem)',
-        nav:'clamp(3rem, 3vw, 6rem)',
-        p: 'clamp(1.3rem, 1.5vw, 2.4rem)',
+        h1: 'clamp(5.063rem, 6vw, 7.594rem)',
+        h2: 'clamp(3.375rem, 5vw, 5.063rem)',
+        h3: 'clamp(2.25rem, 2.5vw, 3.375rem)',
+        h4: 'clamp(2.25rem, 2.3vw, 3.5rem)',
+        nav:'clamp(3.375rem, 5vw, 5.063rem)',
+        p: 'clamp(1.5rem, 2vw, 2.25rem)',
         mini: 'clamp(1rem, 1vw, 2rem)'
     },
 

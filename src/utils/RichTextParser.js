@@ -4,19 +4,25 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 
 const _H4 = styled.h4`
+    font-size: ${(props) => props.theme.fontSize_default.h2};
+    margin: 0;
+    margin: 2rem 0rem 0rem 0rem;
+`
+
+const _H4_LIST = styled.h4`
     font-size: ${(props) => props.theme.fontSize_default.h3};
     margin: 0;
     margin: 2rem 0rem 0rem 0rem;
 `
 
 const _H5 = styled.h5`
-    font-size: ${(props) => props.theme.fontSize_default.h5};
+    font-size: ${(props) => props.theme.fontSize_default.h3};
     margin: 0;
     margin: 2rem 0rem 0rem 0rem;
 `
 
 const _H6 = styled.h6`
-    font-size: ${(props) => props.theme.fontSize_default.h5};
+    font-size: ${(props) => props.theme.fontSize_default.h4};
     margin: 0;
     margin: 2rem 0rem 0rem 0rem;
 `
@@ -79,6 +85,8 @@ const ImageContainer = styled.div`
 `
 
 const H4 = ({ children }) => <_H4>{ children }</_H4>
+
+const H4_LIST = ({ children }) => <_H4_LIST>{ children }</_H4_LIST>
 
 const H5 = ({ children }) => <_H5>{ children }</_H5>
 
@@ -149,7 +157,7 @@ const options_post = {
 const options_list = {
     renderText: text => replaceSpaces(text),
     renderNode: {
-        [BLOCKS.HEADING_4]: (node, children) => <H4>{ children }</H4>,
+        [BLOCKS.HEADING_4]: (node, children) => <H4_LIST>{ children }</H4_LIST>,
         [BLOCKS.HEADING_5]: (node, children) => <H5>{ children }</H5>,
         [BLOCKS.HEADING_6]: (node, children) => <H6>{ children }</H6>,
         [BLOCKS.PARAGRAPH]: (node, children) => <P>{ children }</P>,

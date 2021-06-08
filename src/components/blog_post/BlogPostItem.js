@@ -40,7 +40,7 @@ const BlogItem = styled(motion.li)`
         padding: 3rem;
 
         & > div {
-            font-size: calc(${(props) => props.theme.fontSize_default.p} - .5rem);
+            font-size: ${(props) => props.theme.fontSize_default.p};
         }
     }
 
@@ -56,7 +56,7 @@ const BlogItemTitle = styled(motion.h3)`
     color: ${(props) => props.theme.colors.white};
     background-color: ${(props) => props.theme.colors.light_grey};
     padding: 1rem;
-    width: max-content;
+    width: 100%;
 `
 
 const BlogItemDesc= styled(motion.div)`
