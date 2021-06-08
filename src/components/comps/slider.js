@@ -43,6 +43,7 @@ const PanelAnimation = {
     },
     animate: {
         width: "100%",
+        zIndex: 101,
         transition: {
             type: "linear",
             ease: "easeOut"
@@ -61,11 +62,9 @@ const Panel = ({position, color}) => {
 
 // Page Transition Slider
 const StyledSlider = styled(motion.div)`
-    position: fixed;
-
+    position: absolute;
+    z-index: 101;
     height: 100%;
-
-    z-index: 10000;
 
     ${({ position }) => 
         
@@ -84,7 +83,8 @@ const SliderAnimation = {
         width: 0
     },
     animate: {
-        width: "100%", 
+        width: "100%",
+        zIndex: 101,
         transition: {
             staggerChildren: .1,
             duration: 0
@@ -93,15 +93,13 @@ const SliderAnimation = {
 }
 
 const Slider = ({isClicked, position}) => {
-    return (
-        <>  
-            <StyledSlider variants={ SliderAnimation } initial="initial" animate={isClicked ? "animate" : ""} position={position}>
-                <Panel position={position} color="blue"  />
-                <Panel position={position} color="green"/>
-                <Panel position={position} color="yellow"  />
-                <Panel position={position} color="pink"  />
-            </StyledSlider>
-        </>
+    return (  
+        <StyledSlider variants={ SliderAnimation } initial="initial" animate={isClicked ? "animate" : ""} position={position}>
+            <Panel position={position} color="blue"  />
+            <Panel position={position} color="green"/>
+            <Panel position={position} color="yellow"  />
+            <Panel position={position} color="pink"  />
+        </StyledSlider>
     );
 }
  

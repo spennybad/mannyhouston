@@ -10,8 +10,6 @@ const Button = styled.button`
 
     top: -6rem;
 
-    z-index: 1;
-
     background-color: transparent;
 
     border: none;

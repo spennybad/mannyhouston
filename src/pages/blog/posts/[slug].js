@@ -3,8 +3,7 @@ import styled, { css } from 'styled-components';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 import Skeleton from '../../../components/Skeleton';
 import Section from '../../../components/comps/section';
@@ -69,7 +68,6 @@ const PostWrapper = styled.div`
 
     background-color: ${(props) => props.theme.colors.white};
 
-    z-index: 1;
     overflow-y: scroll;
 `
 
@@ -85,18 +83,6 @@ const Post = styled.div`
     width: 100%;
 `
 
-const StyledImage = styled.img`
-    position: fixed;
-
-    object-fit: cover;
-    object-position: center;
-
-    z-index: 0;
-
-    width: 100%;
-    height: 100%;
-`
-
 const OpenSlider = styled(motion.div)`
     position: absolute;
     height: 100%;
@@ -104,7 +90,7 @@ const OpenSlider = styled(motion.div)`
 
     background-color: ${(props) => props.theme.colors.pink};
     
-    z-index: 10000;
+    z-index: 1;
 `
 
 const SocialsWrapper = styled.div`
@@ -174,9 +160,13 @@ const MediaWrapperClass = ({_key, photo, children}) => (
 );
 
 
-const BlogPost = ({ post }) => {
+const BlogPost = ({ post, handleChildLoaded }) => {
 
     if (!post) return <Skeleton />
+
+    useEffect(() => {
+        handleChildLoaded()
+    }, [])
 
     const { blogEntryTitle, blogPostContent, blogPostMedia } = post.fields;
 
@@ -184,6 +174,7 @@ const BlogPost = ({ post }) => {
 
     return (
         <Section padding="none" area="1by3" height="100%">
+            <BlogBackground />
             <SocialsWrapper>
                 <Socials color="white" gap="1rem" media_query="blog" layoutId="socials"/>
             </SocialsWrapper>
@@ -215,7 +206,6 @@ const BlogPost = ({ post }) => {
                     <ExitButton/>
                 </Post>
             </PostWrapper>
-            <BlogBackground />
         </Section>
     );
 

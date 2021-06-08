@@ -25,8 +25,6 @@ const Title = styled.h1`
 
     white-space: nowrap;
 
-    z-index: 1;
-
     // Temporary fix for Google Chrome blurry font defect.
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -83,8 +81,6 @@ const BackgroundImageContainer = styled.div`
 const LandingPage = () => {
     return (
         <Section>
-            <Socials position="absolute" color="black" direction="horizontal" gap="1rem"/>
-            <Title>Manny <span>Houston</span></Title>
             <BackgroundImageContainer>
                 <Image
                     src="https://res.cloudinary.com/spencercv7-dev/image/upload/v1620053588/manny_4_qqbi0a.webp"
@@ -94,6 +90,8 @@ const LandingPage = () => {
                     objectFit="cover"
                 />
             </BackgroundImageContainer>
+            <Socials position="absolute" color="black" direction="horizontal" gap="1rem"/>
+            <Title>Manny <span>Houston</span></Title>
         </Section>
     );
 }

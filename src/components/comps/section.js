@@ -52,7 +52,7 @@ const StyledSection = styled.section`
     ${({ area }) =>
         (area === "1by3") && css`
             grid-template-columns: 10% 80% 10%;
-            height: 100%
+            height: 100%;
             min-height: 100vh;
             ${media.width_800`
                 grid-template-columns: 100%;

@@ -68,6 +68,7 @@ const Blog = ({ handleChildLoaded, posts, pageNum, totalPages }) => {
 
     return (
         <Section padding="none" area="1by3">
+            <BlogBackground />
             <SocialsWrapper>
                 <Socials
                     color="white"
@@ -78,7 +79,6 @@ const Blog = ({ handleChildLoaded, posts, pageNum, totalPages }) => {
                 />
             </SocialsWrapper>
             <BlogPageContent posts={ posts } pageNum={ pageNum } totalPages={ totalPages } />
-            <BlogBackground />
         </Section>
     );
 }

@@ -75,12 +75,12 @@ const AboutP = styled.p`
     min-width: min-content;
     max-width: 125rem;
 
+    position: relative;
+
     font-size: ${(props) => props.theme.fontSize_default.p};
     color: ${(props) => props.theme.colors.white};
 
     padding: 1rem;
-
-    z-index: 1;
 
     background-color: rgba(0, 0, 0, .75);
 
@@ -135,6 +135,13 @@ const temp_text3 = "  He has a degree in classical piano, has worked professiona
 const About = () => {
     return (
         <Section>
+            <AboutImageWrapper>
+                <Image
+                    src="https://res.cloudinary.com/spencercv7-dev/image/upload/v1620053589/about_cut_out_pvwbcd.webp"
+                    alt="Manny sitting on brick wall."
+                    layout="fill"
+                />
+            </AboutImageWrapper>
             <AboutContent>
                 <div>
                     <H2>About <span>Manny Houston</span></H2>
@@ -143,13 +150,6 @@ const About = () => {
                     <AboutP>{temp_text3}</AboutP>
                 </div>
             </AboutContent>
-            <AboutImageWrapper>
-                <Image
-                    src="https://res.cloudinary.com/spencercv7-dev/image/upload/v1620053589/about_cut_out_pvwbcd.webp"
-                    alt="Manny sitting on brick wall."
-                    layout="fill"
-                />
-            </AboutImageWrapper>
         </Section>
     );
 }

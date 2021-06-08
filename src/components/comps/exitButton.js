@@ -31,7 +31,7 @@ const StyledExitButton = styled.div`
     ${media.width_400`
         height: 5rem;
         width: 5rem;
-        margin: 1.5rem;
+        margin: 1rem;
     `}
 `
 
@@ -72,7 +72,7 @@ const ExitButton = () => {
     const router = useRouter();
 
     const handleExit = () => {
-        console.log(router.back());
+        router.back();
     }
     
     return (

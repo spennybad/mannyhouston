@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 
 const StyledH2 = styled.h2`
+    position: relative;
     font-size: clamp(3rem, 4vw, 7rem);
     color: ${(props) => props.theme.colors.green};
 
@@ -24,7 +25,6 @@ const StyledH2 = styled.h2`
         (styling === "contact" && css`
             margin-bottom: 2rem;
             background-color: ${(props) => props.theme.colors.transBlack_75};
-            z-index: 1;
         `)
         ||
         (styling === "blog" && css`

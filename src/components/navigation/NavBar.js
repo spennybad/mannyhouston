@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
 import media from '../MediaQueries';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Section from '../../components/comps/section';
 import useWindowDimensions from '../../hooks/WindowDimensions';
 
@@ -14,7 +14,7 @@ const NavButton = styled(motion.button)`
     top: 0;
     right: 0;
 
-    z-index: 1001;
+    z-index: 2;
 
     height: 7.5rem;
     width: 7.5rem;
@@ -24,20 +24,24 @@ const NavButton = styled(motion.button)`
     grid-gap: .5rem;
 
     grid-template-columns: 100%;
-    grid-template-rows: repeat(1fr, 3);
 
     justify-items: center;
     align-content: center;
 
     background-color: ${(props) => props.theme.colors.white};
 
-    border: .2rem solid ${(props) => props.theme.colors.grey};
+    border: none;
 
     border-radius: 100%;
     box-shadow: ${(props) => props.theme.boxShadows.boxShadowLight};
 
     cursor: pointer;
 
+    ${({isClicked}) => 
+        (isClicked) && css`
+            position: fixed;
+        `
+    }
 
     ${media.width_1200`
         height: 7rem;
@@ -80,12 +84,9 @@ const NavButton = styled(motion.button)`
 `
 
 const NavButtonLine = styled(motion.div)`
-    height: .5rem;
+    height: .4rem;
     width: 55%;
     background-color: ${(props) => props.theme.colors.black};
-
-    ${media.width_400`
-    `}
 `
 
 const NavPage = styled(motion.div)`
@@ -99,7 +100,7 @@ const NavPage = styled(motion.div)`
     justify-content: center;
     align-content: center;
 
-    z-index: 1000;
+    z-index: 1;
 
     background-image: linear-gradient(to bottom right, ${(props) => props.theme.colors.green}, ${(props) => props.theme.colors.blue});
 `
@@ -109,20 +110,38 @@ const NavList = styled(motion.nav)`
     grid-gap: 3rem;
     grid-template-columns: repeat(max-content, 3);
     list-style: none;
+    justify-items: center;
 `
 
-const NavListItem = styled(motion.li)`
+const NavItem = styled(motion.li)`
     font-size: ${(props) => props.theme.fontSize_default.nav};
-    
+    overflow: hidden;
+    position: relative;
+    padding: .5rem 1rem;
+    transition: all .2s;
+    width: max-content;
+    text-shadow: ${(props) => props.theme.textShadows.textShadowLight};
+
+    & > * {
+        color: ${(props) => props.theme.colors.white} !important;
+    }
+
+    &:hover {
+        transform: scale(1.1);
+    }
+`
+
+const NavListItemBackground = styled(motion.div)`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: ${(props) => props.theme.colors.transBlack_75};
+    bottom: 0;
+    left: 0;
+    z-index: -1;
 `
 
 // Animations
-const navButtonAnimation = {
-    onHover: {
-        scale: .95,
-    }
-}
-
 const navPageAnimation = {
     hidden: {
         x: "100%",
@@ -190,6 +209,7 @@ const Navbar = ({isChildLoaded}) => {
 
     const [isClicked, setIsClicked] = useState(false);
     const [buttonHovered, setButtonHovered] = useState(false);
+    const [isButtonVisible, setIsButtonVisible] = useState(true);
     const {width, height} = useWindowDimensions();
 
     const router = useRouter();
@@ -198,41 +218,56 @@ const Navbar = ({isChildLoaded}) => {
         setIsClicked(!isClicked);
     }
 
-    const handleNavListItemClick = () => {
-        setIsClicked(true);
+    const handleNavListItemClick = (_href) => {
+        if (router.route == _href) {
+            setIsClicked(false);
+        } else {
+            setIsClicked(true);
+        }
     }
+
+    const NavListItem = ({lable, _href}) => {
+
+        const [isHovered, setIsHovered] = useState(false);
+
+        return (
+            <NavItem onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={() => handleNavListItemClick(_href)}>
+                <Link href={ _href }>
+                    <a>{ lable }</a>
+                </Link>
+                <NavListItemBackground initial={{ x: "-110%" }} animate={isHovered ? {x: 0, transition: {type: "linear", duration: .2} } : ""}/>
+            </NavItem>
+        );
+    };
 
     // Used to automatically retract the navigation bar once a new page has completed loading.
     useEffect(() => {
         if (isChildLoaded) {
             setIsClicked(false);
+            if (router.route == "/blog/posts/[slug]" && width < 800) {
+                setIsButtonVisible(false);
+            }
+            else {
+                setIsButtonVisible(true);
+            }
         }
     }, [isChildLoaded]);
 
     return (
-       <AnimatePresence>
-           {(router.route != "/blog/posts/[slug]" || width > 800) && <NavButton 
-                variants={navButtonAnimation} 
-                whileHover="onHover" 
-                // onMouseEnter={() => setButtonHovered(true)}
-                // onMouseLeave={() => setButtonHovered(false)} 
-                onClick={() => handleNavButtonClick()}
-                initial="hidden"
-                animate="animate"
-                exit={{opacity: 0}}
-                >
-                    <NavButtonLine variants={navLine1Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
-                    <NavButtonLine variants={navLine2Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
-                    <NavButtonLine variants={navLine3Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
+        <>
+            {isButtonVisible && <NavButton isClicked={isClicked} onClick={() => handleNavButtonClick()}>
+                <NavButtonLine variants={navLine1Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
+                <NavButtonLine variants={navLine2Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
+                <NavButtonLine variants={navLine3Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
             </NavButton>}
-           <NavPage variants={navPageAnimation} initial="hidden" animate={isClicked ? "visible" : ""} key="NavPage">
+            <NavPage variants={navPageAnimation} initial="hidden" animate={isClicked ? "visible" : ""} key="NavPage">
                 <NavList variants={navListAnimation}>
-                    <NavListItem><Link href="/"><a onClick={() => handleNavListItemClick()}>Home</a></Link></NavListItem>
-                    <NavListItem><Link href="/blog"><a onClick={() => handleNavListItemClick()}>Thoughts</a></Link></NavListItem>
-                    <NavListItem><Link href="/videos"><a onClick={() => handleNavListItemClick()}>Manny's World</a></Link></NavListItem>
+                    <NavListItem lable="Home" _href="/" />
+                    <NavListItem lable="Thoughts" _href="/blog" />
+                    <NavListItem lable="Manny's World" _href="/videos" />
                 </NavList>
-            </NavPage>
-        </AnimatePresence>
+        </NavPage>
+        </>
     );
 }
 

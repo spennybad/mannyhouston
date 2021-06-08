@@ -15,7 +15,6 @@ const StyledSocials = styled(motion.ul)`
 
     padding: 3rem;
 
-    z-index: 100;
 
     list-style: none;
 

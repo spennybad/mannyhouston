@@ -32,7 +32,7 @@ export default {
         h3: 'clamp(2.1rem, 2.5vw, 3.5rem)',
         h4: 'clamp(1.8rem, 2.3vw, 3.5rem)',
         h5: 'clamp(1.6rem, 2vw, 3rem)',
-        nav:'clamp(1.5rem, 2vw, 3.5rem)',
+        nav:'clamp(3rem, 3vw, 6rem)',
         p: 'clamp(1.3rem, 1.5vw, 2.4rem)',
         mini: 'clamp(1rem, 1vw, 2rem)'
     },

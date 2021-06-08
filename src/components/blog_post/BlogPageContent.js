@@ -20,9 +20,6 @@ const BlogContentWrapper = styled.div`
     height: 100%;
 
     background-image: linear-gradient(to bottom right, ${(props) => props.theme.colors.light_grey}, ${(props) => props.theme.colors.transBlack_75});
-    z-index: 100;
-
-    overflow-y: scroll;
 `
 
 const BlogContent = styled.div`
@@ -36,8 +33,6 @@ const BlogContent = styled.div`
     display: grid;
 
     justify-items: center;
-
-    z-index: 1;
 
 `
 
