@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import media from '../MediaQueries';
 
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 const StyledExitButton = styled.button`
 
@@ -10,15 +9,15 @@ const StyledExitButton = styled.button`
     top: 0;
     right: 0;
 
-    height: 6rem;
-    width: 6rem;
+    height: 5.5rem;
+    width: 5.5rem;
 
     background-color: ${(props) => props.theme.colors.blue};
     box-shadow: ${(props) => props.theme.boxShadows.boxShadowLight};
 
     border-radius: 100%;
 
-    margin: 3rem;
+    margin: 1rem;
 
     transition: all .2s;
 
@@ -75,19 +74,15 @@ const XLine_2 = styled.div`
 
 const ExitButton = () => {
     
-    const router = useRouter();
-
-    const handleExit = () => {
-        router.back();
-    }
-    
     return (
-         <StyledExitButton onClick={() => handleExit()}>
-            <a>
-                <XLine_1 />
-                <XLine_2 />
-            </a>
-        </StyledExitButton>
+        <Link href="/blog">
+            <StyledExitButton>
+                <a>
+                    <XLine_1 />
+                    <XLine_2 />
+                </a>
+            </StyledExitButton>
+        </Link>
     );
 }
  

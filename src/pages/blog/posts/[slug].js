@@ -161,6 +161,8 @@ const MediaWrapperClass = ({_key, photo, children}) => (
 
 const BlogPost = ({ post, handleChildLoaded }) => {
 
+    let media_counter = 0;
+
     if (!post) return <Skeleton />
 
     useEffect(() => {
@@ -187,10 +189,11 @@ const BlogPost = ({ post, handleChildLoaded }) => {
                         {RichTextParser.blogPostRenderer(blogPostContent)}
                     </PostContentWrapper>
                     <Media>
-                        {
+                        {   
                             blogPostMedia && blogPostMedia.map(photo => {
+                                media_counter += 1;
                                 return( 
-                                    <MediaWrapperClass _key={photo.sys.id} photo={ photo }>
+                                    <MediaWrapperClass key={photo.sys.id + "_wrapper_" + media_counter} _key={photo.sys.id + "_photo_" + media_counter} photo={ photo }>
                                         <BlogPostImage
                                             src={'https:' + photo.fields.file.url}
                                             height={photo.fields.file.details.image.height}
