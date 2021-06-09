@@ -73,8 +73,6 @@ const BlogPageContent = ({ posts, pageNum, totalPages }) => {
     const [isClicked, setIsClicked] = useState(false);
     const router = useRouter();
 
-    console.log(router);
-
     const getUniqueKey = () => {
         if (router.asPath == "/blog") {
             return 0;
