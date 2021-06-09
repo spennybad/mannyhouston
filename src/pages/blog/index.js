@@ -9,7 +9,6 @@ import Section from '../../components/comps/section';
 import Socials from '../../components/comps/socials';
 import media from '../../components/MediaQueries';
 import BlogBackground from '../../components/comps/blogBackground';
-import BlogItemContent from '../../components/blog_post/BlogPageContent';
 
 const SocialsWrapper = styled.div`
     width: 100%;

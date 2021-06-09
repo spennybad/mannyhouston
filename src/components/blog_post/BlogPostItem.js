@@ -74,39 +74,25 @@ const BlogItemDesc= styled(motion.div)`
     }
 `
 
-const BlogItemAnimation = {
-    initial: {
-        opacity: 0
-    },
-    animate: {
-        opacity: 1
-    },
-    exit: {
-        opacity: 0
-    }
-}
-
-const BlogPostItem = ({ post, setIsClicked, _key }) => {
+const BlogPostItem = ({ post, setIsClicked, _key} ) => {
 
     const { blogEntryTitle, blogPostContent, slug } = post.fields;
 
     return (
-        <AnimatePresence exitBeforeLeaving>
-            <BlogItem key={_key} variants={BlogItemAnimation} onClick={() => setIsClicked(true)} initial="initial" animate="animate" exit="exit">
-                <article>
-                    <Link href={`/blog/posts/${slug}`}>
-                        <a>
-                            <BlogItemTitle>
-                                {blogEntryTitle}
-                            </BlogItemTitle>
-                            <BlogItemDesc>
-                                {RichTextParser.blogListRenderer(blogPostContent)}
-                            </BlogItemDesc>
-                        </a>    
-                    </Link>
-                </article>
-            </BlogItem>
-        </AnimatePresence>
+        <BlogItem key={_key} onClick={() => setIsClicked(true)}>
+            <article>
+                <Link href={`/blog/posts/${slug}`}>
+                    <a>
+                        <BlogItemTitle>
+                            {blogEntryTitle}
+                        </BlogItemTitle>
+                        <BlogItemDesc>
+                            {RichTextParser.blogListRenderer(blogPostContent)}
+                        </BlogItemDesc>
+                    </a>    
+                </Link>
+            </article>
+        </BlogItem>
     );
 }
  

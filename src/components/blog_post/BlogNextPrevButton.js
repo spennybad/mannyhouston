@@ -16,11 +16,11 @@ const Button = styled.button`
 
     ${({ position }) => 
         (position === "right") && css`
-            right: 0;
+            right: 6rem;
         `
         ||
         (position === "left") && css`
-            left: 0;
+            left: 6rem;
         `
     }
 `
@@ -43,7 +43,7 @@ const SVG = styled.img`
 
 `
 
-const BlogNextPrevButton = ({_next, _prev, pageNum, totalPages, setIsClicked}) => {
+const BlogNextPrevButton = ({_next, _prev, pageNum, totalPages, setIsClicked, setIsPageChange}) => {
     let next = null; let prev = null;
 
     if (_next) {

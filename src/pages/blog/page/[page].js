@@ -1,7 +1,6 @@
 // Dependencies
 import styled from 'styled-components';
 import { useEffect } from 'react';
-import Link from 'next/link';
 
 // Components
 import Section from '../../../components/comps/section';
@@ -9,7 +8,6 @@ import Socials from '../../../components/comps/socials';
 import media from '../../../components/MediaQueries';
 import BlogPageContent from '../../../components/blog_post/BlogPageContent';
 import BlogBackground from '../../../components/comps/blogBackground';
-import BlogNextPrevButton from '../../../components/blog_post/BlogNextPrevButton';
 
 // API
 import ContentfulApi from '../../../api/ContentfulApi';
