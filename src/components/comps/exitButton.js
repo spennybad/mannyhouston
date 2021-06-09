@@ -4,7 +4,7 @@ import media from '../MediaQueries';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-const StyledExitButton = styled.div`
+const StyledExitButton = styled.button`
 
     position: absolute;
     top: 0;
@@ -23,6 +23,12 @@ const StyledExitButton = styled.div`
     transition: all .2s;
 
     cursor: pointer;
+
+    border: none;
+
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
 
     &:hover {
         transform: scale(1.1);
@@ -77,12 +83,10 @@ const ExitButton = () => {
     
     return (
          <StyledExitButton onClick={() => handleExit()}>
-            <button>
-                <a>
-                    <XLine_1 />
-                    <XLine_2 />
-                </a>
-            </button>
+            <a>
+                <XLine_1 />
+                <XLine_2 />
+            </a>
         </StyledExitButton>
     );
 }

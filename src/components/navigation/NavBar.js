@@ -8,7 +8,7 @@ import styled, { css } from 'styled-components';
 import Section from '../../components/comps/section';
 import useWindowDimensions from '../../hooks/WindowDimensions';
 
-const NavButton = styled(motion.button)`
+const NavButton = styled.button`
     position: absolute;
 
     top: 0;
@@ -227,6 +227,9 @@ const Navbar = ({isChildLoaded}) => {
         }
     }
 
+    /*
+        @TODO: Should be broken out into seperate folder. Will require the passing of multiple states.
+    */
     const NavListItem = ({lable, _href}) => {
 
         const [isHovered, setIsHovered] = useState(false);
@@ -242,7 +245,7 @@ const Navbar = ({isChildLoaded}) => {
     };
 
     const NavShowCheck = () => {
-        if (router.route == "/blog/posts/[slug]" && width < 800) return false;
+        if (router.route == "/blog/posts/[slug]" && width <= 800) return false;
         else return true;
     }
 
@@ -251,6 +254,12 @@ const Navbar = ({isChildLoaded}) => {
         if (isChildLoaded) {
             setIsClicked(false);
         }
+
+        /* 
+            Although not checked against if the child is loaded. Still keeps the navbutton hidden until the new page loads
+            as th effect is only monitoring width and isChildLoaded. The Nav Button will appear premptivly if the viewport is adjusted 
+            mid page load, however, I do not deam this to be an issue. 
+        */
         setIsButtonVisible(NavShowCheck())
     }, [isChildLoaded, width]);
     
