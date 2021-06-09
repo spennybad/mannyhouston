@@ -20,6 +20,9 @@ const BlogContentWrapper = styled(motion.div)`
     
     width: 100%;
     height: 100%;
+    min-height: 100vh;
+
+    overflow: hidden;
 
     background-image: linear-gradient(to bottom right, ${(props) => props.theme.colors.light_grey}, ${(props) => props.theme.colors.black});
 `
