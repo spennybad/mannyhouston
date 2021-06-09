@@ -241,22 +241,22 @@ const Navbar = ({isChildLoaded}) => {
         );
     };
 
+    const NavShowCheck = () => {
+        if (router.route == "/blog/posts/[slug]" && width < 800) return false;
+        else return true;
+    }
+
     // Used to automatically retract the navigation bar once a new page has completed loading.
     useEffect(() => {
         if (isChildLoaded) {
             setIsClicked(false);
-            if (router.route == "/blog/posts/[slug]" && width < 800) {
-                setIsButtonVisible(false);
-            }
-            else {
-                setIsButtonVisible(true);
-            }
         }
-    }, [isChildLoaded]);
-
+        setIsButtonVisible(NavShowCheck())
+    }, [isChildLoaded, width]);
+    
     return (
         <>
-            {(width > 800) && isButtonVisible && <NavButton isClicked={isClicked} onClick={() => handleNavButtonClick()}>
+            {isButtonVisible && <NavButton isClicked={isClicked} onClick={() => handleNavButtonClick()}>
                 <NavButtonLine variants={navLine1Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
                 <NavButtonLine variants={navLine2Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
                 <NavButtonLine variants={navLine3Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
