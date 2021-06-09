@@ -76,6 +76,7 @@ const Blog = ({ handleChildLoaded, posts, pageNum, totalPages }) => {
                     direction="vertical"
                     media_query="blog"
                     layoutId="socials"
+                    backing={true}
                 />
             </SocialsWrapper>
             <BlogPageContent posts={ posts } pageNum={ pageNum } totalPages={ totalPages } />

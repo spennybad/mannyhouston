@@ -67,8 +67,6 @@ const PostWrapper = styled.div`
     width: 100%;
 
     background-color: ${(props) => props.theme.colors.white};
-
-    overflow-y: scroll;
 `
 
 const Post = styled.div`
@@ -177,7 +175,7 @@ const BlogPost = ({ post, handleChildLoaded }) => {
         <Section padding="none" area="1by3" height="100%">
             <BlogBackground />
             <SocialsWrapper>
-                <Socials color="white" gap="1rem" media_query="blog" layoutId="socials"/>
+                <Socials color="white" gap="1rem" media_query="blog" layoutId="socials" backing={true}/>
             </SocialsWrapper>
             <PostWrapper>
             <OpenSlider animate={{width: 0}}/>

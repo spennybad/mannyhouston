@@ -52,7 +52,8 @@ const StyledSocials = styled(motion.ul)`
             ${media.width_800`
                 display: none;
             `}
-                @media only screen 
+
+            @media only screen 
                 and (min-device-width: 768px) 
                 and (max-device-width: 1024px) 
                 and (orientation: portrait) 
@@ -60,6 +61,28 @@ const StyledSocials = styled(motion.ul)`
                     filter: none;
             }
         `) 
+    }
+
+    ${({ backing }) =>
+        
+       (backing && css`
+            & > li {
+                position: relative;
+                & > a::before {
+                    filter: invert();
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    right: 50%;
+                    height: 80%;
+                    width: 80%;
+                    border-radius: 100%;
+                    background-color: ${(props) => props.theme.colors.black};
+                    z-index: -1;
+                    transform: translate(50%, -50%);
+                }
+            }
+        `)
     }
 
     
@@ -104,9 +127,9 @@ const socialsAnimation = {
     }
 }
 
-const Socials = ({ color, direction, position, gap, location, media_query, layoutId }) => {
+const Socials = ({ color, direction, position, gap, location, media_query, layoutId, backing=false }) => {
     return (
-        <StyledSocials color={ color } direction={ direction } position={ position } gap={ gap } location={ location } media_query={ media_query }
+        <StyledSocials color={ color } direction={ direction } position={ position } gap={ gap } location={ location } media_query={ media_query } backing={ backing }
             variants={ socialsAnimation }
             initial="hidden"
             animate="visible"
