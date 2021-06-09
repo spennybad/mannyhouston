@@ -218,6 +218,7 @@ const Navbar = ({isChildLoaded}) => {
         setIsClicked(!isClicked);
     }
 
+    // Closes Nav Panel if the current page is selected.
     const handleNavListItemClick = (_href) => {
         if (router.route == _href) {
             setIsClicked(false);
@@ -255,7 +256,7 @@ const Navbar = ({isChildLoaded}) => {
 
     return (
         <>
-            {isButtonVisible && <NavButton isClicked={isClicked} onClick={() => handleNavButtonClick()}>
+            {(width > 800) && isButtonVisible && <NavButton isClicked={isClicked} onClick={() => handleNavButtonClick()}>
                 <NavButtonLine variants={navLine1Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
                 <NavButtonLine variants={navLine2Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
                 <NavButtonLine variants={navLine3Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
