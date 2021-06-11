@@ -8,26 +8,27 @@ import CalcNextPrevPage from '../../utils/CalcNextPrevPage';
 const Button = styled.button`
     position: absolute;
 
-    top: -6rem;
-
     background-color: transparent;
+
+    top: 50%;
+    transform: translate(0, -50%);
 
     border: none;
 
     ${({ position }) => 
         (position === "right") && css`
-            right: 6rem;
+            right: 0;
         `
         ||
         (position === "left") && css`
-            left: 6rem;
+            left: 0;
         `
     }
 `
 
 const SVG = styled.img`
-    fill: red !important;
     height: 5rem;
+    width: 5rem;
 
     ${media.width_1500`
         height: 4rem;
@@ -43,7 +44,7 @@ const SVG = styled.img`
 
 `
 
-const BlogNextPrevButton = ({_next, _prev, pageNum, totalPages, setIsClicked, setIsPageChange}) => {
+const BlogNextPrevButton = ({_next, _prev, pageNum, totalPages, setIsClicked}) => {
     let next = null; let prev = null;
 
     if (_next) {
@@ -61,7 +62,7 @@ const BlogNextPrevButton = ({_next, _prev, pageNum, totalPages, setIsClicked, se
             {
             (prev && <Link href={final_link}>
                 <a>
-                    <Button position="left">
+                    <Button position="left" onClick={() => setIsClicked(true)}>
                         <SVG src="/imgs/svg/arrow-left.svg" alt="Arrow Left"/>
                     </Button>
                 </a>
@@ -69,7 +70,7 @@ const BlogNextPrevButton = ({_next, _prev, pageNum, totalPages, setIsClicked, se
             ||
             (next && <Link href={final_link}>
                 <a>
-                    <Button position="right">
+                    <Button position="right" onClick={() => setIsClicked(true)}>
                         <SVG src="/imgs/svg/arrow-right.svg" alt="Arrow Right" />
                     </Button>
                 </a>

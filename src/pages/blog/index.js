@@ -34,7 +34,7 @@ export const getStaticProps = async () => {
     }
 }
 
-const Blog = ({ handleChildLoaded, posts, totalPages}) => {
+const Blog = ({ handleChildLoaded, posts, totalPages, isChildLoaded}) => {
     
     // Used to detect page load completion. Used in automatic closing of navigation for page transition.
     useEffect(() => {
@@ -54,9 +54,10 @@ const Blog = ({ handleChildLoaded, posts, totalPages}) => {
                     backing={true}
                 />
             </SocialsWrapper>
-            <BlogPageContent posts={ posts } pageNum={ 0 } totalPages={ totalPages } />
+            <BlogPageContent posts={ posts } pageNum={ 0 } totalPages={ totalPages } isChildLoaded={ isChildLoaded }/>
         </Section>
     );
 }
 
 export default Blog;
+

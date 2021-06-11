@@ -4,25 +4,19 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 
 const _H4 = styled.h4`
-    font-size: ${(props) => props.theme.fontSize_default.h2};
-    margin: 0;
-    margin: 2rem 0rem 0rem 0rem;
-`
-
-const _H4_LIST = styled.h4`
     font-size: ${(props) => props.theme.fontSize_default.h3};
     margin: 0;
     margin: 2rem 0rem 0rem 0rem;
 `
 
 const _H5 = styled.h5`
-    font-size: ${(props) => props.theme.fontSize_default.h3};
+    font-size: ${(props) => props.theme.fontSize_default.h4};
     margin: 0;
     margin: 2rem 0rem 0rem 0rem;
 `
 
 const _H6 = styled.h6`
-    font-size: ${(props) => props.theme.fontSize_default.h4};
+    font-size: ${(props) => props.theme.fontSize_default.h5};
     margin: 0;
     margin: 2rem 0rem 0rem 0rem;
 `
@@ -154,33 +148,9 @@ const options_post = {
     }
 }
 
-const options_list = {
-    renderText: text => replaceSpaces(text),
-    renderNode: {
-        [BLOCKS.HEADING_4]: (node, children) => <H4_LIST>{ children }</H4_LIST>,
-        [BLOCKS.HEADING_5]: (node, children) => <H5>{ children }</H5>,
-        [BLOCKS.HEADING_6]: (node, children) => <H6>{ children }</H6>,
-        [BLOCKS.PARAGRAPH]: (node, children) => <P>{ children }</P>,
-        [BLOCKS.UL_LIST]: (node, children) => <UL>{ children }</UL>,
-        [BLOCKS.OL_LIST]: (node, children) => <OL>{ children }</OL>,
-        [BLOCKS.LIST_ITEM]: (node, children) => <LI>{ children }</LI>,
-        [BLOCKS.HR]: () => <HR />,
-
-        [INLINES.HYPERLINK]: (node, children) => {
-            return(
-                <HYPERLINK_LIST node={ node }>{children}</HYPERLINK_LIST>
-            );
-        }
-    }
-}
-
 export default class RichTextParser {
 
     static blogPostRenderer(richText) {
         return(documentToReactComponents(richText, options_post));
-    }
-
-    static blogListRenderer(richText) {
-        return(documentToReactComponents(richText, options_list));
     }
 }

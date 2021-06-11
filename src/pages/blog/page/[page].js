@@ -11,6 +11,7 @@ import BlogBackground from '../../../components/comps/blogBackground';
 
 // API
 import ContentfulApi from '../../../api/ContentfulApi';
+import { useRouter } from 'next/router';
 
 const SocialsWrapper = styled.div`
     width: 100%;
@@ -55,14 +56,18 @@ export const getStaticProps = async ({ params }) => {
     }
 }
 
-const Blog = ({ handleChildLoaded, posts, pageNum, totalPages }) => {
+const Blog = ({ handleChildLoaded, posts, pageNum, totalPages, isChildLoaded }) => {
+
+    const router = useRouter();
+
+    useEffect(() => {
+        handleChildLoaded()
+    }, [router.asPath])
 
     // Used to detect page load completion. Used in automatic closing of navigation for page transition.
     useEffect(() => {
         handleChildLoaded()
     }, [])
-
-    totalPages
 
     return (
         <Section padding="none" area="1by3">
@@ -77,7 +82,7 @@ const Blog = ({ handleChildLoaded, posts, pageNum, totalPages }) => {
                     backing={true}
                 />
             </SocialsWrapper>
-            <BlogPageContent posts={ posts } pageNum={ pageNum } totalPages={ totalPages } />
+            <BlogPageContent posts={ posts } pageNum={ pageNum } totalPages={ totalPages } isChildLoaded={ isChildLoaded }/>
         </Section>
     );
 }

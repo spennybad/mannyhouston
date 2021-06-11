@@ -62,6 +62,7 @@ const NavButton = styled.button`
         width: 7rem;
         grid-gap: .45rem;
         margin: 3rem;
+        box-shadow: none;
     `}
 
     ${media.width_700`
@@ -209,7 +210,6 @@ const Navbar = ({isChildLoaded}) => {
 
     const [isClicked, setIsClicked] = useState(false);
     const [buttonHovered, setButtonHovered] = useState(false);
-    const [isButtonVisible, setIsButtonVisible] = useState(true);
     const {width, height} = useWindowDimensions();
 
     const router = useRouter();
@@ -244,32 +244,22 @@ const Navbar = ({isChildLoaded}) => {
         );
     };
 
-    const NavShowCheck = () => {
-        if (router.route == "/blog/posts/[slug]" && width <= 800) return false;
-        else return true;
-    }
 
     // Used to automatically retract the navigation bar once a new page has completed loading.
     useEffect(() => {
         if (isChildLoaded) {
             setIsClicked(false);
         }
-
-        /* 
-            Although not checked against if the child is loaded. Still keeps the navbutton hidden until the new page loads
-            as th effect is only monitoring width and isChildLoaded. The Nav Button will appear premptivly if the viewport is adjusted 
-            mid page load, however, I do not deam this to be an issue. 
-        */
-        setIsButtonVisible(NavShowCheck())
+        
     }, [isChildLoaded, width]);
     
     return (
         <>
-            {isButtonVisible && <NavButton isClicked={isClicked} onClick={() => handleNavButtonClick()}>
+            <NavButton isClicked={isClicked} onClick={() => handleNavButtonClick()}>
                 <NavButtonLine variants={navLine1Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
                 <NavButtonLine variants={navLine2Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
                 <NavButtonLine variants={navLine3Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
-            </NavButton>}
+            </NavButton>
             <NavPage variants={navPageAnimation} initial="hidden" animate={isClicked ? "visible" : ""} key="NavPage">
                 <NavList variants={navListAnimation}>
                     <NavListItem lable="Home" _href="/" />

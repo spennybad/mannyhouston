@@ -1,11 +1,8 @@
-import Link from 'next/link';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { BLOCKS } from '@contentful/rich-text-types';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import styled, { css } from 'styled-components';
+import Image from 'next/image'
 
-import styled from 'styled-components';
-
-import {useState} from 'react';
+import media from '../MediaQueries';
 import RichTextParser from '../../utils/RichTextParser';
 
 const BlogItem = styled(motion.li)`
@@ -14,83 +11,124 @@ const BlogItem = styled(motion.li)`
     width: 100%;
     height: max-content;
 
-    max-height: 30rem;
-
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
 
     list-style: none;
 
-    background-color: ${(props) => props.theme.colors.off_white}; 
-
-    box-shadow: ${(props) => props.theme.boxShadows.boxShadowLight};
-
-    transition: all .2s;
+    background-color: ${(props) => props.theme.colors.white}; 
 
     overflow: hidden;
 
-    & > article a {
-        display: grid;
+    & > article { 
+        
+        border-top: .3rem solid ${(props) => props.theme.colors.transBlack_75};
+        padding-top: 3rem;
 
-        grid-template-rows: 1fr 100%;
-        grid-template-columns: 100%;
+        & > a {
+            display: grid;
 
-        height: 100%;
-        width: 100%;
+            grid-template-rows: 1fr 100%;
+            grid-template-columns: 100%;
 
-        padding: 3rem;
+            height: 100%;
+            width: 100%;
 
-        & > div {
-            font-size: ${(props) => props.theme.fontSize_default.p};
+            padding: 3rem;
+
+            & > div {
+                font-size: ${(props) => props.theme.fontSize_default.p};
+            }
         }
-    }
-
-    &:hover {
-        transform: scale(1.01);
-        background-color: ${(props) => props.theme.colors.white}; 
     }
 
 `
 
 const BlogItemTitle = styled(motion.h3)`
-    font-size: ${(props) => props.theme.fontSize_default.h3};
-    color: ${(props) => props.theme.colors.white};
-    background-color: ${(props) => props.theme.colors.light_grey};
-    padding: 1rem;
+    font-size: ${(props) => props.theme.fontSize_default.h2};
+    color: ${(props) => props.theme.colors.black};
     width: 100%;
 `
 
 const BlogItemDesc= styled(motion.div)`
     font-size: ${(props) => props.theme.fontSize_default.p};
+`
 
-    &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
+const Media = styled.div`
+    display: grid;
+    grid-template-columns: repeat(3, minmax(6rem, 1fr));
+    grid-auto-rows: max-content;
+    grid-gap: 3rem;
+    grid-auto-flow: dense;
 
-        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 40%, ${(props) => props.theme.colors.white});
+    ${media.width_600`
+         grid-template-columns: repeat(2, minmax(6rem, 1fr));
+    `}
+
+    ${media.width_400`
+         grid-template-columns: repeat(1, minmax(6rem, 1fr));
+    `}
+`
+
+const BlogPostImage = styled(Image)`
+
+`
+
+const MediaImageWrapper = styled.div`
+    box-shadow: ${(props) => props.theme.boxShadows.boxShadowLight};
+
+    max-height: 100%;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+
+    background-color: ${(props) => props.theme.colors.white};
+
+    ${({height, width}) => 
+        
+        (width > height) && css`
+            grid-column: span 2;
+        `
     }
 `
 
+const MediaWrapperClass = ({_key, photo, children}) => (
+    <MediaImageWrapper key={ _key } width={ photo.fields.file.details.image.width } height={ photo.fields.file.details.image.height }>{children}</MediaImageWrapper>
+);
+
 const BlogPostItem = ({ post, setIsClicked, _key} ) => {
 
-    const { blogEntryTitle, blogPostContent, slug } = post.fields;
+    const { blogEntryTitle, blogPostContent, blogPostMedia } = post.fields;
+
+    let media_counter = 0;
 
     return (
-        <BlogItem key={_key} onClick={() => setIsClicked(true)}>
+        <BlogItem key={_key}>
             <article>
-                <Link href={`/blog/posts/${slug}`}>
-                    <a>
-                        <BlogItemTitle>
-                            {blogEntryTitle}
-                        </BlogItemTitle>
-                        <BlogItemDesc>
-                            {RichTextParser.blogListRenderer(blogPostContent)}
-                        </BlogItemDesc>
-                    </a>    
-                </Link>
+                <BlogItemTitle>
+                    {blogEntryTitle}
+                </BlogItemTitle>
+                <BlogItemDesc>
+                    {RichTextParser.blogPostRenderer(blogPostContent)}
+                </BlogItemDesc>
+                <Media>
+                    {   
+                        blogPostMedia && blogPostMedia.map(photo => {
+                            media_counter += 1;
+                            return( 
+                                <MediaWrapperClass key={photo.sys.id + "_wrapper_" + media_counter} _key={photo.sys.id + "_photo_" + media_counter} photo={ photo }>
+                                    <BlogPostImage
+                                        src={'https:' + photo.fields.file.url}
+                                        height={photo.fields.file.details.image.height}
+                                        width={photo.fields.file.details.image.width}
+                                        objectFit="cover"
+                                    />
+                                </MediaWrapperClass>
+                            );
+                        })
+                    }
+                </Media>
             </article>
         </BlogItem>
     );
