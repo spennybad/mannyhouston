@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import VideoGrid from '../../components/videos/VideoGrid';
-import H1 from '../../components/comps/H1';
+import H1 from '../../components/comps/h1';
 
 const VideoListContentWrapper = styled.div`
     position: relative;
