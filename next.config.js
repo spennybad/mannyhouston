@@ -2,7 +2,8 @@ module.exports = {
     images: {
         domains: [
             'images.ctfassets.net',
-            'res.cloudinary.com'
+            'res.cloudinary.com',
+            'i.ytimg.com'
         ],
     },
     env: {

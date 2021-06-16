@@ -17,11 +17,11 @@ const Button = styled.button`
 
     ${({ position }) => 
         (position === "right") && css`
-            right: 0;
+            right: 1rem;
         `
         ||
         (position === "left") && css`
-            left: 0;
+            left: 1rem;
         `
     }
 `

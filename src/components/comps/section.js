@@ -19,7 +19,6 @@ const StyledSection = styled.section`
     overflow-x: hidden;
 
     padding: 10rem 7rem;
-
     
     // Prop Based Styling
     ${({ boxShadow }) =>
@@ -60,6 +59,12 @@ const StyledSection = styled.section`
         `
     }
 
+    ${({ justify }) => 
+        (justify === "center") && css`
+            justify-content: center;
+        `
+    }
+
     // Media Queries
     ${media.width_800`
         padding: 6rem;
@@ -75,9 +80,9 @@ const StyledSection = styled.section`
 
 `
 
-const Section = ({ boxShadow, backgroundColor, borderBottom, padding, area, height, children }) => {
+const Section = ({ boxShadow, backgroundColor, borderBottom, padding, area, height, justify, children }) => {
     return (
-        <StyledSection boxShadow={boxShadow} backgroundColor={backgroundColor} borderBottom={borderBottom} padding={padding} area={area}>
+        <StyledSection boxShadow={boxShadow} backgroundColor={backgroundColor} borderBottom={borderBottom} padding={padding} area={area} justify={justify}>
             {children}
         </StyledSection>
     );

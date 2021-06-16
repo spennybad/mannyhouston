@@ -63,6 +63,7 @@ const NavButton = styled.button`
         grid-gap: .45rem;
         margin: 3rem;
         box-shadow: none;
+        background-color: transparent;
     `}
 
     ${media.width_700`

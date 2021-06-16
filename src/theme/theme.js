@@ -10,7 +10,8 @@ export default {
         green: '#83b799',
         pink: '#e86f68',
         
-        transBlack_75: 'rgba(0, 0, 0, 0.75)'
+        transBlack_75: 'rgba(0, 0, 0, 0.75)',
+        transBlack_90: 'rgba(0, 0, 0, 0.90)'
     },
 
     textShadows: {

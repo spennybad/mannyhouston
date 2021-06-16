@@ -47,15 +47,15 @@ const StyledH1 = styled.h1`
             color: ${(props) => props.theme.colors.pink};
         `
         ||
-        (color) === "light_grey" && css`
-            color: ${(props) => props.theme.colors.light_grey};
+        (color) === "white" && css`
+            color: ${(props) => props.theme.colors.white};
         `
     }
 `       
 
-const H1 = ({ children, backgroundColor, color, padding}) => {
+const H1 = ({ children, backgroundColor, color, position, padding}) => {
     return (
-        <StyledH1 backgroundColor={ backgroundColor } padding={ padding } color={ color }>{children}</StyledH1>
+        <StyledH1 backgroundColor={ backgroundColor } padding={ padding } color={ color } position={ position }>{children}</StyledH1>
     );
 }
 

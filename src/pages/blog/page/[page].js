@@ -77,7 +77,7 @@ const Blog = ({ handleChildLoaded, posts, pageNum, totalPages, isChildLoaded }) 
                     color="white"
                     gap="1rem"
                     direction="vertical"
-                    media_query="blog"
+                    media_query="notmain"
                     layoutId="socials"
                     backing={true}
                 />
