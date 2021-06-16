@@ -83,6 +83,7 @@ const ExitButton = styled.button`
         height: 5rem;
         width: 5rem;
         margin: 1rem;
+        
     `}
 
 `
