@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
 import media from '../../components/MediaQueries';
+import Head from 'next/head';
 
 import Section from '../../components/comps/section';
 import Socials from '../../components/comps/socials';
@@ -43,6 +44,10 @@ const Videos = ({ data, handleChildLoaded }) => {
     console.log(data);
 
     return (
+        <>
+        <Head>
+            <title>Manny Houston | Manny's World</title>
+        </Head>
         <Section area="1by3" justify="center" padding="none">
             <BlogBackground />
             <SocialsWrapper>
@@ -57,6 +62,7 @@ const Videos = ({ data, handleChildLoaded }) => {
             </SocialsWrapper>
             <VideoList videos={ data } />    
         </Section>
+        </>
     );
 
 }

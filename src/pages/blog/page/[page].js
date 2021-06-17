@@ -1,6 +1,7 @@
 // Dependencies
 import styled from 'styled-components';
 import { useEffect } from 'react';
+import Head from 'next/head';
 
 // Components
 import Section from '../../../components/comps/section';
@@ -70,20 +71,25 @@ const Blog = ({ handleChildLoaded, posts, pageNum, totalPages, isChildLoaded }) 
     }, [])
 
     return (
-        <Section padding="none" area="1by3">
-            <BlogBackground />
-            <SocialsWrapper>
-                <Socials
-                    color="white"
-                    gap="1rem"
-                    direction="vertical"
-                    media_query="notmain"
-                    layoutId="socials"
-                    backing={true}
-                />
-            </SocialsWrapper>
-            <BlogPageContent posts={ posts } pageNum={ pageNum } totalPages={ totalPages } isChildLoaded={ isChildLoaded }/>
-        </Section>
+        <>
+            <Head>
+                <title key="blog-page">Manny Houston | Thoughts</title>
+            </Head>
+            <Section padding="none" area="1by3">
+                <BlogBackground />
+                <SocialsWrapper>
+                    <Socials
+                        color="white"
+                        gap="1rem"
+                        direction="vertical"
+                        media_query="notmain"
+                        layoutId="socials"
+                        backing={true}
+                    />
+                </SocialsWrapper>
+                <BlogPageContent posts={posts} pageNum={pageNum} totalPages={totalPages} isChildLoaded={isChildLoaded} />
+            </Section>
+        </>
     );
 }
 

@@ -1,5 +1,4 @@
 import { ThemeProvider } from 'styled-components';
-
 import Layout from '../components/Layout'
 
 // Includes font imports.
@@ -22,15 +21,16 @@ function MyApp({ Component, pageProps, router}) {
     }
 
     return (
-        <ThemeProvider theme={theme}>
-            <GlobalStyles />
-            <header><title>Manny Houston</title></header>
-            <AnimateSharedLayout>
-                <Layout setIsChildLoaded={setIsChildLoaded} isChildLoaded={isChildLoaded}>
-                    <Component {...pageProps} key={router.route ? router.route : "home"} isChildLoaded={isChildLoaded} handleChildLoaded={handleChildLoaded}/>
-                </Layout>
-            </AnimateSharedLayout>
-        </ThemeProvider>
+        <>
+            <ThemeProvider theme={theme}>
+                <GlobalStyles />
+                <AnimateSharedLayout>
+                    <Layout setIsChildLoaded={setIsChildLoaded} isChildLoaded={isChildLoaded}>
+                        <Component {...pageProps} key={router.route ? router.route : "home"} isChildLoaded={isChildLoaded} handleChildLoaded={handleChildLoaded}/>
+                    </Layout>
+                </AnimateSharedLayout>
+            </ThemeProvider>
+        </>
     )
 }
 

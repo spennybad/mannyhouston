@@ -2,6 +2,7 @@
 import styled from 'styled-components';
 import { useEffect } from 'react';
 import ContentfulApi from '../../api/ContentfulApi';
+import Head from 'next/head';
 
 // Components
 import BlogPageContent from '../../components/blog_post/BlogPageContent';
@@ -34,28 +35,33 @@ export const getStaticProps = async () => {
     }
 }
 
-const Blog = ({ handleChildLoaded, posts, totalPages, isChildLoaded}) => {
-    
+const Blog = ({ handleChildLoaded, posts, totalPages, isChildLoaded }) => {
+
     // Used to detect page load completion. Used in automatic closing of navigation for page transition.
     useEffect(() => {
         handleChildLoaded()
     }, [])
 
     return (
-        <Section padding="none" area="1by3">
-            <BlogBackground />
-            <SocialsWrapper>
-                <Socials 
-                    color="white"
-                    gap="1rem"
-                    direction="vertical"
-                    media_query="notmain"
-                    layoutId="socials"
-                    backing={true}
-                />
-            </SocialsWrapper>
-            <BlogPageContent posts={ posts } pageNum={ 0 } totalPages={ totalPages } isChildLoaded={ isChildLoaded }/>
-        </Section>
+        <>
+            <Head>
+                <title key="blog-index">Manny Houston | Thoughts</title>
+            </Head>
+            <Section padding="none" area="1by3">
+                <BlogBackground />
+                <SocialsWrapper>
+                    <Socials
+                        color="white"
+                        gap="1rem"
+                        direction="vertical"
+                        media_query="notmain"
+                        layoutId="socials"
+                        backing={true}
+                    />
+                </SocialsWrapper>
+                <BlogPageContent posts={posts} pageNum={0} totalPages={totalPages} isChildLoaded={isChildLoaded} />
+            </Section>
+        </>
     );
 }
 
