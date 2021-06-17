@@ -260,7 +260,7 @@ const Navbar = ({isChildLoaded}) => {
             setIsClicked(false);
         }
 
-        // Sets fixes the nav on all pages but the home page.
+        // Positionally Fixes the nav on all pages but the home page.
         if (router.route != "/" && width > 800) {
             setIsNavFixed(true);
         } else {

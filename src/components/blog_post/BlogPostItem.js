@@ -55,30 +55,18 @@ const BlogItemDesc= styled(motion.div)`
 
 const Media = styled.div`
     display: grid;
-    grid-template-columns: repeat(3, minmax(6rem, 1fr));
     grid-auto-rows: max-content;
+    grid-auto-columns: 40%;
     grid-gap: 3rem;
     grid-auto-flow: dense;
-
-    ${media.width_600`
-         grid-template-columns: repeat(2, minmax(6rem, 1fr));
-    `}
-
-    ${media.width_400`
-         grid-template-columns: repeat(1, minmax(6rem, 1fr));
-    `}
+    justify-content: center;
 `
 
 const BlogPostImage = styled(Image)`
-
 `
 
 const MediaImageWrapper = styled.div`
     box-shadow: ${(props) => props.theme.boxShadows.boxShadowLight};
-
-    max-height: 100%;
-
-    overflow: hidden;
 
     display: flex;
     align-items: center;
