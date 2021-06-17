@@ -15,7 +15,6 @@ const StyledSocials = styled(motion.ul)`
 
     padding: 3rem;
 
-
     list-style: none;
 
     ${({ color }) => 
@@ -48,6 +47,12 @@ const StyledSocials = styled(motion.ul)`
 
     ${({ media_query }) => 
         (media_query === "notmain" && css`
+
+            position: fixed;
+
+            ${media.width_1000`
+                padding: 1.5rem;
+            `}
 
             ${media.width_800`
                 display: none;

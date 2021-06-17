@@ -43,6 +43,13 @@ const NavButton = styled.button`
         `
     }
 
+    
+    ${({isNavFixed}) => 
+        (isNavFixed) && css`
+            position: fixed;
+        `
+    }
+
     ${media.width_1200`
         height: 7rem;
         width: 7rem;
@@ -211,7 +218,8 @@ const Navbar = ({isChildLoaded}) => {
 
     const [isClicked, setIsClicked] = useState(false);
     const [buttonHovered, setButtonHovered] = useState(false);
-    const {width, height} = useWindowDimensions();
+    const {width} = useWindowDimensions();
+    const [isNavFixed, setIsNavFixed] = useState(false);
 
     const router = useRouter();
 
@@ -251,12 +259,18 @@ const Navbar = ({isChildLoaded}) => {
         if (isChildLoaded) {
             setIsClicked(false);
         }
-        
+
+        // Sets fixes the nav on all pages but the home page.
+        if (router.route != "/" && width > 800) {
+            setIsNavFixed(true);
+        } else {
+            setIsNavFixed(false);
+        }
     }, [isChildLoaded, width]);
     
     return (
         <>
-            <NavButton isClicked={isClicked} onClick={() => handleNavButtonClick()}>
+            <NavButton isClicked={isClicked} onClick={() => handleNavButtonClick()} isNavFixed={isNavFixed}>
                 <NavButtonLine variants={navLine1Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
                 <NavButtonLine variants={navLine2Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
                 <NavButtonLine variants={navLine3Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>

@@ -28,6 +28,8 @@ const StyledSpan = styled.span`
 
     white-space: nowrap;
 
+    margin-left: .5rem;
+
     &:hover {
         transform: scale(1.3) rotate(3deg);
     }
@@ -36,7 +38,7 @@ const StyledSpan = styled.span`
 const Credit = () => {
     return (
         <StyledDiv>
-            <p>Designed and Developed by 
+            <p>Designed and Developed by
                 <a href="https://www.linkedin.com/in/spencer-venable-31494a187/">
                     <StyledSpan>Spencer Venable</StyledSpan>
                 </a>
