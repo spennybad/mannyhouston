@@ -11,10 +11,11 @@ import BlogBackground from '../../components/comps/blogBackground';
 
 const YOUTUBE_VIDEO_ITEMS_API = 'https://www.googleapis.com/youtube/v3/playlistItems';
 const YOUTUBE_PLAYLIST_ID = "PL8KV1nWcRiJRh5oRwSz2CCROUdsMNGulR";
+const MAX_RESULTS = 20;
 
 export const getServerSideProps = async () => {
     
-    const res_videos = await fetch(`${YOUTUBE_VIDEO_ITEMS_API}?part=snippet&playlistId=${YOUTUBE_PLAYLIST_ID}&maxResults=50&key=${process.env.YOUTUBE_API_KEY}`);
+    const res_videos = await fetch(`${YOUTUBE_VIDEO_ITEMS_API}?part=snippet&playlistId=${YOUTUBE_PLAYLIST_ID}&maxResults=${MAX_RESULTS}&key=${process.env.YOUTUBE_API_KEY}`);
     const data = await res_videos.json();
 
     return {

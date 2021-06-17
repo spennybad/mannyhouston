@@ -52,6 +52,8 @@ const VideoItemButton = styled.button`
             border: .5rem solid ${(props) => props.theme.colors.blue};
         }
     }
+
+    cursor: pointer;
    
 `
 
@@ -67,6 +69,7 @@ const VideoGrid = ({ videos }) => {
                     src={ video.snippet.thumbnails.standard.url }
                     height={ video.snippet.thumbnails.standard.height }
                     width={ video.snippet.thumbnails.standard.width }
+                    alt={ video.snippet.thumbnails.title }
                 />
         } catch (err) {
             console.log("Deleted or hidden video.")
@@ -75,12 +78,14 @@ const VideoGrid = ({ videos }) => {
     }
 
     const getVideoItem = (videos) => {  
+        let videoCount = 0;
         return videos.items.map(video => {
             const thumbnail = getVideoThumbnail(video);
             if (thumbnail != undefined) {
+                videoCount += 1;
                 return (
                     <VideoGridItem key={video.id}>
-                        <VideoItemButton onClick={() => handleVideoClick(video)}>
+                        <VideoItemButton name={"video " + videoCount} onClick={() => handleVideoClick(video)}>
                             { thumbnail }
                         </VideoItemButton>
                     </VideoGridItem>

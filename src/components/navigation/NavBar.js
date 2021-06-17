@@ -37,14 +37,14 @@ const NavButton = styled.button`
 
     cursor: pointer;
 
-    ${({isClicked}) => 
+    ${({ isClicked }) =>
         (isClicked) && css`
             position: fixed;
         `
     }
 
     
-    ${({isNavFixed}) => 
+    ${({ isNavFixed }) =>
         (isNavFixed) && css`
             position: fixed;
         `
@@ -114,7 +114,7 @@ const NavPage = styled(motion.div)`
     background-image: linear-gradient(to bottom right, ${(props) => props.theme.colors.green}, ${(props) => props.theme.colors.blue});
 `
 
-const NavList = styled(motion.nav)`
+const NavList = styled(motion.ul)`
     display: grid;
     grid-gap: 3rem;
     grid-template-columns: repeat(max-content, 3);
@@ -214,11 +214,11 @@ const navLine3Animation = {
 
 
 // Component Constructor
-const Navbar = ({isChildLoaded}) => {
+const Navbar = ({ isChildLoaded }) => {
 
     const [isClicked, setIsClicked] = useState(false);
     const [buttonHovered, setButtonHovered] = useState(false);
-    const {width} = useWindowDimensions();
+    const { width } = useWindowDimensions();
     const [isNavFixed, setIsNavFixed] = useState(false);
 
     const router = useRouter();
@@ -239,16 +239,16 @@ const Navbar = ({isChildLoaded}) => {
     /*
         @TODO: Should be broken out into seperate folder. Will require the passing of multiple states.
     */
-    const NavListItem = ({lable, _href}) => {
+    const NavListItem = ({ lable, _href }) => {
 
         const [isHovered, setIsHovered] = useState(false);
 
         return (
             <NavItem onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={() => handleNavListItemClick(_href)}>
-                <Link href={ _href }>
-                    <a>{ lable }</a>
+                <Link href={_href}>
+                    <a>{lable}</a>
                 </Link>
-                <NavListItemBackground initial={{ x: "-110%" }} animate={isHovered ? {x: 0, transition: {type: "linear", duration: .2} } : ""}/>
+                <NavListItemBackground initial={{ x: "-110%" }} animate={isHovered ? { x: 0, transition: { type: "linear", duration: .2 } } : ""} />
             </NavItem>
         );
     };
@@ -267,13 +267,13 @@ const Navbar = ({isChildLoaded}) => {
             setIsNavFixed(false);
         }
     }, [isChildLoaded, width]);
-    
+
     return (
-        <>
+        <nav>
             <NavButton isClicked={isClicked} onClick={() => handleNavButtonClick()} isNavFixed={isNavFixed}>
-                <NavButtonLine variants={navLine1Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
-                <NavButtonLine variants={navLine2Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
-                <NavButtonLine variants={navLine3Animation} animate={buttonHovered && !isClicked ? "animate" : ""}/>
+                <NavButtonLine variants={navLine1Animation} animate={buttonHovered && !isClicked ? "animate" : ""} />
+                <NavButtonLine variants={navLine2Animation} animate={buttonHovered && !isClicked ? "animate" : ""} />
+                <NavButtonLine variants={navLine3Animation} animate={buttonHovered && !isClicked ? "animate" : ""} />
             </NavButton>
             <NavPage variants={navPageAnimation} initial="hidden" animate={isClicked ? "visible" : ""} key="NavPage">
                 <NavList variants={navListAnimation}>
@@ -281,8 +281,8 @@ const Navbar = ({isChildLoaded}) => {
                     <NavListItem lable="Thoughts" _href="/blog" />
                     <NavListItem lable="Manny's World" _href="/videos" />
                 </NavList>
-        </NavPage>
-        </>
+            </NavPage>
+        </nav>
     );
 }
 

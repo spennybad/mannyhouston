@@ -111,6 +111,7 @@ const BlogPostItem = ({ post, setIsClicked, _key} ) => {
                                         height={photo.fields.file.details.image.height}
                                         width={photo.fields.file.details.image.width}
                                         objectFit="cover"
+                                        alt={photo.fields.description}
                                     />
                                 </MediaWrapperClass>
                             );

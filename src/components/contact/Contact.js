@@ -132,11 +132,10 @@ const Contact = () => {
                 process.env.NEXT_PUBLIC_MAIL_USER_ID
 
             ).then((result) => {
-                console.log(result.text);
                 resetMailForm();
 
             }, (error) => {
-                console.log(error.text);
+                resetMailForm();
             });
         }
     }
