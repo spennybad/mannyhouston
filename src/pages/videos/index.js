@@ -42,8 +42,6 @@ const Videos = ({ data, handleChildLoaded }) => {
         handleChildLoaded()
     }, [])
 
-    console.log(data);
-
     return (
         <>
         <Head>
