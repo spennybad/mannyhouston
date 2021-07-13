@@ -64,17 +64,40 @@ const VideoGrid = ({ videos }) => {
     const getVideoThumbnail = (video) => {
         let thumbnail = undefined;
         try {
-            thumbnail = 
-                <Image
-                    src={ video.snippet.thumbnails.standard.url }
-                    height={ video.snippet.thumbnails.standard.height }
-                    width={ video.snippet.thumbnails.standard.width }
-                    alt={ video.snippet.thumbnails.title }
-                />
+            thumbnail = <Image
+                src={ video.snippet.thumbnails.standard.url }
+                height={ video.snippet.thumbnails.standard.height }
+                width={ video.snippet.thumbnails.standard.width }
+                alt={ video.snippet.thumbnails.title }
+            />
         } catch (err) {
-            console.log("Deleted or hidden video.")
+            thumbnail = getAltThumbnail(video);
         }
         return thumbnail;
+    }
+
+    const getAltThumbnail = (video) => {
+
+        let setThumbnail;
+        
+        for (let thumbnail in video.snippet.thumbnails) {
+            if (!setThumbnail) {
+                setThumbnail = thumbnail;
+            } else {
+                if (video.snippet.thumbnails[setThumbnail].width < video.snippet.thumbnails[thumbnail].width) {
+                    setThumbnail = thumbnail;
+                }
+            }
+        }
+
+        return (
+            <Image
+                src={ video.snippet.thumbnails[setThumbnail].url }
+                height={ video.snippet.thumbnails[setThumbnail].height }
+                width={ video.snippet.thumbnails[setThumbnail].width }
+                alt={ video.snippet.thumbnails[setThumbnail].title }
+            />
+        );
     }
 
     const getVideoItem = (videos) => {  

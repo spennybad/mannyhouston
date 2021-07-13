@@ -10,7 +10,7 @@ import BlogBackground from '../../components/comps/blogBackground';
 
 
 const YOUTUBE_VIDEO_ITEMS_API = 'https://www.googleapis.com/youtube/v3/playlistItems';
-const YOUTUBE_PLAYLIST_ID = "PL8KV1nWcRiJRh5oRwSz2CCROUdsMNGulR";
+const YOUTUBE_PLAYLIST_ID = "PLpqrUtVuSh1Br98STZdv7b1FjfbHRpJXl";
 const MAX_RESULTS = 20;
 
 export const getServerSideProps = async () => {
