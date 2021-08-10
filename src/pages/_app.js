@@ -22,6 +22,9 @@ function MyApp({ Component, pageProps, router}) {
 
     return (
         <>
+            <head>
+                <title>Manny Houston</title>
+            </head>
             <ThemeProvider theme={theme}>
                 <GlobalStyles />
                 <AnimateSharedLayout>
