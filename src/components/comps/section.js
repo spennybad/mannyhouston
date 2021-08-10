@@ -1,6 +1,7 @@
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 import media from "../MediaQueries";
 
+import { motion } from 'framer-motion';
 
 const StyledSection = styled.section`   
 
@@ -15,7 +16,7 @@ const StyledSection = styled.section`
     position: relative;
     background-color: ${(props) => props.theme.colors.black};
 
-    overflow: hidden;
+    overflow-x: hidden;
 
     padding: 10rem 7rem;
     
@@ -26,19 +27,42 @@ const StyledSection = styled.section`
         `)
     }
 
-    ${({ backgroundColor }) => 
-            
+    ${({ backgroundColor }) =>
+
         (backgroundColor === "green-gradient" && css`
             background-image: linear-gradient(to bottom right, ${(props) => props.theme.colors.green}, ${(props) => props.theme.colors.blue});
         `)
     }
 
-    ${({ borderBottom }) => 
-            
+    ${({ borderBottom }) =>
+
         (borderBottom && css`
             border-bottom: 1rem solid ${(props) => props.theme.colors.pink};
         `)
+    }
 
+    ${({ padding }) =>
+
+        (padding === "none" && css`
+            padding: 0 !important;
+        `)
+    }
+    
+    ${({ area }) =>
+        (area === "1by3") && css`
+            grid-template-columns: 10% 80% 10%;
+            height: 100%;
+            min-height: 100vh;
+            ${media.width_800`
+                grid-template-columns: 100%;
+            `}
+        `
+    }
+
+    ${({ justify }) => 
+        (justify === "center") && css`
+            justify-content: center;
+        `
     }
 
     // Media Queries
@@ -56,12 +80,12 @@ const StyledSection = styled.section`
 
 `
 
-const Section = ({boxShadow, backgroundColor, borderBottom, children}) => {
+const Section = ({ boxShadow, backgroundColor, borderBottom, padding, area, height, justify, children }) => {
     return (
-        <StyledSection boxShadow={ boxShadow } backgroundColor={ backgroundColor } borderBottom={ borderBottom }>
+        <StyledSection boxShadow={boxShadow} backgroundColor={backgroundColor} borderBottom={borderBottom} padding={padding} area={area} justify={justify}>
             {children}
         </StyledSection>
     );
 }
- 
+
 export default Section;

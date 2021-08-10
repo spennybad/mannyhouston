@@ -7,15 +7,15 @@ export default class MyDocument extends Document {
     render() {
         return (
             <Html lang="en">
-                <meta
-                    name="description"
-                    content="Manny Houston's website. Your place for all things Manny Houston, where you can find extra content, and a behind the scenes look at the man behind the art."
-                />
-                <Head>
+                <Head key="main-header">
                     <link rel="preload" href="/fonts/ReemKufi-Regular.woff" as="font" crossOrigin="anonymous" />
                     <link rel="preload" href="/fonts/ReemKufi-Regular.woff2" as="font" crossOrigin="anonymous" />
                     <link rel="preload" href="/fonts/Staatliches-Regular.woff" as="font" crossOrigin="anonymous" />
                     <link rel="preload" href="/fonts/Staatliches-Regular.woff2" as="font" crossOrigin="anonymous" />
+                    <meta
+                        name="description"
+                        content="Manny Houston, a creative from South Carolina, Actor, Rapper, Pianist, working to inspire young black kids to be creative."
+                    />
                 </Head>
                 <body>
                     <Main />

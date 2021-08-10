@@ -1,16 +1,18 @@
 import styled, { css } from 'styled-components';
+import { motion } from 'framer-motion';
 
 const StyledH2 = styled.h2`
-    font-size: clamp(2.5rem, 4vw, 7rem);
+    position: relative;
+    font-size: ${(props) => props.theme.fontSize_default.h2};
     color: ${(props) => props.theme.colors.green};
 
-    letter-spacing: .2rem;
+    letter-spacing: .1rem;
 
     white-space: nowrap;
 
     padding: 1rem 4rem;
 
-    box-shadow: ${(props) => props.theme.boxShadows.boxShadowLight};
+    text-shadow: ${(props) => props.theme.textShadows.textShadowLight};
 
     ${({ styling }) =>
         (styling === "schedule" && css`
@@ -22,11 +24,12 @@ const StyledH2 = styled.h2`
         ||
         (styling === "contact" && css`
             margin-bottom: 2rem;
-           
-            
-            color: ${(props) => props.theme.colors.green};
             background-color: ${(props) => props.theme.colors.transBlack_75};
-            z-index: 1;
+        `)
+        ||
+        (styling === "blog" && css`
+            margin: 6rem 0;
+            color: ${(props) => props.theme.colors.green};
         `)
     }
 

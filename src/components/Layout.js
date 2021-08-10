@@ -1,12 +1,26 @@
-import NavBar from './navigation/NavBar'
+import NavBar from './navigation/NavBar';
+import Credit from './credit/Credit';
 
-const Layout = ( {children} ) => {
+import { useEffect } from 'react'
+import { AnimatePresence } from "framer-motion";
+
+const Layout = ( {children, setIsChildLoaded, isChildLoaded} ) => {
+    
+    // Once the new child is loaded, Children gets updated meaning it is safe to
+    // set the isChildLoadedState back to false, preparing it for the next route
+    // change.
+    useEffect(() => {
+        setIsChildLoaded(false);
+    }, [children])
+
     return (
-        <div className="content">
-            {/* <NavBar /> */}
-            { children }
-        </div>
+        <>
+            <NavBar isChildLoaded={isChildLoaded}/>
+            <AnimatePresence exitBeforeEnter>
+                {children}
+            </AnimatePresence>
+        </>
     );
 }
- 
+
 export default Layout;
