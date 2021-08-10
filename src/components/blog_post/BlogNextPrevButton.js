@@ -45,6 +45,7 @@ const SVG = styled.img`
 `
 
 const BlogNextPrevButton = ({_next, _prev, pageNum, totalPages, setIsClicked}) => {
+
     let next = null; let prev = null;
 
     if (_next) {

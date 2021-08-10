@@ -1,13 +1,10 @@
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
-import { Router, useRouter } from 'next/router';
+import { useState } from 'react';
 
 import H1 from '../comps/h1';
-import Slider from '../comps/slider';
 import BlogPostItem from './BlogPostItem';
 import BlogNextPrevButton from './BlogNextPrevButton';
-import { AnimatePresence, motion } from 'framer-motion';
-import { route } from 'next/dist/next-server/server/router';
+import { motion } from 'framer-motion';
 
 const BlogContentWrapper = styled(motion.div)`
     position: relative;
@@ -59,6 +56,12 @@ const ButtonWrapper = styled.div`
     margin-top: 3rem;
 `
 
+const NoBlogContent = styled.p`
+    text-align: center;
+    font-size: ${(props) => props.theme.fontSize_default.h4};
+    place-self: center;
+`
+
 const BlogPageContent = ({ posts, pageNum, totalPages, isChildLoaded }) => {
 
     const [isClicked, setIsClicked] = useState(false);
@@ -66,20 +69,30 @@ const BlogPageContent = ({ posts, pageNum, totalPages, isChildLoaded }) => {
     return (
         <BlogContentWrapper>
             <H1 color="blue" padding="1rem">Thoughts</H1>
-            <BlogContent>
-                <BlogList>
-                    {
-                        posts.posts.map(post => (
-                            <BlogPostItem key={post.sys.id} _key={post.sys.id} post={post}/>
-                        ))
-                    }
-                </BlogList>
-            </BlogContent>
-            <ButtonWrapper> 
-                <BlogNextPrevButton _next pageNum={pageNum} totalPages={totalPages} setIsClicked={setIsClicked}/>
-                <BlogNextPrevButton _prev pageNum={pageNum} totalPages={totalPages} setIsClicked={setIsClicked}/>
-            </ButtonWrapper>
-            {/* <Slider isClicked={isClicked} position="right" /> */}
+            { 
+                totalPages != 0 && (
+                    <>
+                        <BlogContent>
+                            <BlogList>
+                                {
+                                    posts.posts.map(post => (
+                                        <BlogPostItem key={post.sys.id} _key={post.sys.id} post={post}/>
+                                    ))
+                                }
+                            </BlogList>
+                        </BlogContent>
+                        <ButtonWrapper> 
+                            <BlogNextPrevButton _next pageNum={pageNum} totalPages={totalPages} setIsClicked={setIsClicked}/>
+                            <BlogNextPrevButton _prev pageNum={pageNum} totalPages={totalPages} setIsClicked={setIsClicked}/>
+                        </ButtonWrapper>
+                    </>
+                ) 
+                || totalPages == 0 && (
+                    <NoBlogContent>
+                        No posts yet!<br/>But check back soon...<br/> 🔥
+                    </NoBlogContent>
+                )
+            }
         </BlogContentWrapper>
     );
 }

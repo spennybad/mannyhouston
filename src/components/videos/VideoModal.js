@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useEffect } from 'react';
 
 // Components
 import YouTubePlayer from './YouTubePlayer';
@@ -88,7 +89,18 @@ const ExitButton = styled.button`
 
 `
 
+const handleKeyPress = (event, setCurrentVideo) => {
+    if (event.key == 'Escape') {
+        setCurrentVideo(null);
+    }
+}
+
 const VideoModal = ({ video, setCurrentVideo }) => {
+
+    // Runs on mount.
+    useEffect(() => {
+        document.addEventListener("keydown", (event) => handleKeyPress(event, setCurrentVideo));
+    }, [])
 
     return (
         <Modal onClick={() => setCurrentVideo(null)}>
