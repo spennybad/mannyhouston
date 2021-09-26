@@ -30,7 +30,7 @@ export const getStaticProps = async () => {
     return {
         props: {
             posts: res.posts || null,
-            totalPages: total
+            totalPages: Math.floor(total/4 + 1)
         }
     }
 }

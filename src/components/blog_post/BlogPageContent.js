@@ -66,6 +66,9 @@ const BlogPageContent = ({ posts, pageNum, totalPages, isChildLoaded }) => {
 
     const [isClicked, setIsClicked] = useState(false);
 
+    console.log("PAGE NUM: " + pageNum);
+    console.log("TOTAL PAGES: " + totalPages);
+
     return (
         <BlogContentWrapper>
             <H1 color="blue" padding="1rem">Thoughts</H1>

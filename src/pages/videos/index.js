@@ -15,7 +15,7 @@ const MAX_RESULTS = 20;
 
 export const getServerSideProps = async () => {
     
-    const res_videos = await fetch(`${YOUTUBE_VIDEO_ITEMS_API}?part=snippet&playlistId=${YOUTUBE_PLAYLIST_ID}&maxResults=${MAX_RESULTS}&key=${process.env.YOUTUBE_API_KEY}`);
+    const res_videos = await fetch(`${YOUTUBE_VIDEO_ITEMS_API}?part=snippet&playlistId=${YOUTUBE_PLAYLIST_ID}&maxResults=${MAX_RESULTS}&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`);
     const data = await res_videos.json();
 
     return {

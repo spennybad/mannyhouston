@@ -2,8 +2,6 @@ import styled from 'styled-components';
 import { useRef } from 'react';
 import emailjs from 'emailjs-com';
 
-import Image from 'next/image';
-
 import Section from '../comps/section';
 import H2 from '../comps/h2';
 

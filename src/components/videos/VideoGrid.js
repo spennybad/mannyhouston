@@ -101,18 +101,21 @@ const VideoGrid = ({ videos }) => {
     }
 
     const getVideoItem = (videos) => {  
+        console.log(videos);
         let videoCount = 0;
         return videos.items.map(video => {
-            const thumbnail = getVideoThumbnail(video);
-            if (thumbnail != undefined) {
-                videoCount += 1;
-                return (
-                    <VideoGridItem key={video.id}>
-                        <VideoItemButton name={"video " + videoCount} onClick={() => handleVideoClick(video)}>
-                            { thumbnail }
-                        </VideoItemButton>
-                    </VideoGridItem>
-                );
+            if (video.snippet.title != "Private video") {
+                const thumbnail = getVideoThumbnail(video);
+                if (thumbnail != undefined) {
+                    videoCount += 1;
+                    return (
+                        <VideoGridItem key={video.id}>
+                            <VideoItemButton name={"video " + videoCount} onClick={() => handleVideoClick(video)}>
+                                { thumbnail }
+                            </VideoItemButton>
+                        </VideoGridItem>
+                    );
+                }
             }
         })
     }
